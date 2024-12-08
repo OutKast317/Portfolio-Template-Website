@@ -1,0 +1,90 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, rgba(128, 155, 206, 0.9), rgba(128, 155, 206, 0.6));
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #333;
+}
+
+.login-container {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  width: 360px;
+  text-align: center;
+}
+
+h2 {
+  color: #444;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+input[type="text"],
+input[type="password"] {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: rgba(128, 155, 206, 0.2);
+}
+
+input:focus {
+  outline: none;
+  border-color: #f4978e;
+  box-shadow: 0 0 4px rgba(150, 199, 255, 0.5);
+}
+
+button {
+  background: linear-gradient(to right, rgba(128, 155, 206, 0.9), rgba(128, 155, 206, 0.7));
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: linear-gradient(to right, rgba(128, 155, 206, 0.8), rgba(128, 155, 206, 0.5));
+}
+
+#error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+#toggle-form {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+#toggle-form a {
+  color: #809bce;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#toggle-form a:hover {
+  text-decoration: underline;
+}

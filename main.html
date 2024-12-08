@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login and Sign-Up Form</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="login-container">
+      <h2 id="form-title">Login</h2>
+
+      <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required />
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
+
+        <button type="submit">Login</button>
+      </form>
+
+      <form id="signUpForm" style="display: none">
+        <label for="new-username">Username:</label>
+        <input type="text" id="new-username" name="new-username" required />
+
+        <label for="new-password">Password:</label>
+        <input type="password" id="new-password" name="new-password" required />
+
+        <label for="confirm-password">Confirm Password:</label>
+        <input
+          type="password"
+          id="confirm-password"
+          name="confirm-password"
+          required
+        />
+
+        <button type="submit">Sign Up</button>
+      </form>
+
+      <div id="error-message"></div>
+      <p id="toggle-form">
+        Don't have an account?
+        <a href="javascript:void(0);" onclick="toggleForm()">Sign Up</a>
+      </p>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
