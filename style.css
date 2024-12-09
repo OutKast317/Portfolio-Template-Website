@@ -88,3 +88,7 @@ button:hover {
 #toggle-form a:hover {
   text-decoration: underline;
 }
+
+.hidden {
+  display: none;
+}
