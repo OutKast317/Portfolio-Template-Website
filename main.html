@@ -1,48 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login and Sign-Up Form</title>
+    <title>Demo</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div class="login-container">
-      <h2 id="form-title">Login</h2>
+    <!-- Navigation Bar -->
+    <header>
+      <nav class="navbar">
+        <div class="logo">
+          <h1>Portfolio-Template</h1>
+        </div>
+        <div class="search-bar">
+          <input type="text" placeholder="Search" id="search" />
+          <button><i class="fas fa-search"></i></button>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Info</a></li>
+        </ul>
+        <div>
+          <button onclick="showForm('login')">Log In</button>
+          <button onclick="showForm('signup')">Sign Up</button>
+        </div>
+      </nav>
+    </header>
 
-      <form id="loginForm">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required />
+    <main>
+      <section class="template-section">
+        <h2>CV Templates</h2>
+        <div class="template-grid">
+          <div class="template-box">Template</div>
+          <div class="template-box">Template</div>
+          <div class="template-box">Template</div>
+          <div class="template-box">Template</div>
+        </div>
+        <p class="more-link">See More CV Templates →</p>
+      </section>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required />
+      <section class="template-section">
+        <h2>Resume Templates</h2>
+        <div class="template-grid">
+          <div class="template-box">Template</div>
+          <div class="template-box">Template</div>
+          <div class="template-box">Template</div>
+          <div class="template-box">Template</div>
+        </div>
+        <p class="more-link">See More Resume Templates →</p>
+      </section>
+    </main>
 
-        <button type="submit">Login</button>
-      </form>
+    <!-- Login/Sign-up -->
+    <div id="modal-overlay" class="modal-overlay hidden">
+      <div class="login-container">
+        <h2 id="form-title">Login</h2>
 
-      <form id="signUpForm" class="hidden">
-        <label for="new-username">Username:</label>
-        <input type="text" id="new-username" name="new-username" required />
+        <!-- Login -->
+        <form id="loginForm">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required />
 
-        <label for="new-password">Password:</label>
-        <input type="password" id="new-password" name="new-password" required />
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required />
 
-        <label for="confirm-password">Confirm Password:</label>
-        <input
-          type="password"
-          id="confirm-password"
-          name="confirm-password"
-          required
-        />
+          <button type="submit">Login</button>
+        </form>
 
-        <button type="submit">Sign Up</button>
-      </form>
+        <!-- Sign-Up -->
+        <form id="signUpForm" class="hidden">
+          <label for="new-username">Username:</label>
+          <input type="text" id="new-username" name="new-username" required />
 
-      <div id="error-message"></div>
-      <p id="toggle-form">
-        Don't have an account?
-        <a href="javascript:void(0);" onclick="toggleForm()">Sign Up</a>
-      </p>
+          <label for="new-password">Password:</label>
+          <input
+            type="password"
+            id="new-password"
+            name="new-password"
+            required
+          />
+
+          <label for="confirm-password">Confirm Password:</label>
+          <input
+            type="password"
+            id="confirm-password"
+            name="confirm-password"
+            required
+          />
+
+          <button type="submit">Sign Up</button>
+        </form>
+
+        <!-- Toggle/Transition -->
+        <div id="error-message"></div>
+        <p id="toggle-form">
+          Don't have an account?
+          <a href="javascript:void(0);" onclick="toggleForm()">Sign Up</a>
+        </p>
+
+        <!-- Close Button -->
+        <span id="close-modal" onclick="closeModal()">&#10005;</span>
+      </div>
     </div>
     <script src="index.js"></script>
   </body>
