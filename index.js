@@ -1,31 +1,57 @@
-document.getElementById('loginForm').addEventListener('submit', function(event) {
-  event.preventDefault(); 
+function showForm(type) {
+  const formContainer = document.getElementById('modal-overlay');
+  const loginForm = document.getElementById('loginForm');
+  const signUpForm = document.getElementById('signUpForm');
+  const formTitle = document.getElementById('form-title');
+  const toggleText = document.getElementById('toggle-form');
   
+   formContainer.classList.remove('hidden');
+
+  // Toggle forms
+  if (type === 'login') {
+    loginForm.classList.remove('hidden');
+    signUpForm.classList.add('hidden');
+    formTitle.innerText = 'Login';
+    toggleText.innerHTML =
+      "Don't have an account? <a href='javascript:void(0);' onclick='showForm(\"signup\")'>Sign Up</a>";
+  } else if (type === 'signup') {
+    signUpForm.classList.remove('hidden');
+    loginForm.classList.add('hidden');
+    formTitle.innerText = 'Sign Up';
+    toggleText.innerHTML =
+      "Already have an account? <a href='javascript:void(0);' onclick='showForm(\"login\")'>Login</a>";
+  }
+}
+
+// Login Handling
+// Login still needs some fix
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
   const username = document.getElementById('username').value;
   const password = document.getElementById('password').value;
   const errorMessage = document.getElementById('error-message');
-  
-  
+
   if (!username || !password) {
     errorMessage.textContent = 'Both fields are required for login.';
     return;
   }
-
+//codes still need to be fixed for real world logic
   alert('Login successful!');
-  errorMessage.textContent = ''; 
+  errorMessage.textContent = '';
 });
 
+// Sign-up
 document.getElementById('signUpForm').addEventListener('submit', function(event) {
-  event.preventDefault(); 
+  event.preventDefault();
 
   const newUsername = document.getElementById('new-username').value;
   const newPassword = document.getElementById('new-password').value;
   const confirmPassword = document.getElementById('confirm-password').value;
   const errorMessage = document.getElementById('error-message');
 
-//error handling
-
-   if (!newUsername || !newPassword || !confirmPassword) {
+  // Error handling
+  if (!newUsername || !newPassword || !confirmPassword) {
     errorMessage.textContent = 'All fields are required for sign-up.';
     return;
   }
@@ -40,27 +66,11 @@ document.getElementById('signUpForm').addEventListener('submit', function(event)
     return;
   }
 
-  // code still needs to be fixed for real world logic
+  //codes still need to be fixed for real world logic
   alert('Sign-Up successful!');
-  errorMessage.textContent = ''; 
+  errorMessage.textContent = '';
 });
 
-// Toggling or Switching between forms 
-function toggleForm() {
-  const loginForm = document.getElementById('loginForm');
-  const signUpForm = document.getElementById('signUpForm');
-  const formTitle = document.getElementById('form-title');
-  const toggleText = document.getElementById('toggle-form');
-
-  loginForm.classList.toggle('hidden');
-  signUpForm.classList.toggle('hidden');
-
-  if (loginForm.classList.contains('hidden')) {
-    formTitle.textContent = 'Sign Up'; 
-    toggleText.innerHTML = `Already have an account? <a href="javascript:void(0);" onclick="toggleForm()">Login</a>`;
-  } else {
-    formTitle.textContent = 'Login'; 
-    toggleText.innerHTML = `Don't have an account? <a href="javascript:void(0);" onclick="toggleForm()">Sign Up</a>`;
-  }
+function closeModal() {
+  document.getElementById('modal-overlay').classList.add('hidden');
 }
-
