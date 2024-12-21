@@ -22,7 +22,7 @@ function showForm(type) {
       "Already have an account? <a href='javascript:void(0);' onclick='showForm(\"login\")'>Login</a>";
   }
 }
-
+/*
 // Login Handling
 // Login still needs some fix
 document.getElementById('loginForm').addEventListener('submit', function(event) {
@@ -70,6 +70,47 @@ document.getElementById('signUpForm').addEventListener('submit', function(event)
   alert('Sign-Up successful!');
   errorMessage.textContent = '';
 });
+*/
+
+function formHandling(formType) {
+  return function (event) {
+
+    event.preventDefault();
+
+    const username = document.getElementById(`${formType}-username`).value;
+    const password = document.getElementById(`${formType}-password`).value;
+    const errorMessage = document.getElementById(`${formType}-error-message`); 
+
+
+    //code still needs to be fixed
+    if (!username || !password) {
+      errorMessage.textContent = 'Both fields are required for login.';
+      return;
+    }
+
+    if (formType === 'signup') {
+      const confirmPassword = document.getElementById('confirm-password').value;
+
+      if (password !== confirmPassword) {
+        errorMessage.textContent = 'Passwords do not match.';
+        return;
+      }
+
+      if (password.length < 6) {
+        errorMessage.textContent = 'Password must be at least 6 characters.';
+        return;
+      }
+    }
+
+    alert(`${formType} === 'login' ? 'Login' : 'Sign-Up'} successful!`);
+    errorMessage.textContent = '';
+
+  }
+};
+
+document.getElementById('loginForm').addEventListener('submit', formHandling('login'));
+document.getElementById('signUpForm').addEventListener('submit', formHandling('signup'));
+
 
 function closeModal() {
   document.getElementById('modal-overlay').classList.add('hidden');
