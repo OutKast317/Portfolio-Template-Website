@@ -71,6 +71,15 @@ document.getElementById('signUpForm').addEventListener('submit', function(event)
   errorMessage.textContent = '';
 });
 */
+// show password
+function show(id){
+  let password = document.getElementById(id);
+  if (password.type === 'password') {
+    password.type = 'text';
+  } else {  
+    password.type = 'password';
+  }
+}
 
 function formHandling(formType) {
   return function (event) {
