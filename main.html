@@ -70,15 +70,19 @@
 
           <label for="password">Password:</label>
           <input type="password" id="password" name="password" required />
-
-          <button type="submit">Login</button>
+          <label>show password</label>
+          <input id="showpassword" type="checkbox" onclick="show('password')">
+          <button id="submit">Login</button>
         </form>
 
         <!-- Sign-Up -->
         <form id="signUpForm" class="hidden">
           <label for="new-username">Username:</label>
           <input type="text" id="new-username" name="new-username" required />
-
+          <!-- show password -->
+          <label>view</label>
+          <input id="showpassword" type="checkbox" onclick="show('new-password')">
+          
           <label for="new-password">Password:</label>
           <input
             type="password"
@@ -86,7 +90,9 @@
             name="new-password"
             required
           />
-
+          <!-- show password -->
+          <label>view</label>
+          <input id="showpassword" type="checkbox" onclick="show('confirm-password')">
           <label for="confirm-password">Confirm Password:</label>
           <input
             type="password"
@@ -95,8 +101,9 @@
             required
           />
 
-          <button type="submit">Sign Up</button>
+          <button id="sign-up" >Sign Up</button>
         </form>
+
 
         <!-- Toggle/Transition -->
         <div id="error-message"></div>
