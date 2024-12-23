@@ -108,6 +108,8 @@ function formHandling(formType) {
   }
 };
 
+//please enter the new js code here
+
 document.getElementById('loginForm').addEventListener('submit', formHandling('login'));
 document.getElementById('signUpForm').addEventListener('submit', formHandling('signup'));
 
@@ -115,3 +117,5 @@ document.getElementById('signUpForm').addEventListener('submit', formHandling('s
 function closeModal() {
   document.getElementById('modal-overlay').classList.add('hidden');
 }
+
+
