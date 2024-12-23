@@ -22,6 +22,16 @@ function showForm(type) {
       "Already have an account? <a href='javascript:void(0);' onclick='showForm(\"login\")'>Login</a>";
   }
 }
+
+//show password function for both form
+function show(id){
+  let password = document.getElementById(id);
+  if (password.type === 'password') {
+    password.type = 'text';
+  } else {  
+    password.type = 'password';
+  }
+}
 /*
 // Login Handling
 // Login still needs some fix
