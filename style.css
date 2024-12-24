@@ -1,148 +1,186 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom, #f2f2f2, #d8b4f8);
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Navigation Bar */
-.navbar {
+/*GRADIENT BACKGROUNG*/
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; 
+}
+
+body {
+    position: relative;
+    color: #ffffff;
+    height: 200vh;
+    overflow: auto;
+}
+
+body::before {
+    content: '';
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #000000, #1d0140);
+    z-index: -1;
+   
+}
+/*GRADIENT BACKGROUND*/
+
+/* Nav BAR */
+header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  background: #ffffff;
+  justify-content: space-between;
   padding: 10px 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  background-color: transparent;
+}
+/* Nav BAR */
+
+/* Icon & Page_name Section */
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo i {
+  color: #1404a6; 
+  margin-right: 10px;
+  font-size: 24px;
+  cursor: pointer;
 }
 
 .logo h1 {
   margin: 0;
-  color: #333;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: 'Lilita One';
+  cursor: pointer;
 }
+/* Icon & Page_name Section */
 
+/* Search Bar */
 .search-bar {
   display: flex;
   align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 6px 20px;
+  border-radius: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: width 0.4s ease-in-out;
 }
 
 .search-bar input {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 5px 0 0 5px;
+  background: transparent;
+  border: none;
   outline: none;
-  height: 40 px;
+  color: #fffafa;
+  font-size: 16px;
+  width: 400px; 
+  padding: 5px 0;
+  transition: width 0.4s ease-in-out;
 }
 
-.search-bar button {
-  padding: 8px;
-  background-color: #6b4fd8;
-  color: white;
-  border: none;
-  border-radius: 0 5px 5px 0;
+/* Search Bar Expands */
+.search-bar:hover input {
+  width: 500px;
+}
+/* Search Bar Expands */
+
+.search-bar input::placeholder {
+  color: #ffffff;
+  opacity: 0.7;
+}
+
+.search-icon {
+  color: #ffffff;
+  font-size: 20px;
   cursor: pointer;
-  height: 50 px;
-  align-items: center;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: #6b4fd8;
-  font-weight: bold;
-}
-
-.login-buttons button {
   margin-left: 10px;
-  padding: 8px 15px;
-  border: none;
-  background-color: #6b4fd8;
-  color: white;
-  cursor: pointer;
-  border-radius: 5px;
 }
 
-/* Templates Section */
-.template-section {
-  margin: 30px;
-}
+.search-bar:hover .search-icon {
+ color: #1500ff; }
+/* Search Bar */
 
-.template-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
-}
 
-.template-box {
-  background: #555;
-  color: #ddd;
-  text-align: center;
-  padding: 50px 0;
-  border-radius: 8px;
-}
-
-.more-link {
-  text-align: right;
-  color: #333;
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-/* Login/Signup Form */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6); 
+/* "Home/About/Contact/Info/Profile_icon" Section */
+  .nav-box {
   display: flex;
-  justify-content: center;
   align-items: center;
-  z-index: 1000; 
-}
-
-.login-container {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 12px;
-  padding: 30px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-  width: 360px;
+  gap: 20px;
   position: relative;
-  text-align: left;
 }
 
-/* Close Button Style */
-#close-modal {
-  position: absolute;
-  top: 10px;
-  right: 15px;
+.nav-box a {
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #6a0dad;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-family: 'Lilita One';
+  transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
+}
+
+.nav-box a:hover {
+  background-color: #8000ff;
+  transform: translateY(-10px); 
+}
+
+.user-icon {
+  color: #ffffff;
   font-size: 24px;
-  color: #555;
   cursor: pointer;
-  transition: color 0.3s ease;
+  transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
 }
 
-#close-modal:hover {
-  color: #f4978e;
+.user-icon:hover{
+  background-color: #8000ff;
+  border-radius: 200px;
+  transform: translateY(-10px); 
 }
 
-.hidden {
+/* "Home/About/Contact/Info/Profile_icon" Section */
+
+
+/* Box for Dropdown */
+
+/* Dropdown Styles*/
+.dropdown {
   display: none;
+  position: absolute;
+  top: 55px;
+  right:0;
+  background-color: #ffffff ;
+  box-shadow: 0 4px 8px #0000001A;
+  border-radius: 5px;
+  min-width: 150px;
+  z-index: 1000;
 }
 
-input[type="text"],
-input[type="password"] {
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  margin-bottom: 15px;
-  width: 100%;
-  box-sizing: border-box;
-  background-color: rgba(128, 155, 206, 0.2);
+/* Dropdown links */
+.dropdown a {
+    padding: 10px 15px;
+    display: block;
+    text-decoration: none;
+    font-family: 'Lilita One' ;
+    color: #100101;
+    font-size: 16px;
+    cursor: pointer;
+    z-index:1010;
+}
+
+.dropdown a:hover {
+    background-color: #8000ff;
+    color: #ffffff;
+}
+
+.dropdown.open-menu {
+    display: block;
 }
 
 button {
@@ -159,3 +197,230 @@ button {
 button:hover {
   background: linear-gradient(to right, rgba(128, 155, 206, 0.8), rgba(128, 155, 206, 0.5));
 }
+
+/* Box for Dropdown */
+
+/* Templates Section */
+.template-section {
+  margin: 30px 20px;
+  position: relative;
+  font-family: 'Lilita One';
+}
+  
+.template-grid {
+  display: grid;
+  overflow-x: auto;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+  padding: 10px;
+}
+  
+.template-box {
+ flex: 0px 0 200px;
+ height: 150px;
+ background: rgba(255, 255, 255, 0.2);
+ border-radius: 10px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ color: white;
+ font-family: 'Lilita One';
+ font-size: 16px;
+ box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+ transition: transform 0.3s ease-in-out;
+}
+
+.template-box:hover {
+transform: scale(1.05);
+}
+
+.more-link {
+ position: absolute;
+ right: 20px; /* Aligns the button to the right */
+ margin-top: 10px;
+ background-color: #6a0dad;
+ color: white;
+ padding: 10px 20px;
+ border-radius: 20px;
+ font-family: 'Lilita One';
+ text-decoration: none;
+ border: none;
+ cursor: pointer;
+ transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
+}
+
+.more-link:hover {
+  background-color: #8000ff;
+  transform: translateY(-10px); 
+}
+/* Templates Section */
+ 
+ .modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000; /* Higher than dropdown and nav */
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.3s ease-in-out;
+}
+
+/* Login/Sign up */
+.modal-overlay:not(.hidden) {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+.login-container {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 30px 40px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  width: 360px;
+  position: relative;
+  text-align: center;
+  font-family: 'Lilita One', cursive;
+}
+
+/* Close Button Style */
+#close-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  color: #000000;
+  cursor: pointer;
+  transition: color 0.3s ease;
+ 
+}
+
+#close-modal:hover {
+  color: #f4978e;
+}
+
+.hidden {
+  display: none;
+}
+
+#form-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #6a0dad;
+}
+
+
+form label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 16px;
+  color: #333333;
+  text-align: left;
+}
+
+form input[type="text"],
+form input[type="password"] {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: rgba(128, 155, 206, 0.2);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+form input[type="text"]:focus,
+form input[type="password"]:focus {
+  outline: none;
+  border-color: #808bbc;
+  box-shadow: 0 0 5px rgba(128, 155, 206, 0.8);
+}
+
+
+.modal-overlay button {
+  width: 100%;
+  background: linear-gradient(to right, #6a0dad, #8000ff);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+.modal-overlay button:hover {
+  background: linear-gradient(to right, #8000ff, #6a0dad);
+}
+
+
+#toggle-form {
+  font-size: 14px;
+  text-align: center;
+  margin-top: 10px;
+  color: #333333;
+}
+
+#toggle-form a {
+  color: #6a0dad;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#toggle-form a:hover {
+  color: #8000ff;
+}
+.password-container {
+  position: relative;
+  width: 100%;
+}
+
+/* Eye icon styling */
+.eye1 {
+  position: absolute;
+  right: 50px;
+  top: 50%;
+  transform: translateY(200%);
+  cursor: pointer;
+  font-size: 18px;
+  color: #000000;
+}
+.eye2 {
+  position: absolute;
+  right: 50px;
+  top: 50%;
+  transform: translateY(-14%);
+  cursor: pointer;
+  font-size: 18px;
+  color: #000000;
+}
+
+.eye3 {
+  position: absolute;
+  right: 50px;
+  bottom: 50%;
+  transform: translateY(535%);
+  cursor: pointer;
+  font-size: 18px;
+  color: #000000;
+}
+
+#hide1 {
+  display: none;
+}
+
+#hide2 {
+  display: block;
+}
+
+
+/* Eye icon styling */
+
+/* Login/Sign up */
