@@ -119,6 +119,11 @@ function formHandling(formType) {
 };
 
 //please enter the new js code here
+//Drop Down JS by STZK 
+    let dropdownMenu = document.getElementById("dropdownMenu");
+    function toggleMenu(){
+    dropdownMenu.classList.toggle("open-menu");
+    }
 
 document.getElementById('loginForm').addEventListener('submit', formHandling('login'));
 document.getElementById('signUpForm').addEventListener('submit', formHandling('signup'));
