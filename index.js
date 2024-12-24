@@ -1,7 +1,7 @@
 //by stzk
 function toggleMenu() {
   const dropdownMenu = document.getElementById('dropdownMenu');
-  dropdownMenu.classList.toggle('hidden');
+  dropdownMenu.classList.toggle('open-menu');
 }
 
 
