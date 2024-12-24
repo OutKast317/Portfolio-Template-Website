@@ -118,7 +118,33 @@ function formHandling(formType) {
   }
 };
 
-//please enter the new js code here
+//show password function by kph and stzk
+//modified by pwt
+function showPassword(element) {
+  const passwordInput = element.previousElementSibling;
+  const showIcon = element.querySelector('#hide1');
+  const hideIcon = element.querySelector('#hide2');
+
+  if (!passwordInput) {
+    console.error('Password input not found');
+    return;
+  } 
+    
+  if (passwordInput.type === 'password') {
+    input.type = 'text';
+    showIcon.classList.add('visible');
+    showIcon.classList.remove('visible');
+    hideIcon.classList.add('hidden');
+    hideIcon.classList.remove('visible');
+  } else {
+    passwordInput.type = 'password';
+    showIcon.classList.add('hidden');
+    showIcon.classList.remove('visible');
+    hide1.classList.add('visible');
+    hide2.classList.remove('hidden');
+  }
+}
+
 
 document.getElementById('loginForm').addEventListener('submit', formHandling('login'));
 document.getElementById('signUpForm').addEventListener('submit', formHandling('signup'));
