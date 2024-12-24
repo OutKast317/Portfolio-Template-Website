@@ -107,8 +107,29 @@ function formHandling(formType) {
 
   }
 };
+//show password by kph and stzk
+//modified by pwt
+function showPassword(id, element) {
+  const input = document.getElementById(id);
+  const hide1 = element.querySelector('#hide1');
+  const hide2 = element.querySelector('#hide2');
 
-//please enter the new js code here
+  if (input.type === 'password') {
+    input.type = 'text';
+    hide1.style.display = 'block';
+    hide2.style.display = 'none';
+  } else {
+    input.type = 'password';
+    hide1.style.display = 'none';
+    hide2.style.display = 'block';
+  }
+}
+
+//dropdown menu by stzk
+let dropdownMenu = document.getElementById("dropdownMenu");
+    function toggleMenu(){
+    dropdownMenu.classList.toggle("open-menu");
+    }
 
 document.getElementById('loginForm').addEventListener('submit', formHandling('login'));
 document.getElementById('signUpForm').addEventListener('submit', formHandling('signup'));
