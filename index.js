@@ -22,16 +22,6 @@ function showForm(type) {
       "Already have an account? <a href='javascript:void(0);' onclick='showForm(\"login\")'>Login</a>";
   }
 }
-
-//show password function for both form
-function show(id){
-  let password = document.getElementById(id);
-  if (password.type === 'password') {
-    password.type = 'text';
-  } else {  
-    password.type = 'password';
-  }
-}
 /*
 // Login Handling
 // Login still needs some fix
@@ -91,21 +81,36 @@ function formHandling(formType) {
     const password = document.getElementById(`${formType}-password`).value;
     const errorMessage = document.getElementById(`${formType}-error-message`); 
 
+    //for DOM manipulation
+      //before displaying error message, check if the element(error message) exists
+      //if it doesn't exist, console mhr error message log ml
+      //if it exists, display the error message
+      if (!errorMessage) {
+        console.error('Error message element not found');
+        return;
+      }
+    
 
     //code still needs to be fixed
-    if (!username || !password) {
-      errorMessage.textContent = 'Both fields are required for login.';
+    if (!username) {
+      errorMessage.textContent = 'Username is required.';
       return;
     }
 
+    if (!password) {
+      errorMessage.textContent = 'Password is required.';
+      return;
+    }
+    
     if (formType === 'signup') {
-      const confirmPassword = document.getElementById('confirm-password').value;
-
+      const confirmPasswordElement = document.getElementById('confirm-password');
+      const confirmPassword = confirmPasswordElement ? confirmPasswordElement.value : '';
+            
       if (password !== confirmPassword) {
         errorMessage.textContent = 'Passwords do not match.';
         return;
       }
-
+    
       if (password.length < 6) {
         errorMessage.textContent = 'Password must be at least 6 characters.';
         return;
@@ -117,6 +122,9 @@ function formHandling(formType) {
 
   }
 };
+
+
+
 
 //show password function by kph and stzk
 //modified by pwt
