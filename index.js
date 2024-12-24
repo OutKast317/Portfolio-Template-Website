@@ -1,23 +1,31 @@
+//by stzk
+function toggleMenu() {
+  const dropdownMenu = document.getElementById('dropdownMenu');
+  dropdownMenu.classList.toggle('hidden');
+}
+
+
+
 function showForm(type) {
-  const formContainer = document.getElementById('modal-overlay');
+  const modalOverlay = document.getElementById('modal-overlay');
   const loginForm = document.getElementById('loginForm');
   const signUpForm = document.getElementById('signUpForm');
   const formTitle = document.getElementById('form-title');
   const toggleText = document.getElementById('toggle-form');
   
-   formContainer.classList.remove('hidden');
+   modalOverlay.classList.remove('hidden');
 
   // Toggle forms
   if (type === 'login') {
     loginForm.classList.remove('hidden');
     signUpForm.classList.add('hidden');
-    formTitle.innerText = 'Login';
+    formTitle.textContent = 'Login';
     toggleText.innerHTML =
       "Don't have an account? <a href='javascript:void(0);' onclick='showForm(\"signup\")'>Sign Up</a>";
   } else if (type === 'signup') {
     signUpForm.classList.remove('hidden');
     loginForm.classList.add('hidden');
-    formTitle.innerText = 'Sign Up';
+    formTitle.textContent = 'Sign Up';
     toggleText.innerHTML =
       "Already have an account? <a href='javascript:void(0);' onclick='showForm(\"login\")'>Login</a>";
   }
@@ -101,11 +109,18 @@ function formHandling(formType) {
       errorMessage.textContent = 'Password is required.';
       return;
     }
-    
+
     if (formType === 'signup') {
+      const newUsername = document.getElementById('new-username').value;
+      const newPassword = document.getElementById('new-password').value;
       const confirmPasswordElement = document.getElementById('confirm-password');
       const confirmPassword = confirmPasswordElement ? confirmPasswordElement.value : '';
-            
+      
+      if (!newUsername || !newPassword || !confirmPassword) {
+        errorMessage.textContent = 'All fields are required for sign-up.';
+        return;
+      }
+
       if (password !== confirmPassword) {
         errorMessage.textContent = 'Passwords do not match.';
         return;
@@ -130,36 +145,45 @@ function formHandling(formType) {
 //modified by pwt
 function showPassword(element) {
   const passwordInput = element.previousElementSibling;
-  const showIcon = element.querySelector('#hide1');
-  const hideIcon = element.querySelector('#hide2');
+  const showIcon = element.querySelector('.showIcon');
+  const hideIcon = element.querySelector('.hideIcon');
 
   if (!passwordInput) {
-    console.error('Password input not found');
+    console.error('Password not found');
     return;
   } 
     
   if (passwordInput.type === 'password') {
-    input.type = 'text';
-    showIcon.classList.add('visible');
-    showIcon.classList.remove('visible');
-    hideIcon.classList.add('hidden');
-    hideIcon.classList.remove('visible');
-  } else {
-    passwordInput.type = 'password';
+    passwordInput.type = 'text';
     showIcon.classList.add('hidden');
     showIcon.classList.remove('visible');
-    hide1.classList.add('visible');
-    hide2.classList.remove('hidden');
+    hideIcon.classList.add('visible');
+    hideIcon.classList.remove('hidden');
+  } else {
+    passwordInput.type = 'password';
+    showIcon.classList.add('visible');
+    showIcon.classList.remove('hidden');
+    hideIcon.classList.add('hidden');
+    hideIcon.classList.remove('visible');
   }
 }
 
+const loginForm = document.getElementById('loginForm');
+const signUpForm = document.getElementById('signUpForm');
 
-document.getElementById('loginForm').addEventListener('submit', formHandling('login'));
-document.getElementById('signUpForm').addEventListener('submit', formHandling('signup'));
+if (loginForm) {
+    loginForm.addEventListener('submit', formHandling('login'));
+}
+
+if (signUpForm) {
+    signUpForm.addEventListener('submit', formHandling('signup'));
+}
+
 
 
 function closeModal() {
-  document.getElementById('modal-overlay').classList.add('hidden');
+  const modalOverlay = document.getElementById('modal-overlay');
+  modalOverlay.classList.add('hidden');
 }
 
 

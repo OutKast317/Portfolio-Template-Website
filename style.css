@@ -162,6 +162,10 @@ min-width: 150px;
 z-index: 1000;
 }
 
+.hidden {
+  display: none;
+}
+
 /* Dropdown links */
 .dropdown a {
   padding: 10px 15px;
@@ -306,7 +310,7 @@ color: #f4978e;
 }
 
 .hidden {
-display: none;
+  display: none;
 }
 
 #form-title {
