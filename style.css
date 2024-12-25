@@ -416,10 +416,10 @@ font-size: 18px;
 color: #000000;
 }
 
-.visible {
+i.visible {
   display: block;
 }
-.hidden {
+i.hidden {
   display: none;
 }
 
