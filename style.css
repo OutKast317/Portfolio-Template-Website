@@ -390,7 +390,7 @@ width: 100%;
 .eye1 {
 position: absolute;
 right: 50px;
-top: 50%;
+top: 47%;
 transform: translateY(200%);
 cursor: pointer;
 font-size: 18px;
@@ -399,7 +399,7 @@ color: #000000;
 .eye2 {
 position: absolute;
 right: 50px;
-top: 50%;
+top: 47.5%;
 transform: translateY(-14%);
 cursor: pointer;
 font-size: 18px;
@@ -409,7 +409,7 @@ color: #000000;
 .eye3 {
 position: absolute;
 right: 50px;
-bottom: 50%;
+top: 43%;
 transform: translateY(535%);
 cursor: pointer;
 font-size: 18px;
@@ -417,10 +417,10 @@ color: #000000;
 }
 
 i.visible {
-  display: block;
+  display: none;
 }
 i.hidden {
-  display: none;
+  display: block;
 }
 
 /* Eye icon styling */
