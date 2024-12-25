@@ -145,26 +145,26 @@ function formHandling(formType) {
 //modified by pwt
 function showPassword(element) {
   const passwordInput = element.previousElementSibling;
-  const showIcon = element.querySelector('.showIcon');
-  const hideIcon = element.querySelector('.hideIcon');
-
+  const showIcon = element.querySelector('.visible');//fixed
+  const hideIcon = element.querySelector('.hidden');//fixed
+  
   if (!passwordInput) {
     console.error('Password not found');
     return;
   } 
-    
+
   if (passwordInput.type === 'password') {
     passwordInput.type = 'text';
-    showIcon.classList.add('hidden');
     showIcon.classList.remove('visible');
-    hideIcon.classList.add('visible');
+    showIcon.classList.add('hidden');
     hideIcon.classList.remove('hidden');
+    hideIcon.classList.add('visible');
   } else {
     passwordInput.type = 'password';
-    showIcon.classList.add('visible');
-    showIcon.classList.remove('hidden');
-    hideIcon.classList.add('hidden');
-    hideIcon.classList.remove('visible');
+    hideIcon.classList.remove('hidden');
+    hideIcon.classList.add('visible');
+    showIcon.classList.remove('visible');
+    showIcon.classList.add('hidden');
   }
 }
 
