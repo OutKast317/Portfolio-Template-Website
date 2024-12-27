@@ -1,9 +1,41 @@
+//show password function by kph and stzk
+//modified by pwt
+function showPassword(element) {
+  const passwordInput = element.previousElementSibling;
+  const showIcon = element.querySelector('.visible');//fixed
+  const hideIcon = element.querySelector('.hidden');//fixed
+  
+  if (!passwordInput) {
+    console.error('Password not found');
+    return;
+  } 
+
+  if (passwordInput.type === 'password') {
+    passwordInput.type = 'text';
+    showIcon.classList.remove('visible');
+    showIcon.classList.add('hidden');
+    hideIcon.classList.remove('hidden');
+    hideIcon.classList.add('visible');
+  } else {
+    passwordInput.type = 'password';
+    hideIcon.classList.remove('hidden');
+    hideIcon.classList.add('visible');
+    showIcon.classList.remove('visible');
+    showIcon.classList.add('hidden');
+  }
+}
+
+
 //by stzk
 function toggleMenu() {
   const dropdownMenu = document.getElementById('dropdownMenu');
   dropdownMenu.classList.toggle('open-menu');
 }
 
+function closeModal() {
+  const modalOverlay = document.getElementById('modal-overlay');
+  modalOverlay.classList.add('hidden');
+}
 
 
 function showForm(type) {
@@ -30,55 +62,7 @@ function showForm(type) {
       "Already have an account? <a href='javascript:void(0);' onclick='showForm(\"login\")'>Login</a>";
   }
 }
-/*
-// Login Handling
-// Login still needs some fix
-document.getElementById('loginForm').addEventListener('submit', function(event) {
-  event.preventDefault();
 
-  const username = document.getElementById('username').value;
-  const password = document.getElementById('password').value;
-  const errorMessage = document.getElementById('error-message');
-
-  if (!username || !password) {
-    errorMessage.textContent = 'Both fields are required for login.';
-    return;
-  }
-//codes still need to be fixed for real world logic
-  alert('Login successful!');
-  errorMessage.textContent = '';
-});
-
-// Sign-up
-document.getElementById('signUpForm').addEventListener('submit', function(event) {
-  event.preventDefault();
-
-  const newUsername = document.getElementById('new-username').value;
-  const newPassword = document.getElementById('new-password').value;
-  const confirmPassword = document.getElementById('confirm-password').value;
-  const errorMessage = document.getElementById('error-message');
-
-  // Error handling
-  if (!newUsername || !newPassword || !confirmPassword) {
-    errorMessage.textContent = 'All fields are required for sign-up.';
-    return;
-  }
-
-  if (newPassword !== confirmPassword) {
-    errorMessage.textContent = 'Passwords do not match.';
-    return;
-  }
-
-  if (newPassword.length < 6) {
-    errorMessage.textContent = 'Password must be at least 6 characters.';
-    return;
-  }
-
-  //codes still need to be fixed for real world logic
-  alert('Sign-Up successful!');
-  errorMessage.textContent = '';
-});
-*/
 
 function formHandling(formType) {
   return function (event) {
@@ -138,36 +122,6 @@ function formHandling(formType) {
   }
 };
 
-
-
-
-//show password function by kph and stzk
-//modified by pwt
-function showPassword(element) {
-  const passwordInput = element.previousElementSibling;
-  const showIcon = element.querySelector('.visible');//fixed
-  const hideIcon = element.querySelector('.hidden');//fixed
-  
-  if (!passwordInput) {
-    console.error('Password not found');
-    return;
-  } 
-
-  if (passwordInput.type === 'password') {
-    passwordInput.type = 'text';
-    showIcon.classList.remove('visible');
-    showIcon.classList.add('hidden');
-    hideIcon.classList.remove('hidden');
-    hideIcon.classList.add('visible');
-  } else {
-    passwordInput.type = 'password';
-    hideIcon.classList.remove('hidden');
-    hideIcon.classList.add('visible');
-    showIcon.classList.remove('visible');
-    showIcon.classList.add('hidden');
-  }
-}
-
 const loginForm = document.getElementById('loginForm');
 const signUpForm = document.getElementById('signUpForm');
 
@@ -178,12 +132,3 @@ if (loginForm) {
 if (signUpForm) {
     signUpForm.addEventListener('submit', formHandling('signup'));
 }
-
-
-
-function closeModal() {
-  const modalOverlay = document.getElementById('modal-overlay');
-  modalOverlay.classList.add('hidden');
-}
-
-
