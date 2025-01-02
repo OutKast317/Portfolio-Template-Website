@@ -6,9 +6,14 @@ function showPassword(element) {
   const hideIcon = element.querySelector('.hidden');//fixed
   
   if (!passwordInput) {
-    console.error('Password not found');
+    console.error('Password not found!');
     return;
   } 
+
+  if (!showIcon || !hideIcon){
+    console.error('Icon missing!');
+    return;
+  }
 
   if (passwordInput.type === 'password') {
     passwordInput.type = 'text';
