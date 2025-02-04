@@ -2,31 +2,34 @@
 //modified by pwt
 function showPassword(element) {
   const passwordInput = element.previousElementSibling;
-  const showIcon = element.querySelector('.visible');//fixed
-  const hideIcon = element.querySelector('.hidden');//fixed
+  const showIcon = element.querySelector('.fa-eye');//fixed
+  const hideIcon = element.querySelector('.fa-eye-slash');//fixed
   
   if (!passwordInput) {
-    console.error('Password not found!');
+    console.error('Password not found');
     return;
   } 
 
-  if (!showIcon || !hideIcon){
-    console.error('Icon missing!');
-    return;
-  }
-
   if (passwordInput.type === 'password') {
     passwordInput.type = 'text';
+    /*
     showIcon.classList.remove('visible');
     showIcon.classList.add('hidden');
     hideIcon.classList.remove('hidden');
     hideIcon.classList.add('visible');
-  } else {
+  */
+    showIcon.style.display = 'none';
+    hideIcon.style.display = 'inline';
+    } else {
     passwordInput.type = 'password';
+    /*
     hideIcon.classList.remove('hidden');
     hideIcon.classList.add('visible');
     showIcon.classList.remove('visible');
     showIcon.classList.add('hidden');
+*/
+    showIcon.style.display = 'inline';
+    hideIcon.style.display = 'none';
   }
 }
 
