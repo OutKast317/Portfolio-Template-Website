@@ -137,3 +137,20 @@ if (loginForm) {
 if (signUpForm) {
     signUpForm.addEventListener('submit', formHandling('signup'));
 }
+
+//search bar
+
+document.querySelector(".search-bar input").addEventListener("keyup", function () {
+  const searchQuery = this.value.toLowerCase();
+  const templateBoxes = document.querySelectorAll(".template-box");
+
+  templateBoxes.forEach(function (templateBox) {
+    const templateTitle = templateBox.querySelector("p").textContent.toLowerCase();
+    if (templateTitle.includes(searchQuery)) {
+      templateBox.style.display = "flex";
+    } else {
+      templateBox.style.display = "none";
+    }
+  });
+
+});
