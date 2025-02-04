@@ -22,12 +22,17 @@ function showForm(type) {
     formTitle.textContent = 'Login';
     toggleText.innerHTML =
       "Don't have an account? <a href='javascript:void(0);' onclick='showForm(\"signup\")'>Sign Up</a>";
-  } else if (type === 'signup') {
+  } else {
     signUpForm.classList.remove('hidden');
     loginForm.classList.add('hidden');
     formTitle.textContent = 'Sign Up';
     toggleText.innerHTML =
       "Already have an account? <a href='javascript:void(0);' onclick='showForm(\"login\")'>Login</a>";
+  }
+
+  function closeModal() { 
+    const modalOverlay = document.getElementById('modal-overlay');
+    modalOverlay.classList.add('hidden');
   }
 }
 /*
@@ -145,8 +150,8 @@ function formHandling(formType) {
 //modified by pwt
 function showPassword(element) {
   const passwordInput = element.previousElementSibling;
-  const showIcon = element.querySelector('.visible');//fixed
-  const hideIcon = element.querySelector('.hidden');//fixed
+  const showIcon = element.querySelector('.fa-eye');//fixed
+  const hideIcon = element.querySelector('.fa-eye-slash');//fixed
   
   if (!passwordInput) {
     console.error('Password not found');
@@ -155,16 +160,24 @@ function showPassword(element) {
 
   if (passwordInput.type === 'password') {
     passwordInput.type = 'text';
+    /*
     showIcon.classList.remove('visible');
     showIcon.classList.add('hidden');
     hideIcon.classList.remove('hidden');
     hideIcon.classList.add('visible');
-  } else {
+  */
+    showIcon.style.display = 'none';
+    hideIcon.style.display = 'inline';
+    } else {
     passwordInput.type = 'password';
+    /*
     hideIcon.classList.remove('hidden');
     hideIcon.classList.add('visible');
     showIcon.classList.remove('visible');
     showIcon.classList.add('hidden');
+*/
+    showIcon.style.display = 'inline';
+    hideIcon.style.display = 'none';
   }
 }
 
@@ -186,4 +199,19 @@ function closeModal() {
   modalOverlay.classList.add('hidden');
 }
 
+//search bar
 
+document.querySelector(".search-bar input").addEventListener("keyup", function () {
+  const searchQuery = this.value.toLowerCase();
+  const templateBoxes = document.querySelectorAll(".template-box");
+
+  templateBoxes.forEach(function (templateBox) {
+    const templateTitle = templateBox.querySelector("p").textContent.toLowerCase();
+    if (templateTitle.includes(searchQuery)) {
+      templateBox.style.display = "flex";
+    } else {
+      templateBox.style.display = "none";
+    }
+  });
+
+});
