@@ -155,5 +155,5 @@ document.querySelector(".search-bar input").addEventListener("keyup", function (
       templateBox.style.display = "none";
     }
   });
-
 });
+
