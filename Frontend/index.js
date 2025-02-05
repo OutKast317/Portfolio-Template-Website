@@ -157,3 +157,37 @@ document.querySelector(".search-bar input").addEventListener("keyup", function (
   });
 });
 
+
+//dynamic template section
+
+const templateSection = [
+  {
+    title: "Modern CV", image: "cv1.jpg", description: "A modern CV template with a sleek design."
+  },
+  {
+    title: "Minimal Resume", image: "cv2.jpg", description: "A resume template with a minimalistic design."
+  },
+  {
+    title: "Creative Portfolio", image: "cv3.jpg", description: "A portfolio template with a creative design."
+  },
+  {
+    title: "Business template", image: "cv2.jpg", description: "A business template with a creative design."
+  },
+  {
+    title: "Freelancer Resume", image: "cv2.jpg", description: "A freelancer resume template with a sleek design."
+  },
+];
+
+function loadTemplates() {
+  const templateContainer = document.querySelector(".template-grid");
+
+  templateSection.forEach((template) => {
+    const templateBox = document.createElement("div");
+    templateBox.classList.add("template-box");
+    templateBox.innerHTML = `
+      <img src="${template.image}" alt="${template.title}">
+            <p>${template.title}</p>
+        `;
+    templateContainer.appendChild(templateBox);
+  });
+}
