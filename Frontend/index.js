@@ -1,3 +1,27 @@
+function openImageModal(imageSrc) {
+  const modal = document.getElementById("image-modal");
+  const modalImage = document.getElementById("modal-image");
+
+  modalImage.src = imageSrc;
+  modal.classList.add("show");
+}
+
+function closeImageModal() {
+  const modal = document.getElementById("image-modal");
+  modal.classList.remove("show");
+}
+
+// for all template images
+document.addEventListener("DOMContentLoaded", () => {
+  const templateImages = document.querySelectorAll(".template-box img");
+
+  templateImages.forEach((image) => {
+      image.addEventListener("click", function () {
+          openImageModal(this.src);
+      });
+  });
+});
+
 //show password function by kph and stzk
 //modified by pwt
 function showPassword(element) {
@@ -81,16 +105,16 @@ function formHandling(formType) {
 
     const username = document.getElementById(`${formType}-username`).value;
     const password = document.getElementById(`${formType}-password`).value;
-    const errorMessage = document.getElementById(`${formType}-error-message`); 
+    const errorMessage = document.getElementById(`${formType}-error-message`);
 
     //for DOM manipulation
-      //before displaying error message, check if the element(error message) exists
-      //if it doesn't exist, console mhr error message log ml
-      //if it exists, display the error message
-      if (!errorMessage) {
-        console.error('Error message element not found');
-        return;
-      }
+    //before displaying error message, check if the element(error message) exists
+    //if it doesn't exist, console mhr error message log ml
+    //if it exists, display the error message
+    if (!errorMessage) {
+      console.error('Error message element not found');
+      return;
+    }
     
 
     //code still needs to be fixed
@@ -126,11 +150,13 @@ function formHandling(formType) {
       }
     }
 
+    localStorage.setItem("isLoggedIn", "true");
     alert(`${formType} === 'login' ? 'Login' : 'Sign-Up'} successful!`);
     errorMessage.textContent = '';
+    closeModal();
 
-  }
-};
+  };
+}
 
 const loginForm = document.getElementById('loginForm');
 const signUpForm = document.getElementById('signUpForm');
@@ -210,26 +236,4 @@ loadTemplates(0,5);
 
 //open and close image modal
 
-function openImageModal(imageSrc) {
-  const modal = document.getElementById("image-modal");
-  const modalImage = document.getElementById("modal-image");
 
-  modalImage.src = imageSrc;
-  modal.classList.add("show");
-}
-
-function closeImageModal() {
-  const modal = document.getElementById("image-modal");
-  modal.classList.remove("show");
-}
-
-// for all template images
-document.addEventListener("DOMContentLoaded", () => {
-  const templateImages = document.querySelectorAll(".template-box img");
-
-  templateImages.forEach((image) => {
-      image.addEventListener("click", function () {
-          openImageModal(this.src);
-      });
-  });
-});
