@@ -97,64 +97,88 @@ function showForm(type) {
       "Already have an account? <a href='javascript:void(0);' onclick='showForm(\"login\")'>Login</a>";
   }
 }
-
+//data for account
+let username = " ";
+let password = 0;
 
 function formHandling(formType) {
   return function (event) {
-
+    
     event.preventDefault();
 
-    const username = document.getElementById(`${formType}-username`).value;
-    const password = document.getElementById(`${formType}-password`).value;
+    //username = document.getElementById(`${formType}-username`).value;
+    //password = document.getElementById(`${formType}-password`).value;
     const errorMessage = document.getElementById(`${formType}-error-message`);
-
+    
     //for DOM manipulation
     //before displaying error message, check if the element(error message) exists
     //if it doesn't exist, console mhr error message log ml
     //if it exists, display the error message
+    let islogin = localStorage.getItem("user-name")? true : false;
+  
+    if (formType === 'login' && islogin) {
+      username = localStorage.getItem("user-name");
+      password = localStorage.getItem("password");
+      let inputUsername = document.getElementById('login-username').value;
+      let inputPassword = document.getElementById('login-password').value;
     if (!errorMessage) {
       console.error('Error message element not found');
       return;
     }
-    
-
+    if (inputUsername === username && inputPassword === password){
+      alert("Login successful!");
+    }
+    else{
+      errorMessage.style.color = 'red';
+      errorMessage.textContent = 'Invalid username or password.';
+      return;
+    }
     //code still needs to be fixed
-    if (!username) {
+    /*if (!username) {
       errorMessage.textContent = 'Username is required.';
       return;
-    }
+    }*/
 
-    if (!password) {
+    /*if (!password) {
       errorMessage.textContent = 'Password is required.';
       return;
-    }
-
+    }*/
+  }
     if (formType === 'signup') {
-      const newUsername = document.getElementById('new-username').value;
-      const newPassword = document.getElementById('new-password').value;
-      const confirmPasswordElement = document.getElementById('confirm-password');
-      const confirmPassword = confirmPasswordElement ? confirmPasswordElement.value : '';
-      
-      if (!newUsername || !newPassword || !confirmPassword) {
-        errorMessage.textContent = 'All fields are required for sign-up.';
-        return;
-      }
+      let newUsername = document.getElementById('signup-username').value;
+      let newPassword = document.getElementById('signup-password').value;
+      username = newUsername;
+      password = newPassword;
+      const confirmPasswordElement = document.getElementById('confirm-password').value;
+      //const confirmPassword = confirmPasswordElement ? confirmPasswordElement.value : '';
+      const confirmPassword = confirmPasswordElement === password? true : false;
 
-      if (password !== confirmPassword) {
+      //html form element done that checking so this is not needed!
+      /*if (!newUsername || !newPassword || !confirmPassword) {
+        errorMessage.textContent = 'All fields are required for sign-up.';
+        alert("All fields are required for sign-up.");
+        return;
+      }*/
+
+      if (!confirmPassword) {
+        errorMessage.style.color = 'red';
         errorMessage.textContent = 'Passwords do not match.';
         return;
       }
     
       if (password.length < 6) {
+        errorMessage.style.color = 'red';
         errorMessage.textContent = 'Password must be at least 6 characters.';
         return;
       }
+      localStorage.setItem("user-name", username);
+      localStorage.setItem("password", password);
+
+      alert("Sign up successful!");
     }
 
-    localStorage.setItem("isLoggedIn", "true");
-    alert(`${formType} === 'login' ? 'Login' : 'Sign-Up'} successful!`);
-    errorMessage.textContent = '';
     closeModal();
+    
 
   };
 }
@@ -237,7 +261,7 @@ loadTemplates(0,5);
 
 //check if user is logged in
 function isUserLoggedIn() {
-  return localStorage.getItem("isLoggedIn") === "true";
+  return localStorage.getItem("user-name") !== null? true : false;
 }
 
 //download function
@@ -264,4 +288,3 @@ function startDownload(imageSrc) {
   link.click();
   document.body.removeChild(link);
 }
-
