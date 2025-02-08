@@ -194,7 +194,7 @@ function uploadJSON(jsonData,filename) {
   const repository = 'FakeDatabase';
   const path = `data/${filename}`; // Path where the file will be uploaded
   const branch = 'main'; 
-  const token = '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';//api token
+  const token = 'api_key';//api token
 
   const url = `https://api.github.com/repos/${username}/${repository}/contents/${path}`;
 
