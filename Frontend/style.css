@@ -474,3 +474,73 @@ i.hidden {
 /* Eye icon styling */
 
 /* Login/Sign up */
+
+
+/* Image Modal */ 
+/*download button*/
+.image-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 3000;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.3s ease-in-out;
+}
+
+.image-modal-content {
+  position: relative;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 90%;
+  max-height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-modal-content img {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 10px;
+}
+
+.image-modal .close-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  color: black;
+  cursor: pointer;
+}
+
+.image-modal .close-modal:hover {
+  color: red;
+}
+
+#download-button {
+  background: linear-gradient(to right, #6a0dad, #8000ff);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+#download-button:hover {
+  background: linear-gradient(to right, #8000ff, #6a0dad);
+}
+
+.image-modal.show {
+  visibility: visible;
+  opacity: 1;
+}

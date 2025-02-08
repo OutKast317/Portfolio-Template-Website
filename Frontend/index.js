@@ -208,3 +208,28 @@ for (let i = index; i < index + tile; i++) {
 //tile max is 5 cuz grid is 5.Adjust it when used
 loadTemplates(0,5);
 
+//open and close image modal
+
+function openImageModal(imageSrc) {
+  const modal = document.getElementById("image-modal");
+  const modalImage = document.getElementById("modal-image");
+
+  modalImage.src = imageSrc;
+  modal.classList.add("show");
+}
+
+function closeImageModal() {
+  const modal = document.getElementById("image-modal");
+  modal.classList.remove("show");
+}
+
+// for all template images
+document.addEventListener("DOMContentLoaded", () => {
+  const templateImages = document.querySelectorAll(".template-box img");
+
+  templateImages.forEach((image) => {
+      image.addEventListener("click", function () {
+          openImageModal(this.src);
+      });
+  });
+});

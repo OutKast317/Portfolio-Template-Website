@@ -31,7 +31,7 @@
       <!--Search Bar Section-->
       <div class="search-bar">
         <input type="text" placeholder="Search templates...." />
-        <a href="#"><i class="fas fa-search" ></i></a>
+        <a href="#"><i class="fas fa-search"></i></a>
       </div>
       <!--Search Bar Section-->
 
@@ -73,7 +73,7 @@
       <!--Template Section-->
       <section class="template-section">
         <h2>First Templates</h2>
-        <div class="template-grid" >
+        <div class="template-grid">
           <div class="template-box">Template</div>
           <div class="template-box">Template</div>
           <div class="template-box">Template</div>
@@ -133,6 +133,15 @@
       <!--Template Section-->
     </main>
 
+    <!-- Image Zoom Modal -->
+    <div id="image-modal" class="image-modal hidden">
+      <div class="image-modal-content">
+        <span class="close-modal" onclick="closeImageModal()">&times;</span>
+        <img id="modal-image" src="" alt="Template Image" />
+        <button id="download-button" onclick="downloadImage()">Download</button>
+      </div>
+    </div>
+
     <!-- Login/Sign-up -->
     <div id="modal-overlay" class="modal-overlay hidden">
       <div class="login-container">
@@ -147,8 +156,8 @@
           <input type="password" id="login-password" name="password" required />
           <!-- see password -->
           <span class="eye1" onclick="showPassword(this)">
-            <i class="fa fa-eye visible" ></i>
-            <i class="fa fa-eye-slash hidden" ></i>
+            <i class="fa fa-eye visible"></i>
+            <i class="fa fa-eye-slash hidden"></i>
           </span>
           <!-- see password -->
           <button type="submit">Login</button>
