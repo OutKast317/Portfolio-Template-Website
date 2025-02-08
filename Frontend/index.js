@@ -1,3 +1,4 @@
+//open and close image modal
 function openImageModal(imageSrc) {
   const modal = document.getElementById("image-modal");
   const modalImage = document.getElementById("modal-image");
@@ -234,6 +235,25 @@ for (let i = index; i < index + tile; i++) {
 //tile max is 5 cuz grid is 5.Adjust it when used
 loadTemplates(0,5);
 
-//open and close image modal
+//check if user is logged in
+function isUserLoggedIn() {
+  return localStorage.getItem("isLoggedIn") === "true";
+}
 
+//download function
+//only for logged in users
+function downloadImage() {
+  if (!isUserLoggedIn()) {
+    alert("Please login to download this template.");
+    showForm("login");
+    return;
+  }
+  const imageSrc = document.getElementById("modal-image").src;
+  const link = document.createElement("a");
+  link.href = imageSrc;
+  link.download = "template-image.jpg";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
 
