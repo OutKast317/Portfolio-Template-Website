@@ -4,6 +4,7 @@ function showPassword(element) {
   const passwordInput = element.previousElementSibling;
   const showIcon = element.querySelector('.fa-eye');//fixed
   const hideIcon = element.querySelector('.fa-eye-slash');//fixed
+
   
   if (!passwordInput) {
     console.error('Password not found');
@@ -19,7 +20,8 @@ function showPassword(element) {
     hideIcon.classList.add('visible');
   */
     showIcon.style.display = 'none';
-    hideIcon.style.display = 'inline';
+    hideIcon.style.display = 'block';
+
     } else {
     passwordInput.type = 'password';
     /*
@@ -28,7 +30,7 @@ function showPassword(element) {
     showIcon.classList.remove('visible');
     showIcon.classList.add('hidden');
 */
-    showIcon.style.display = 'inline';
+    showIcon.style.display = 'block';
     hideIcon.style.display = 'none';
   }
 }
@@ -171,23 +173,38 @@ const templateSection = [
     title: "Creative Portfolio", image: "cv3.jpg", description: "A portfolio template with a creative design."
   },
   {
-    title: "Business template", image: "cv2.jpg", description: "A business template with a creative design."
+    title: "Business template", image: "cv4.jpg", description: "A business template with a creative design."
   },
   {
-    title: "Freelancer Resume", image: "cv2.jpg", description: "A freelancer resume template with a sleek design."
+    title: "Freelancer Resume", image: "cv5.jpg", description: "A freelancer resume template with a sleek design."
   },
 ];
 
-function loadTemplates() {
-  const templateContainer = document.querySelector(".template-grid");
 
-  templateSection.forEach((template) => {
-    const templateBox = document.createElement("div");
-    templateBox.classList.add("template-box");
-    templateBox.innerHTML = `
-      <img src="${template.image}" alt="${template.title}">
-            <p>${template.title}</p>
-        `;
-    templateContainer.appendChild(templateBox);
-  });
+function loadTemplates(row,tile) {
+  //row = y,tile = x
+let frame = 1; 
+let index = 0;
+const templateContainer = document.getElementsByClassName("template-grid");//adjust 
+let containers = templateContainer[row].childElementCount;// map the number of containers 
+let container = document.getElementsByClassName("template-box");// map all containers
+
+if (row > 0) {
+   index = containers +  ((containers * row) - containers);
+   //alert(index);
 }
+
+for (let i = index; i < index + tile; i++) {
+  templateSection.forEach((template) => {
+    //const templateBox = document.createElement("div");
+    //templateBox.classList.add("template-box");
+    container[i].innerHTML = `
+      <img src="cv${frame}.jpg" alt="${template.title}"  width="100" height="100" >
+        `;
+    
+  });
+  frame++;}
+}
+//tile max is 5 cuz grid is 5.Adjust it when used
+loadTemplates(0,5);
+
