@@ -242,13 +242,21 @@ function isUserLoggedIn() {
 
 //download function
 //only for logged in users
+let pendingDownload = null;
+
 function downloadImage() {
   if (!isUserLoggedIn()) {
     alert("Please login to download this template.");
+    pendingDownload = document.getElementById("modal-image").src;
     showForm("login");
     return;
   }
-  const imageSrc = document.getElementById("modal-image").src;
+
+  startDownload(document.getElementById("modal-image").src);
+
+}
+
+function startDownload(imageSrc) {
   const link = document.createElement("a");
   link.href = imageSrc;
   link.download = "template-image.jpg";//file will be saved as that name.
