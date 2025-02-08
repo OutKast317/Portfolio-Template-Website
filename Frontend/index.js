@@ -97,15 +97,19 @@ function showForm(type) {
       "Already have an account? <a href='javascript:void(0);' onclick='showForm(\"login\")'>Login</a>";
   }
 }
-//data for account
+//data for account and json database
 let username = " ";
 let password = 0;
-
+let jsonData = {};
+let jsonFileName = " ";
+let account = {};
 function formHandling(formType) {
   return function (event) {
     
     event.preventDefault();
-
+    username = " ";
+    jsonFileName = " "; 
+    password = 0;
     //username = document.getElementById(`${formType}-username`).value;
     //password = document.getElementById(`${formType}-password`).value;
     const errorMessage = document.getElementById(`${formType}-error-message`);
@@ -114,35 +118,15 @@ function formHandling(formType) {
     //before displaying error message, check if the element(error message) exists
     //if it doesn't exist, console mhr error message log ml
     //if it exists, display the error message
-    let islogin = localStorage.getItem("user-name")? true : false;
-  
-    if (formType === 'login' && islogin) {
-      username = localStorage.getItem("user-name");
-      password = localStorage.getItem("password");
+    
+    if (formType === 'login') {
+      
       let inputUsername = document.getElementById('login-username').value;
       let inputPassword = document.getElementById('login-password').value;
-    if (!errorMessage) {
-      console.error('Error message element not found');
-      return;
-    }
-    if (inputUsername === username && inputPassword === password){
-      alert("Login successful!");
-    }
-    else{
-      errorMessage.style.color = 'red';
-      errorMessage.textContent = 'Invalid username or password.';
-      return;
-    }
-    //code still needs to be fixed
-    /*if (!username) {
-      errorMessage.textContent = 'Username is required.';
-      return;
-    }*/
-
-    /*if (!password) {
-      errorMessage.textContent = 'Password is required.';
-      return;
-    }*/
+      username = inputUsername;
+      password = inputPassword;
+      readJson(`${inputUsername}.json`,errorMessage,inputUsername,inputPassword);//all done in that. check it!
+    
   }
     if (formType === 'signup') {
       let newUsername = document.getElementById('signup-username').value;
@@ -150,7 +134,6 @@ function formHandling(formType) {
       username = newUsername;
       password = newPassword;
       const confirmPasswordElement = document.getElementById('confirm-password').value;
-      //const confirmPassword = confirmPasswordElement ? confirmPasswordElement.value : '';
       const confirmPassword = confirmPasswordElement === password? true : false;
 
       //html form element done that checking so this is not needed!
@@ -171,15 +154,18 @@ function formHandling(formType) {
         errorMessage.textContent = 'Password must be at least 6 characters.';
         return;
       }
-      localStorage.setItem("user-name", username);
-      localStorage.setItem("password", password);
-
+      
       alert("Sign up successful!");
+      jsonData = {
+        name: username,
+        pwd: password
+      };
+      jsonFileName = `${username}.json`;
+      uploadJSON(jsonData,jsonFileName);
+      readJson(jsonFileName);
+      closeModal();
     }
-
-    closeModal();
     
-
   };
 }
 
@@ -193,7 +179,82 @@ if (loginForm) {
 if (signUpForm) {
     signUpForm.addEventListener('submit', formHandling('signup'));
 }
+//json and api 
 
+function uploadJSON(jsonData,filename) {
+  const jsonObject = jsonData; 
+  
+  // Convert the JSON object to a JSON string
+  const jsonString = JSON.stringify(jsonObject);
+
+  // Base64 encode the JSON data
+  const encodedContent = btoa(jsonString);
+  
+  const username = 'Isnotavailble';
+  const repository = 'FakeDatabase';
+  const path = `data/${filename}`; // Path where the file will be uploaded
+  const branch = 'main'; 
+  const token = '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';//api token
+
+  const url = `https://api.github.com/repos/${username}/${repository}/contents/${path}`;
+
+  fetch(url, {
+      method: 'PUT',
+      headers: {
+          'Authorization': `token ${token}`,
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+          message: 'Upload JSON file',
+          content: encodedContent,
+          branch: branch
+      })
+  })
+  .then(response => {
+      if (response.ok) {
+          return response.json();
+      }
+      return response.json().then(error => {
+          throw new Error(error);
+      });
+  })
+  .then(data => {
+      console.log('File uploaded:', data);
+  })
+  .catch(error => {
+      console.error('Error uploading file:', error);
+  });
+}
+
+// for reading json file from github through api
+// URL of the JSON file
+function readJson(filename,errorMessage,name,pwd){
+  const url = `https://raw.githubusercontent.com/Isnotavailble/FakeDatabase/main/data/${filename}`; 
+  fetch(url)
+      .then(response => {
+          if (!response.ok) {
+              throw new Error('Network response was not ok');
+          }
+          return response.json();
+      })
+      .then(data => {
+           if (name === data.name && pwd === data.pwd){
+            alert("Login successful!");
+            localStorage.setItem("isLogin", true);
+            closeModal();
+           }
+          else{
+            errorMessage.style.color = 'red';
+            errorMessage.textContent = 'Invalid username or password.';
+            return;
+          }
+          
+      })
+      .catch(error => {
+          console.error('Error fetching the JSON file:', error);
+      });
+  }
+  
 //search bar
 
 document.querySelector(".search-bar input").addEventListener("keyup", function () {
@@ -261,7 +322,7 @@ loadTemplates(0,5);
 
 //check if user is logged in
 function isUserLoggedIn() {
-  return localStorage.getItem("user-name") !== null? true : false;
+  return localStorage.getItem("isLogin") !== null? true : false;
 }
 
 //download function
