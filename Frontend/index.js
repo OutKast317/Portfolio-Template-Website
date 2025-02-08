@@ -251,7 +251,7 @@ function downloadImage() {
   const imageSrc = document.getElementById("modal-image").src;
   const link = document.createElement("a");
   link.href = imageSrc;
-  link.download = "template-image.jpg";
+  link.download = "template-image.jpg";//file will be saved as that name.
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
