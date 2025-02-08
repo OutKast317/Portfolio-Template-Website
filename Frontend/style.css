@@ -234,6 +234,14 @@ box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 transition: transform 0.3s ease-in-out;
 }
 
+/*inheriting the width and height of the box*/
+.template-box img {
+  width: 100% ;
+  height: inherit;
+  border-radius: inherit;
+  
+}
+
 .template-box:hover {
 transform: scale(1.05);
 }
@@ -308,10 +316,10 @@ transition: color 0.3s ease;
 #close-modal:hover {
 color: #f4978e;
 }
-
-.hidden {
+/* IDK what just happen. but it is beatiful (transition between login pop-up)*/
+/*.hidden {
   display: none;
-}
+}*/
 
 #form-title {
 font-size: 24px;
@@ -417,12 +425,52 @@ color: #000000;
 }
 
 i.visible {
-  display: none;
+  display: block;/*fixed initializing*/
 }
 i.hidden {
-  display: block;
+  display: none;/*fixed initializing*/
 }
-
+/*Andriod Screen*/
+@media (max-width : 600px){
+  /*resize  each grid size */
+  .template-grid {
+    grid-template-columns: repeat(5, 50%);
+  }
+  /*body font size*/
+  body {
+    font-size: 10px;
+  }
+/*page logo and page name */
+  .logo h1 {
+  font-size: 17px;
+  }
+  .logo i {
+    font-size : 20px;
+  }
+  /*search bar adjust*/
+  .search-bar input {
+    width : 150px;
+  }
+  /*transition of it adjust */
+  .search-bar:hover input {
+    width: 160px;
+  }
+  /*search icon*/
+  .fa-search{
+    font-size : 17px;
+  }
+  /* home about ... and profile */
+  .nav-box {
+    position : absolute;
+    right : 10px;
+    top : 50px;
+    margin-top: 10px;
+    gap:10px;
+  }
+  .dropdown{
+    top : 9%;
+  }
+}
 /* Eye icon styling */
 
 /* Login/Sign up */
