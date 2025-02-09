@@ -544,3 +544,34 @@ i.hidden {
   visibility: visible;
   opacity: 1;
 }
+/*loading screen*/
+.loading-modal{
+  z-index: 4000;
+  display : none;
+  position : fixed;
+  justify-content: center; 
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius : 10px;
+  background: black;
+  opacity: 0.9;
+}
+
+.loading-modal .loading-screen {
+  
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 16px solid black;
+  border-top: 16px solid #8000ff;
+  animation: spin 2s linear infinite;
+
+}
+/*loading animation*/
+@keyframes spin {
+  0% { transform : rotate(0deg);}
+  100% { transform : rotate(360deg);}
+}
