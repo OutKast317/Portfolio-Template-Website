@@ -98,6 +98,7 @@ function showForm(type) {
   }
 }
 //data for account and json database
+localStorage.clear();
 let username = " ";
 let password = 0;
 let jsonData = {};
@@ -154,18 +155,17 @@ function formHandling(formType) {
         errorMessage.textContent = 'Password must be at least 6 characters.';
         return;
       }
-      
-      alert("Sign up successful!");
       jsonData = {
         name: username,
         pwd: password
       };
       jsonFileName = `${username}.json`;
-      uploadJSON(jsonData,jsonFileName);
-      readJson(jsonFileName);
-      closeModal();
+      animation_load();
+      setTimeout(function (){
+        uploadJSON(jsonData,jsonFileName);
+        animation_close();},3000); 
     }
-    
+    localStorage.setItem("isLogin", true);
   };
 }
 
@@ -215,13 +215,17 @@ function uploadJSON(jsonData,filename) {
           return response.json();
       }
       return response.json().then(error => {
+          
           throw new Error(error);
       });
   })
   .then(data => {
+      alert("Sign-up successful!");
+      closeModal();
       console.log('File uploaded:', data);
   })
   .catch(error => {
+      
       console.error('Error uploading file:', error);
   });
 }
@@ -229,12 +233,15 @@ function uploadJSON(jsonData,filename) {
 // for reading json file from github through api
 // URL of the JSON file
 function readJson(filename,errorMessage,name,pwd){
+  
   const url = `https://raw.githubusercontent.com/Isnotavailble/FakeDatabase/main/data/${filename}`; 
   fetch(url)
       .then(response => {
+          
           if (!response.ok) {
               throw new Error('Network response was not ok');
           }
+          animation_close();
           return response.json();
       })
       .then(data => {
@@ -250,11 +257,27 @@ function readJson(filename,errorMessage,name,pwd){
           }
           
       })
+      
       .catch(error => {
-          console.error('Error fetching the JSON file:', error);
+        animation_load();
+        setTimeout(function (){
+          animation_close();
+          errorMessage.style.color = 'red';
+          errorMessage.textContent = 'Invalid username or password.'; },4000);   
+        console.error('Error fetching the JSON file:', error);
       });
+      
   }
-  
+//for loading animation  
+function animation_load(){
+  let modal = document.querySelector(".loading-modal");
+  modal.style.display = "flex";
+}
+function animation_close(){
+  let modal = document.querySelector(".loading-modal");
+  modal.style.display = "none";
+}
+
 //search bar
 
 document.querySelector(".search-bar input").addEventListener("keyup", function () {
