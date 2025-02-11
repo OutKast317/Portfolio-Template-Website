@@ -114,20 +114,20 @@ function formHandling(formType) {
     //username = document.getElementById(`${formType}-username`).value;
     //password = document.getElementById(`${formType}-password`).value;
     const errorMessage = document.getElementById(`${formType}-error-message`);
-    
+  
     //for DOM manipulation
     //before displaying error message, check if the element(error message) exists
     //if it doesn't exist, console mhr error message log ml
     //if it exists, display the error message
     
     if (formType === 'login') {
-      
+        
       let inputUsername = document.getElementById('login-username').value;
       let inputPassword = document.getElementById('login-password').value;
       username = inputUsername;
       password = inputPassword;
-      readJson(`${inputUsername}.json`,errorMessage,inputUsername,inputPassword);//all done in that. check it!
-    
+      //readJson(`${inputUsername}.json`,errorMessage,inputUsername,inputPassword);//all done in that. check it!
+      getData(username,password,errorMessage);
   }
     if (formType === 'signup') {
       let newUsername = document.getElementById('signup-username').value;
@@ -160,10 +160,9 @@ function formHandling(formType) {
         pwd: password
       };
       jsonFileName = `${username}.json`;
-      animation_load();
-      setTimeout(function (){
-        uploadJSON(jsonData,jsonFileName);
-        animation_close();},3000); 
+      //uploadJSON(jsonData,jsonFileName);
+      uploadData(jsonData,errorMessage);
+        
     }
     localStorage.setItem("isLogin", true);
   };
@@ -180,7 +179,8 @@ if (signUpForm) {
     signUpForm.addEventListener('submit', formHandling('signup'));
 }
 //json and api 
-
+//github api
+/*
 function uploadJSON(jsonData,filename) {
   const jsonObject = jsonData; 
   
@@ -220,12 +220,17 @@ function uploadJSON(jsonData,filename) {
       });
   })
   .then(data => {
-      alert("Sign-up successful!");
+
       closeModal();
       console.log('File uploaded:', data);
   })
   .catch(error => {
-      
+    animation_load();
+    alert("There was a problem with network!");
+    setTimeout(function (){
+      animation_close();
+      errorMessage.style.color = 'red';
+      errorMessage.textContent = 'Somthing was wrong!'; },4000);
       console.error('Error uploading file:', error);
   });
 }
@@ -241,20 +246,19 @@ function readJson(filename,errorMessage,name,pwd){
           if (!response.ok) {
               throw new Error('Network response was not ok');
           }
-          animation_close();
+          
           return response.json();
       })
       .then(data => {
            if (name === data.name && pwd === data.pwd){
-            alert("Login successful!");
-            localStorage.setItem("isLogin", true);
+            console.log("login successful");
             closeModal();
+            localStorage.setItem("isLogin", true);
+          
            }
           else{
-            errorMessage.style.color = 'red';
-            errorMessage.textContent = 'Invalid username or password.';
-            return;
-          }
+            throw new Error('Network response was not ok');
+          } 
           
       })
       
@@ -267,7 +271,75 @@ function readJson(filename,errorMessage,name,pwd){
         console.error('Error fetching the JSON file:', error);
       });
       
+  }*/
+
+// Using Google sheet as FakeDataBasabase
+//upload json object to google sheet
+function uploadData(jsonData,errorMessage) {
+  const url = 'https://script.google.com/macros/s/AKfycbyeVnr4Fg8ubit6jAtfcrvx68145bJjFNehhQHRFAL2552X_URN4CkcHC76GKm_rIRl9Q/exec';
+  const data = new URLSearchParams({
+    name: jsonData.name,
+    age: jsonData.pwd,
+  });
+  
+  fetch(url, {
+    method: 'POST',
+    body: data,
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }
+  })
+  .then(response => response.text())
+  .then(result => {
+    errorMessage.textContent = ' ';
+    console.log(result);
+    closeModal();
+    localStorage.setItem("isLogin" , true);
+})
+  .catch(error => {
+    animation_load();
+        setTimeout(function (){
+          animation_close();
+          errorMessage.style.color = 'red';
+          errorMessage.textContent = "There was a problem in connection!"; },4000); 
+    console.error('Error:', error)});
   }
+
+  // login with google sheet 
+  function getData(user_name,user_pwd,errorMessage){
+  const url = 'https://script.google.com/macros/s/AKfycbwgd62_4_7mHHC-IJF_CeF78Z2OUJxxgYeP7KXpMnPE8y1hli6x5qzqy_ereZjkp5E_bQ/exec';
+  
+  fetch(url, {
+    method: 'GET'
+  })
+  .then(response =>  response.json())
+  .then(data => {
+
+    let login = false;
+    for (let x in data){
+      if (data[x].name === user_name && data[x].pwd.toString() === user_pwd){
+        login = true;
+      }
+    }
+
+    if (!login) { 
+      throw new Error ("Error");}
+    else {
+      localStorage.setItem("isLogin" , true);
+      closeModal();
+      console.log("login successful!");}
+  
+  })
+  .catch(error => {
+    animation_load();
+        setTimeout(function (){
+          animation_close();
+          errorMessage.style.color = 'red';
+          errorMessage.textContent = "Invaild username or password!"; },4000); 
+    console.error('Error:', error)});
+  }
+  
+
 //for loading animation  
 function animation_load(){
   let modal = document.querySelector(".loading-modal");
