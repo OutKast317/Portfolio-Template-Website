@@ -99,12 +99,14 @@ function showForm(type) {
 }
 //data for account and json database
 localStorage.clear();
+
 let username = " ";
 let password = 0;
 let jsonData = {};
 let jsonFileName = " ";
 let account = {};
 function formHandling(formType) {
+  
   return function (event) {
     
     event.preventDefault();
@@ -162,9 +164,7 @@ function formHandling(formType) {
       jsonFileName = `${username}.json`;
       //uploadJSON(jsonData,jsonFileName);
       uploadData(jsonData,errorMessage);
-        
     }
-    localStorage.setItem("isLogin", true);
   };
 }
 
@@ -276,10 +276,11 @@ function readJson(filename,errorMessage,name,pwd){
 // Using Google sheet as FakeDataBasabase
 //upload json object to google sheet
 function uploadData(jsonData,errorMessage) {
-  const url = 'https://script.google.com/macros/s/AKfycbyeVnr4Fg8ubit6jAtfcrvx68145bJjFNehhQHRFAL2552X_URN4CkcHC76GKm_rIRl9Q/exec';
+  let info = "There was a problem in connection!";
+  const url = 'https://script.google.com/macros/s/AKfycbw0bNdRu8A9cffpvY9gKf4RbsAvxgSp3TZUUmgZmMWKiRo28IS8FTZ1X-YD2IyGsvp18Q/exec';
   const data = new URLSearchParams({
     name: jsonData.name,
-    age: jsonData.pwd,
+    pwd: jsonData.pwd
   });
   
   fetch(url, {
@@ -291,45 +292,51 @@ function uploadData(jsonData,errorMessage) {
   })
   .then(response => response.text())
   .then(result => {
-    errorMessage.textContent = ' ';
     console.log(result);
-    closeModal();
-    localStorage.setItem("isLogin" , true);
+    if (result === 'Data uploaded successfullynew version'){
+      closeModal();
+      localStorage.setItem("isLogin" , true);
+    }
+    else {
+      info = "Already exist!";
+      throw new Error ("Already exist");
+    }
+    
+    
 })
   .catch(error => {
     animation_load();
         setTimeout(function (){
           animation_close();
           errorMessage.style.color = 'red';
-          errorMessage.textContent = "There was a problem in connection!"; },4000); 
+          errorMessage.textContent = info; },4000); 
     console.error('Error:', error)});
   }
 
   // login with google sheet 
-  function getData(user_name,user_pwd,errorMessage){
-  const url = 'https://script.google.com/macros/s/AKfycbwgd62_4_7mHHC-IJF_CeF78Z2OUJxxgYeP7KXpMnPE8y1hli6x5qzqy_ereZjkp5E_bQ/exec';
-  
+function getData(user_name,user_pwd,errorMessage){
+ const url = 'https://script.google.com/macros/s/AKfycbw0bNdRu8A9cffpvY9gKf4RbsAvxgSp3TZUUmgZmMWKiRo28IS8FTZ1X-YD2IyGsvp18Q/exec';
   fetch(url, {
     method: 'GET'
   })
   .then(response =>  response.json())
   .then(data => {
-
-    let login = false;
-    for (let x in data){
-      if (data[x].name === user_name && data[x].pwd.toString() === user_pwd){
-        login = true;
+    
+      let login = false;
+      for (let x in data){
+        if (data[x].name === user_name && data[x].pwd.toString() === user_pwd){
+          login = true;
+        }
       }
-    }
 
-    if (!login) { 
-      throw new Error ("Error");}
-    else {
-      localStorage.setItem("isLogin" , true);
-      closeModal();
-      console.log("login successful!");}
-  
-  })
+      if (!login) { 
+        throw new Error ("Error");}
+      else {
+        localStorage.setItem("isLogin" , true);
+        closeModal();
+        console.log("login successful!");}
+
+})
   .catch(error => {
     animation_load();
         setTimeout(function (){
@@ -338,7 +345,8 @@ function uploadData(jsonData,errorMessage) {
           errorMessage.textContent = "Invaild username or password!"; },4000); 
     console.error('Error:', error)});
   }
-  
+//check the account
+
 
 //for loading animation  
 function animation_load(){
