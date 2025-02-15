@@ -20,42 +20,44 @@
   </head>
 
   <body>
-    <header>
-      <!--Icon & Page_name Section-->
-      <div class="logo">
-        <i class="fas fa-star"></i>
-        <h1>YOUR CHOICE</h1>
-      </div>
-      <!--Icon & Page_name Section-->
-
-      <!--Search Bar Section-->
-      <div class="search-bar">
-        <input type="text" placeholder="Search templates...." />
-        <a href="#"><i class="fas fa-search"></i></a>
-      </div>
-      <!--Search Bar Section-->
-
-      <!--"Home/About/Contact/Info/Profile_icon" Section-->
-      <div class="nav-box">
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
-        <a href="#">Info</a>
-        <i class="fas fa-user user-icon" onclick="toggleMenu()"></i>
-      </div>
-      <!--"Home/About/Contact/Info/Profile_icon" Section-->
-
-      <!--Drop Down LOGIN OR SIGN UP-->
-      <div class="dropdown" id="dropdownMenu">
-        <a href="#" onclick="showForm('login')"
-          ><i class="fas fa-sign-in-alt"></i> Log In</a
-        >
-        <a href="#" onclick="showForm('signup')"
-          ><i class="fas fa-user-plus"></i> Sign Up</a
-        >
-      </div>
-      <!--Drop Down LOGIN OR SIGN UP-->
-    </header>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">⭐ YOUR CHOICE</div>  <!-- Need to change logo -->
+  
+        <!--Search Bar Section-->
+        <div class="search-bar">
+          <input type="text" placeholder="Search templates...." />
+          <a href="#"><i class="fas fa-search"></i></a>
+        </div>
+        <!--Search Bar Section-->
+  
+        <div class="nav-buttons">
+            <a href="" class="nav-btn">Home </a>
+            
+            <!-- Dropdown for Category -->
+            <div class="dropdown">
+                <button class="nav-btn" id="category-btn">Category</button>
+                <div class="dropdown-content" id="category-dropdown">
+                    <a href="#">CV Templates</a>
+                    <a href="#">Resume Templates</a>
+                    <a href="#">PPT Templates</a>
+                    <a href="#">PPT Templates</a>
+                    <a href="#">PPT Templates</a>
+                </div>
+            </div>
+            <a href="" class="nav-btn">About</a>
+            <a href="" class="nav-btn">Contact</a>
+  
+            <!-- User Icon with Dropdown -->
+            <div class="dropdown">
+                <i id="user-btn" class="fas fa-user user-icon" onclick="toggleMenu()"></i>   <!-- Need to Drop Buttons because no icon border -->
+                <div class="dropdown-content" id="user-dropdown">
+                    <a href="#" onclick="showForm('login')"><i class="fas fa-sign-in-alt"></i> Log In</a>
+                    <a href="#" onclick="showForm('signup')"><i class="fas fa-user-plus"></i> Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </nav>  
 
     <main>
       <section class="template-section">
