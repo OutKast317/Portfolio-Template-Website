@@ -1,577 +1,572 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/*GRADIENT BACKGROUNG*/
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%; 
-}
-
-body {
-  position: relative;
-  color: #ffffff;
-  height: 200vh;
-  overflow: auto;
-}
-
-body::before {
-  content: '';
-  position:fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, #000000, #1d0140);
-  z-index: -1;
- 
-}
-/*GRADIENT BACKGROUND*/
-
-/* Nav BAR */
-header {
-display: flex;
-align-items: center;
-justify-content: space-between;
-padding: 10px 20px;
-background-color: transparent;
-}
-/* Nav BAR */
-
-/* Icon & Page_name Section */
-.logo {
-display: flex;
-align-items: center;
-}
-
-.logo i {
-color: #1404a6; 
-margin-right: 10px;
-font-size: 24px;
-cursor: pointer;
-}
-
-.logo h1 {
-margin: 0;
-font-size: 24px;
-font-weight: bold;
-font-family: 'Lilita One';
-cursor: pointer;
-}
-/* Icon & Page_name Section */
-
-/* Search Bar */
-.search-bar {
-display: flex;
-align-items: center;
-background: rgba(255, 255, 255, 0.1);
-padding: 6px 20px;
-border-radius: 25px;
-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-transition: width 0.4s ease-in-out;
-}
-
-.search-bar input {
-background: transparent;
-border: none;
-outline: none;
-color: #fffafa;
-font-size: 16px;
-width: 400px; 
-padding: 5px 0;
-transition: width 0.4s ease-in-out;
-}
-
-/* Search Bar Expands */
-.search-bar:hover input {
-width: 500px;
-}
-/* Search Bar Expands */
-
-.search-bar input::placeholder {
-color: #ffffff;
-opacity: 0.7;
-}
-
-.search-icon {
-color: #ffffff;
-font-size: 20px;
-cursor: pointer;
-margin-left: 10px;
-}
-
-.search-bar:hover .search-icon {
-color: #1500ff; }
-/* Search Bar */
-
-
-/* "Home/About/Contact/Info/Profile_icon" Section */
-.nav-box {
-display: flex;
-align-items: center;
-gap: 20px;
-position: relative;
-}
-
-.nav-box a {
-text-decoration: none;
-color: #ffffff;
-background-color: #6a0dad;
-padding: 10px 20px;
-border-radius: 20px;
-font-family: 'Lilita One';
-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
-}
-
-.nav-box a:hover {
-background-color: #8000ff;
-transform: translateY(-10px); 
-}
-
-.user-icon {
-color: #ffffff;
-font-size: 24px;
-cursor: pointer;
-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
-}
-
-.user-icon:hover{
-background-color: #8000ff;
-border-radius: 200px;
-transform: translateY(-10px); 
-}
-
-/* "Home/About/Contact/Info/Profile_icon" Section */
-
-
-/* Box for Dropdown */
-
-/* Dropdown Styles*/
-.dropdown {
-display: none;
-position: absolute;
-top: 55px;
-right:0;
-background-color: #ffffff ;
-box-shadow: 0 4px 8px #0000001A;
-border-radius: 5px;
-min-width: 150px;
-z-index: 1000;
-}
-
-.hidden {
-  display: none;
-}
-
-/* Dropdown links */
-.dropdown a {
-  padding: 10px 15px;
-  display: block;
-  text-decoration: none;
-  font-family: 'Lilita One' ;
-  color: #100101;
-  font-size: 16px;
-  cursor: pointer;
-  z-index:1010;
-}
-
-.dropdown a:hover {
-  background-color: #8000ff;
-  color: #ffffff;
-}
-
-.dropdown.open-menu {
-  display: block;
-}
-
-button {
-background: linear-gradient(to right, rgba(128, 155, 206, 0.9), rgba(128, 155, 206, 0.7));
-color: white;
-border: none;
-padding: 12px;
-border-radius: 8px;
-cursor: pointer;
-font-size: 16px;
-transition: background 0.3s;
-}
-
-button:hover {
-background: linear-gradient(to right, rgba(128, 155, 206, 0.8), rgba(128, 155, 206, 0.5));
-}
-
-/* Box for Dropdown */
-
-/* Templates Section */
-.template-section {
-margin: 30px 20px;
-position: relative;
-font-family: 'Lilita One';
-}
-
-.template-grid {
-display: grid;
-overflow-x: auto;
-grid-template-columns: repeat(5, 1fr);
-gap: 15px;
-padding: 10px;
-}
-
-.template-box {
-flex: 0px 0 200px;
-height: 150px;
-background: rgba(255, 255, 255, 0.2);
-border-radius: 10px;
-display: flex;
-align-items: center;
-justify-content: center;
-color: white;
-font-family: 'Lilita One';
-font-size: 16px;
-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-transition: transform 0.3s ease-in-out;
-}
-
-/*inheriting the width and height of the box*/
-.template-box img {
-  width: 100% ;
-  height: inherit;
-  border-radius: inherit;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
   
-}
-
-.template-box:hover {
-transform: scale(1.05);
-}
-
-.more-link {
-position: absolute;
-right: 20px; /* Aligns the button to the right */
-margin-top: 10px;
-background-color: #6a0dad;
-color: white;
-padding: 10px 20px;
-border-radius: 20px;
-font-family: 'Lilita One';
-text-decoration: none;
-border: none;
-cursor: pointer;
-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
-}
-
-.more-link:hover {
-background-color: #8000ff;
-transform: translateY(-10px); 
-}
-/* Templates Section */
-
-.modal-overlay {
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background: rgba(0, 0, 0, 0.6);
-display: flex;
-justify-content: center;
-align-items: center;
-z-index: 2000; /* Higher than dropdown and nav */
-visibility: hidden;
-opacity: 0;
-transition: visibility 0s, opacity 0.3s ease-in-out;
-}
-
-/* Login/Sign up */
-.modal-overlay:not(.hidden) {
-visibility: visible;
-opacity: 1;
-}
-
-
-.login-container {
-background: rgba(255, 255, 255, 0.95);
-border-radius: 12px;
-padding: 30px 40px;
-box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-width: 360px;
-position: relative;
-text-align: center;
-font-family: 'Lilita One', cursive;
-}
-
-/* Close Button Style */
-#close-modal {
-position: absolute;
-top: 10px;
-right: 15px;
-font-size: 24px;
-color: #000000;
-cursor: pointer;
-transition: color 0.3s ease;
-
-}
-
-#close-modal:hover {
-color: #f4978e;
-}
-/* IDK what just happen. but it is beatiful (transition between login pop-up)*/
-/*.hidden {
-  display: none;
-}*/
-
-#form-title {
-font-size: 24px;
-margin-bottom: 20px;
-color: #6a0dad;
-}
-
-
-form label {
-display: block;
-margin-bottom: 5px;
-font-size: 16px;
-color: #333333;
-text-align: left;
-}
-
-form input[type="text"],
-form input[type="password"] {
-padding: 12px;
-border: 1px solid #ccc;
-border-radius: 8px;
-margin-bottom: 15px;
-width: 100%;
-box-sizing: border-box;
-background-color: rgba(128, 155, 206, 0.2);
-transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-form input[type="text"]:focus,
-form input[type="password"]:focus {
-outline: none;
-border-color: #808bbc;
-box-shadow: 0 0 5px rgba(128, 155, 206, 0.8);
-}
-
-
-.modal-overlay button {
-width: 100%;
-background: linear-gradient(to right, #6a0dad, #8000ff);
-color: white;
-border: none;
-padding: 12px;
-border-radius: 8px;
-cursor: pointer;
-font-size: 16px;
-transition: background 0.3s;
-}
-
-.modal-overlay button:hover {
-background: linear-gradient(to right, #8000ff, #6a0dad);
-}
-
-
-#toggle-form {
-font-size: 14px;
-text-align: center;
-margin-top: 10px;
-color: #333333;
-}
-
-#toggle-form a {
-color: #6a0dad;
-text-decoration: none;
-font-weight: bold;
-}
-
-#toggle-form a:hover {
-color: #8000ff;
-}
-.password-container {
-position: relative;
-width: 100%;
-}
-
-/* Eye icon styling */
-.eye1 {
-position: absolute;
-right: 50px;
-top: 47%;
-transform: translateY(200%);
-cursor: pointer;
-font-size: 18px;
-color: #000000;
-}
-.eye2 {
-position: absolute;
-right: 50px;
-top: 47.5%;
-transform: translateY(-14%);
-cursor: pointer;
-font-size: 18px;
-color: #000000;
-}
-
-.eye3 {
-position: absolute;
-right: 50px;
-top: 43%;
-transform: translateY(535%);
-cursor: pointer;
-font-size: 18px;
-color: #000000;
-}
-
-i.visible {
-  display: block;/*fixed initializing*/
-}
-i.hidden {
-  display: none;/*fixed initializing*/
-}
-/*Andriod Screen*/
-@media (max-width : 600px){
-  /*resize  each grid size */
-  .template-grid {
-    grid-template-columns: repeat(5, 50%);
+  /*GRADIENT BACKGROUNG*/
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; 
   }
-  /*body font size*/
+  
   body {
-    font-size: 10px;
+    position: relative;
+    color: #ffffff;
+    height: 230vh;
+    overflow: auto;
   }
-/*page logo and page name */
-  .logo h1 {
-  font-size: 17px;
+  
+  body::before {
+    content: '';
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #000000, #260450);
+    z-index: -1;
   }
-  .logo i {
-    font-size : 20px;
-  }
-  /*search bar adjust*/
-  .search-bar input {
-    width : 150px;
-  }
-  /*transition of it adjust */
-  .search-bar:hover input {
-    width: 160px;
-  }
-  /*search icon*/
-  .fa-search{
-    font-size : 17px;
-  }
-  /* home about ... and profile */
-  .nav-box {
-    position : absolute;
-    right : 10px;
-    top : 50px;
-    margin-top: 10px;
-    gap:10px;
-  }
-  .dropdown{
-    top : 9%;
-  }
-}
-/* Eye icon styling */
-
-/* Login/Sign up */
-
-
-/* Image Modal */ 
-/*download button*/
-.image-modal {
+  
+  /*GRADIENT BACKGROUND*/
+  
+  /* Search Bar */
+  .search-bar {
   display: flex;
-  justify-content: center;
   align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 6px 30px;
+  border-radius: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: width 0.4s ease-in-out;
+  }
+  
+  .search-bar input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fffafa;
+  font-size: 16px;
+  width: 400px; 
+  padding: 5px 0;
+  transition: width 0.4s ease-in-out;
+  }
+  
+  /* Search Bar Expands */
+  .search-bar:hover input {
+  width: 500px;
+  }
+  /* Search Bar Expands */
+  
+  .search-bar input::placeholder {
+  color: #ffffff;
+  opacity: 0.7;
+  font-family: 'Lilita One';
+  }
+  
+  .search-icon {
+  color: #ffffff;
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 10px;
+  }
+  
+  .search-bar:hover .search-icon {
+  color: #1500ff; }
+  /* Search Bar */
+  
+  /* Navbar Home/Category/About/Contact Section */
+  /*Changed Entirely*/
+  
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;     /* Navbar transparent and other stuff*/
+    padding: 10px 10px;
+    background-color:transparent;
+  }
+  
+  .logo{
+    font-family: 'Lilita One';
+    font-size: 25px;            /* Star And YourChoice (Still need to change) */
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .nav-btn {
+    background: #6a0dad;
+    text-decoration: none;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Lilita One';
+    transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
+  }
+  
+  .nav-btn:hover {
+    transform: scale(1.1); 
+    background-color: #8000ff;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    color: #fff;
+  }
+  
+  
+  .user-icon {
+    background:none;
+    border: none;              /* User Icon */
+    color:#fff;
+    cursor: pointer;
+    font-size: 26px;
+    transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
+    
+  }
+  .user-icon:hover{
+    transform: scale(1.1); 
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    color: #fff;
+  }
+  
+  /* Dropdown styles */
+  .dropdown {
+    position: relative;
+    
+  }
+  
+  #user-dropdown{
+    min-width:120px;      /* User Icon Dropdown position*/
+    left: -95px;
+    top:40px;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background:#fff7f7;
+    min-width: 150px;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
+    border-radius: 8px;
+    z-index: 100;
+    font-family: 'Lilita One';
+    top: 45px;
+    left:-20px;
+  }
+  
+  .dropdown-content a {
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    display: block;
+    text-decoration: none;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #8000ff;
+    color: #fff;
+  }
+  
+  /* Show dropdown on active */
+  .show {
+    display: block;
+  }
+  
+  
+  /* Templates Section */
+  .template-section {
+  margin: 30px 20px;
+  position: relative;
+  font-family: 'Lilita One';
+  }
+  
+  .template-grid {
+  display: grid;
+  overflow-x: auto;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+  padding: 10px;
+  }
+  
+  .template-box {
+  flex: 0px 0 200px;
+  height: 150px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: 'Lilita One';
+  font-size: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+  }
+  
+  /*inheriting the width and height of the box*/
+  .template-box img {
+    width: 100% ;
+    height: inherit;
+    border-radius: inherit;
+    
+  }
+  
+  .template-box:hover {
+  transform: scale(1.05);
+  }
+  
+  .more-link {
+  position: absolute;
+  right: 20px;
+  margin-top: 10px;
+  background-color:#6a0dad;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-family: 'Lilita One';
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
+  }
+  
+  .more-link:hover {
+  transform: scale(1.1); 
+    background-color: #8000ff;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+  }
+  /* Templates Section */
+  
+  /* Login/Sign up */
+  .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  z-index: 3000;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000; /* Higher than dropdown and nav */
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s, opacity 0.3s ease-in-out;
-}
-
-.image-modal-content {
-  position: relative;
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 90%;
-  max-height: 90%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.image-modal-content img {
-  max-width: 100%;
-  max-height: 80vh;
-  border-radius: 10px;
-}
-
-.image-modal .close-modal {
+  }
+  
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s ease-in-out;
+    }
+  
+  .hidden {
+  display: none;  /* To not show login and sign up together*/
+  }
+  
+  
+  .modal-overlay:not(.hidden) {
+    visibility: visible;
+    opacity: 1;
+    }
+    
+    
+  .login-container {
+  background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 30px 40px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    width: 360px;
+    position: relative;
+    text-align: center;
+    font-family: 'Lilita One', cursive;
+    }
+    
+  /* Close Button Style */
+  #close-modal {
   position: absolute;
   top: 10px;
-  right: 15px;
+  right: 15px;                /* It is Cross (X) Style */
   font-size: 24px;
-  color: black;
+  color: #000000;
   cursor: pointer;
-}
-
-.image-modal .close-modal:hover {
-  color: red;
-}
-
-#download-button {
+  transition: color 0.3s ease;
+  }
+    
+  #close-modal:hover {
+    color: #ff1818;
+  }
+    
+  /* IDK what just happen. but it is beatiful (transition between login pop-up)*/
+  /*.hidden {
+  display: none;
+  }*/
+    
+  #form-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #6a0dad;
+  }
+    
+  form label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 16px;
+  color: #333333;
+  text-align: left;
+  }
+    
+  form input[type="text"],
+  form input[type="password"] {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: rgba(128, 155, 206, 0.2);
+  transition: border-color 0.3s, box-shadow 0.3s;
+  }
+    
+  form input[type="text"]:focus,
+  form input[type="password"]:focus {
+  outline: none;
+  border-color: #808bbc;
+  box-shadow: 0 0 5px rgba(128, 155, 206, 0.8);
+  }
+    
+  .modal-overlay button {
+  width: 100%;
   background: linear-gradient(to right, #6a0dad, #8000ff);
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 12px;
   border-radius: 8px;
   cursor: pointer;
   font-size: 16px;
-  margin-top: 10px;
-}
-
-#download-button:hover {
+  transition: background 0.3s;
+  }
+    
+  .modal-overlay button:hover {
   background: linear-gradient(to right, #8000ff, #6a0dad);
-}
-
-.image-modal.show {
-  visibility: visible;
-  opacity: 1;
-}
-/*loading screen*/
-.loading-modal{
-  z-index: 4000;
-  display : none;
-  position : fixed;
-  justify-content: center; 
-  align-items: center;
-  top: 0;
-  left: 0;
+  }
+    
+    
+  #toggle-form {
+  font-size: 14px;
+  text-align: center;
+  margin-top: 10px;
+  color: #333333;
+  }
+    
+  #toggle-form a {
+  color: #6a0dad;
+  text-decoration: none;
+  font-weight: bold;
+  }
+    
+  #toggle-form a:hover {
+  color: #8000ff;
+  }
+  .password-container {
+  position: relative;
   width: 100%;
-  height: 100%;
-  border-radius : 10px;
-  background: black;
-  opacity: 0.9;
-}
-
-.loading-modal .loading-screen {
+  }
+    
+    /* Eye icon styling */
+  .eye1 {
+  position: absolute;
+  right: 50px;
+  top: 47%;
+  transform: translateY(200%);
+  cursor: pointer;
+  font-size: 18px;
+  color: #000000;
+  }
+  .eye2 {
+  position: absolute;
+  right: 50px;
+  top: 47.5%;
+  transform: translateY(-14%);
+  cursor: pointer;
+  font-size: 18px;
+  color: #000000;
+  }
   
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  border: 16px solid black;
-  border-top: 16px solid #8000ff;
-  animation: spin 2s linear infinite;
-
-}
-/*loading animation*/
-@keyframes spin {
-  0% { transform : rotate(0deg);}
-  100% { transform : rotate(360deg);}
-}
+  .eye3 {
+  position: absolute;
+  right: 50px;
+  top: 43%;
+  transform: translateY(535%);
+  cursor: pointer;
+  font-size: 18px;
+  color: #000000;
+  }
+  
+  i.visible {
+  display: block;/*fixed initializing*/
+  }
+  i.hidden {
+  display: none;/*fixed initializing*/
+  }
+  
+  /*Andriod Screen*/
+  @media (max-width : 600px){
+    /*resize  each grid size */
+    .template-grid {
+      grid-template-columns: repeat(5, 50%);
+    }
+    /*body font size*/
+    body {
+      font-size: 10px;
+    }
+  /*page logo and page name */
+    .logo h1 {
+    font-size: 17px;
+    }
+    .logo i {
+      font-size : 20px;
+    }
+    /*search bar adjust*/
+    .search-bar input {
+      width : 150px;
+    }
+    /*transition of it adjust */
+    .search-bar:hover input {
+      width: 160px;
+    }
+    /*search icon*/
+    .fa-search{
+      font-size : 17px;
+    }
+    /* home about ... and profile */
+    .nav-box {
+      position : absolute;
+      right : 10px;
+      top : 50px;
+      margin-top: 10px;
+      gap:10px;
+    }
+    .dropdown{
+      top : 9%;
+    }
+  }
+  /* Eye icon styling */
+  
+  /* Login/Sign up */
+  
+  
+  /* Image Modal */ 
+  /*download button*/
+  .image-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 3000;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s ease-in-out;
+  }
+  
+  .image-modal-content {
+    position: relative;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 90%;
+    max-height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .image-modal-content img {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 10px;
+  }
+  
+  .image-modal .close-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    color: black;
+    cursor: pointer;
+  }
+  
+  .image-modal .close-modal:hover {
+    color: red;
+  }
+  
+  #download-button {
+    background: linear-gradient(to right, #6a0dad, #8000ff);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  #download-button:hover {
+    background: linear-gradient(to right, #8000ff, #6a0dad);
+  }
+  
+  .image-modal.show {
+    visibility: visible;
+    opacity: 1;
+  }
+  /*loading screen*/
+  .loading-modal{
+    z-index: 4000;
+    display : none;
+    position : fixed;
+    justify-content: center; 
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius : 10px;
+    background: black;
+    opacity: 0.9;
+  }
+  
+  .loading-modal .loading-screen {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 16px solid black;
+    border-top: 16px solid #8000ff;
+    animation: spin 2s linear infinite;
+  
+  }
+  /*loading animation*/
+  @keyframes spin {
+    0% { transform : rotate(0deg);}
+    100% { transform : rotate(360deg);}
+  }
