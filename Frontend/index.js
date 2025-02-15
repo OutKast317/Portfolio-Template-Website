@@ -62,41 +62,56 @@ function showPassword(element) {
 
 
 //by stzk
-function toggleMenu() {
-  const dropdownMenu = document.getElementById('dropdownMenu');
-  dropdownMenu.classList.toggle('open-menu');
-}
+// Dropdown for Category(add new and fixed)
+document.getElementById("category-btn").addEventListener("click", function() {
+  document.getElementById("category-dropdown").classList.toggle("show");
+});
 
-function closeModal() {
-  const modalOverlay = document.getElementById('modal-overlay');
-  modalOverlay.classList.add('hidden');
-}
+// Dropdown for User Icon
+document.getElementById("user-btn").addEventListener("click", function() {
+  document.getElementById("user-dropdown").classList.toggle("show");
+});
 
-
-function showForm(type) {
-  const modalOverlay = document.getElementById('modal-overlay');
-  const loginForm = document.getElementById('loginForm');
-  const signUpForm = document.getElementById('signUpForm');
-  const formTitle = document.getElementById('form-title');
-  const toggleText = document.getElementById('toggle-form');
-  
-   modalOverlay.classList.remove('hidden');
-
-  // Toggle forms
-  if (type === 'login') {
-    loginForm.classList.remove('hidden');
-    signUpForm.classList.add('hidden');
-    formTitle.textContent = 'Login';
-    toggleText.innerHTML =
-      "Don't have an account? <a href='javascript:void(0);' onclick='showForm(\"signup\")'>Sign Up</a>";
-  } else if (type === 'signup') {
-    signUpForm.classList.remove('hidden');
-    loginForm.classList.add('hidden');
-    formTitle.textContent = 'Sign Up';
-    toggleText.innerHTML =
-      "Already have an account? <a href='javascript:void(0);' onclick='showForm(\"login\")'>Login</a>";
+// Close dropdown if clicked outside
+window.addEventListener("click", function(event) {
+  if (!event.target.matches("#category-btn")) {
+      document.getElementById("category-dropdown").classList.remove("show");
   }
+  if (!event.target.matches("#user-btn")) {
+      document.getElementById("user-dropdown").classList.remove("show");
+  }
+});
+
+// Show login/signup form
+function showForm(formType) {
+  const modalOverlay = document.getElementById("modal-overlay");
+  const loginForm = document.getElementById("loginForm");
+  const signUpForm = document.getElementById("signUpForm");
+  const formTitle = document.getElementById("form-title");
+  const toggleForm = document.getElementById("toggle-form");
+
+  if (formType === 'login') {
+      loginForm.classList.remove("hidden");
+      signUpForm.classList.add("hidden");
+      formTitle.textContent = "Login";
+      toggleForm.innerHTML = `Don't have an account? <a href="javascript:void(0);" onclick="showForm('signup')">Sign Up</a>`;
+  } else if (formType === 'signup') {
+      signUpForm.classList.remove("hidden");
+      loginForm.classList.add("hidden");
+      formTitle.textContent = "Sign Up";
+      toggleForm.innerHTML = `Already have an account? <a href="javascript:void(0);" onclick="showForm('login')">Log In</a>`;
+  }
+
+  modalOverlay.classList.remove("hidden");
 }
+
+// Close modal
+function closeModal() {
+  const modalOverlay = document.getElementById("modal-overlay");
+  modalOverlay.classList.add("hidden");
+}
+
+  
 //data for account and json database
 localStorage.clear();
 
