@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dark Theme Website Test</title>
+    <link rel="stylesheet" href="startpage.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lilita One"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family='Source Serif Pro'"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.66/build/spline-viewer.js"></script>
+  </head>
+
+  <body>
+    <spline-viewer class="background" url="https://prod.spline.design/PHXW5StY3MIs2RH0/scene.splinecode"></spline-viewer>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="logo">⭐ YOUR CHOICE</div>  <!-- Need to change logo -->
+
+      <div class="nav-buttons">
+          <a href="#" class="nav-btn">Home </a>
+          
+          <!-- Dropdown for Category -->
+          <div class="dropdown">
+              <button class="nav-btn" id="category-btn">Category</button>
+              <div class="dropdown-content" id="category-dropdown">
+                  <a href="#">CV Templates</a>
+                  <a href="#">Resume Templates</a>
+                  <a href="#">PPT Templates</a>
+                  <a href="#">PPT Templates</a>
+                  <a href="#">PPT Templates</a>
+              </div>
+          </div>
+          <a href="" class="nav-btn">About</a>
+          <a href="" class="nav-btn">Contact</a>
+          </div>
+      </div>
+  </nav>
+  <main class="content">
+    <section class="text-section">
+        <h1>About Our Website</h1>
+        <p>
+          Welcome to our website, your trusted source for free templates 
+          designed to make work easier.From streamlining tasks to boosting 
+          efficiency,we’ve got you covered. Explore, download,and get started today.
+        </p>
+        <div class="buttons">
+            <button class="btn signup" onclick="showForm('signup')">Sign Up</button>
+            <button class="btn login" onclick="showForm('login')">Log In</button>
+            <a href="#" class="btn guest">Stay As A Guest</a>
+        </div>
+    </section>
+</main>
+
+<!-- Login/Sign-up -->
+<div id="modal-overlay" class="modal-overlay hidden">
+  <div class="login-container">
+    <span id="close-modal" onclick="closeModal()">&#10005;</span>
+    <h2 id="form-title">Login</h2>
+
+    <!-- Login -->
+    <form id="loginForm">
+      <label for="login-username">Username:</label>
+      <input type="text" id="login-username" name="username" required />
+      <label for="login-password">Password:</label>
+      <input type="password" id="login-password" name="password" required />
+      <!-- see password -->
+      <span class="eye1" onclick="showPassword(this)">
+        <i class="fa fa-eye visible"></i>
+        <i class="fa fa-eye-slash hidden"></i>
+      </span>
+      <!-- see password -->
+      <button type="submit">Login</button>
+      <div id="login-error-message" class="error-message"></div>
+    </form>
+
+    <!-- Sign-Up Form -->
+    <form id="signUpForm" class="hidden">
+      <label for="signup-username">Username:</label>
+      <input type="text" id="signup-username" name="signup-username" required />
+      <label for="signup-password">Password:</label>
+      <input
+        type="password"
+        id="signup-password"
+        name="signup-password"
+        required
+      />
+      <!-- see password -->
+      <span class="eye2" onclick="showPassword(this)">
+        <i class="fa fa-eye visible"></i>
+        <i class="fa fa-eye-slash hidden"></i>
+      </span>
+      <!-- see password -->
+      <label for="confirm-password">Confirm Password:</label>
+      <input
+        type="password"
+        id="confirm-password"
+        name="confirm-password"
+        required
+      />
+      <!-- see password -->
+      <span class="eye3" onclick="showPassword(this)">
+        <i class="fa fa-eye visible"></i>
+        <i class="fa fa-eye-slash hidden"></i>
+      </span>
+      <!-- see password -->
+      <button type="submit">Sign Up</button>
+      <div id="signup-error-message" class="error-message"><p></p></div>
+    </form>
+
+    <!-- Toggle/Transition -->
+    <p id="toggle-form">
+      Don't have an account?
+      <a href="javascript:void(0);" onclick="showForm('signup')">Sign Up</a>
+    </p>
+    <!-- Close Button -->
+    <span id="close-modal" onclick="closeModal()">&#10005;</span>
+    <div class="loading"></div>
+  </div>
+</div>
+
+  </body>
+  <script src="startpage.js"></script>
+</html>
