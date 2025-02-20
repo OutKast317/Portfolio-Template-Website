@@ -58,9 +58,7 @@
             onclick="toggleMenu()"
           ></i>
           <div class="dropdown-content" id="user-dropdown">
-            <p id="username-display" oninput="setUsername()">
-              <span id="username-display"></span>
-            </p>
+            <p id="username-display">Username</p>
             <!-- Placeholder for username -->
             <a href="#" onclick="showForm('login')"
               ><i class="fas fa-sign-in-alt"></i> Log In</a
@@ -68,7 +66,7 @@
             <a href="#" onclick="showForm('signup')"
               ><i class="fas fa-user-plus"></i> Sign Up</a
             >
-            <a href="#"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+            <a href="#"><i class="fas fa-sign-out-alt" onclick="logOut()"></i> Log Out</a>
           </div>
         </div>
       </div>
@@ -218,7 +216,6 @@
           <!-- see password -->
           <button type="submit">Sign Up</button>
           <div id="signup-error-message" class="error-message"><p></p></div>
-          <button id="logout-button">Logout</button>
         </form>
 
         <!-- Toggle/Transition -->
