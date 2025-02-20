@@ -127,7 +127,7 @@ function logOut(){
   location.reload();
 }
 
-document.getElementById("logout-btn").addEventListener("click", logOut);
+
 
   
 //data for account and json database
@@ -430,6 +430,7 @@ const setUsername = (username) => {
 };
 
 
-const App = (retryCount = 0, maxRetries = 5) => {
+/*const App = (retryCount = 0, maxRetries = 5) => {
 
 }
+*/
