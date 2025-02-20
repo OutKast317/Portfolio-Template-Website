@@ -83,7 +83,7 @@ window.addEventListener("click", function(event) {
   }
 });}
 catch(error){
-  alert("W");
+  console.log("Error but ok");
 }
 
 // Show login/signup form
@@ -388,7 +388,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //for loading animation 
 function animation_load(){
-  alert("!");
   let modal = document.querySelector(".loading-modal");
   modal.style.display = "flex";
 }
@@ -398,8 +397,9 @@ function animation_close(){
 }
 
 //search bar
-
+try {
 document.querySelector(".search-bar input").addEventListener("keyup", function () {
+
   const searchQuery = this.value.toLowerCase();
   const templateBoxes = document.querySelectorAll(".template-box");
 
@@ -411,7 +411,11 @@ document.querySelector(".search-bar input").addEventListener("keyup", function (
       templateBox.style.display = "none";
     }
   });
-});
+
+});}
+catch (error){
+  console.log("There is no search bar");
+}
 
 
 //dynamic template section
@@ -436,6 +440,7 @@ const templateSection = [
 
 
 function loadTemplates(row,tile) {
+  try {
   //row = y,tile = x
 let frame = 1; 
 let index = 0;
@@ -458,6 +463,9 @@ for (let i = index; i < index + tile; i++) {
     
   });
   frame++;}
+} catch (error){
+  console.log("There is no images");
+}
 }
 //tile max is 5 cuz grid is 5.Adjust it when used
 loadTemplates(0,5);
