@@ -63,6 +63,7 @@ function showPassword(element) {
 
 //by stzk
 // Dropdown for Category(add new and fixed)
+try {
 document.getElementById("category-btn").addEventListener("click", function() {
   document.getElementById("category-dropdown").classList.toggle("show");
 });
@@ -80,7 +81,10 @@ window.addEventListener("click", function(event) {
   if (!event.target.matches("#user-btn")) {
       document.getElementById("user-dropdown").classList.remove("show");
   }
-});
+});}
+catch(error){
+  alert("W");
+}
 
 // Show login/signup form
 function showForm(formType) {
@@ -297,7 +301,7 @@ function uploadData(jsonData,errorMessage) {
     name: jsonData.name,
     pwd: jsonData.pwd
   });
-  
+  animation_load();
   fetch(url, {
     method: 'POST',
     body: data,
@@ -309,8 +313,10 @@ function uploadData(jsonData,errorMessage) {
   .then(result => {
     console.log(result);
     if (result === 'Data uploaded successfullynew version'){
+      animation_close();
       closeModal();
       localStorage.setItem("isLogin" , true);
+  
     }
     else {
       info = "Already exist!";
@@ -320,21 +326,28 @@ function uploadData(jsonData,errorMessage) {
     
 })
   .catch(error => {
-    animation_load();
-        setTimeout(function (){
-          animation_close();
-          errorMessage.style.color = 'red';
-          errorMessage.textContent = info; },4000); 
+    animation_close();
+    errorMessage.style.color = 'red';
+    errorMessage.textContent = info;
     console.error('Error:', error)});
   }
 
   // login with google sheet 
 function getData(user_name, user_pwd, errorMessage) {
-    const url = 'https://script.google.com/macros/s/AKfycbw0bNdRu8A9cffpvY9gKf4RbsAvxgSp3TZUUmgZmMWKiRo28IS8FTZ1X-YD2IyGsvp18Q/exec';
+  let info = "There was a problem in connection!";
+ 
+  const url = 'https://script.google.com/macros/s/AKfycbw0bNdRu8A9cffpvY9gKf4RbsAvxgSp3TZUUmgZmMWKiRo28IS8FTZ1X-YD2IyGsvp18Q/exec';
+    animation_load(); 
+    
+   
     fetch(url, {
         method: 'GET'
     })
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok){
+        throw new Error("Error");
+      }
+      return response.json();})
     .then(data => {
         let login = false;
         for (let x in data) {
@@ -344,8 +357,10 @@ function getData(user_name, user_pwd, errorMessage) {
         }
 
         if (!login) {
+            info = "Invalid username or password";
             throw new Error("Error");
         } else {
+          animation_close();
             localStorage.setItem("isLogin", true);
             localStorage.setItem("username", user_name); // Store username in localStorage
             setUsername(user_name); // Set the username in the UI
@@ -354,13 +369,9 @@ function getData(user_name, user_pwd, errorMessage) {
         }
     })
     .catch(error => {
-        animation_load();
-        setTimeout(function () {
-            animation_close();
-            errorMessage.style.color = 'red';
-            errorMessage.textContent = "Invalid username or password!";
-        }, 4000);
-        console.error('Error:', error);
+      animation_close(); 
+      errorMessage.style.color = 'red';
+      errorMessage.textContent = info;
     });
 }
 
@@ -375,8 +386,9 @@ document.addEventListener("DOMContentLoaded", () => {
 //check the account
 
 
-//for loading animation  
+//for loading animation 
 function animation_load(){
+  alert("!");
   let modal = document.querySelector(".loading-modal");
   modal.style.display = "flex";
 }

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dark Theme Website Test</title>
     <link rel="stylesheet" href="startpage.css" />
+    <link rel="stylesheet" href="../loading.css" />
     <link
       href="https://fonts.googleapis.com/css?family=Lilita One"
       rel="stylesheet"
@@ -17,17 +18,18 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
       rel="stylesheet"
     />
-    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.66/build/spline-viewer.js"></script>
+    <script id="robot" type="module" src="https://unpkg.com/@splinetool/viewer@1.9.66/build/spline-viewer.js" ></script>
   </head>
 
   <body>
-    <spline-viewer class="background" url="https://prod.spline.design/PHXW5StY3MIs2RH0/scene.splinecode"></spline-viewer>
+    
+    <spline-viewer  id="splineViewer" class="background" url="https://prod.spline.design/PHXW5StY3MIs2RH0/scene.splinecode"></spline-viewer>
     <!-- Navigation Bar -->
     <nav class="navbar">
       <div class="logo">⭐ YOUR CHOICE</div>  <!-- Need to change logo -->
 
       <div class="nav-buttons">
-          <a href="#" class="nav-btn">Home </a>
+          <a href="../main.html" class="nav-btn">Home </a>
           
           <!-- Dropdown for Category -->
           <div class="dropdown">
@@ -124,10 +126,14 @@
     </p>
     <!-- Close Button -->
     <span id="close-modal" onclick="closeModal()">&#10005;</span>
-    <div class="loading"></div>
+    
+    </div>
+    <div class="loading-modal" style="display: none;">
+      <div class="loading-screen"></div>
   </div>
 </div>
 
   </body>
-  <script src="startpage.js"></script>
+  <script src="../index.js"></script>
+  
 </html>
