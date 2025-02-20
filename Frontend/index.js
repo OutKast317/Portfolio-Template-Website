@@ -146,15 +146,10 @@ function formHandling(formType) {
     username = " ";
     jsonFileName = " "; 
     password = 0;
-    //username = document.getElementById(`${formType}-username`).value;
-    //password = document.getElementById(`${formType}-password`).value;
     const errorMessage = document.getElementById(`${formType}-error-message`);
-  
-    //for DOM manipulation
-    //before displaying error message, check if the element(error message) exists
-    //if it doesn't exist, console mhr error message log ml
-    //if it exists, display the error message
     
+
+
     if (formType === 'login') {
         
       let inputUsername = document.getElementById('login-username').value;
@@ -413,6 +408,28 @@ function startDownload(imageSrc) {
   document.body.removeChild(link);
 }
 
-function setUsername(username) {
-    document.getElementById('username-display').textContent = username;
+const loginHandler = (event) => {
+  event.preventDefault();
+  const username = document.getElementById("login-username").value;
+  const password = document.getElementById("login-password").value;
+  const errorMessage = document.getElementById("login-error-message");
+
+  getData(username, password, errorMessage);
+
+  localStorage.setItem("isLogin", true);
+  localStorage.setItem("username", username);
+  setUsername(username);
+
+};
+
+const setUsername = (username) => {
+  const userIcon = document.getElementById("user-icon"); // Adjust the selector if needed
+  if (userIcon) {
+    userIcon.textContent = username; // Display the logged-in username
+  }
+};
+
+
+const App = (retryCount = 0, maxRetries = 5) => {
+
 }

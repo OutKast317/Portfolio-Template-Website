@@ -58,7 +58,9 @@
             onclick="toggleMenu()"
           ></i>
           <div class="dropdown-content" id="user-dropdown">
-            <p id="username-display">Username</p>
+            <p id="username-display" oninput="setUsername()">
+              <span id="username-display"></span>
+            </p>
             <!-- Placeholder for username -->
             <a href="#" onclick="showForm('login')"
               ><i class="fas fa-sign-in-alt"></i> Log In</a
