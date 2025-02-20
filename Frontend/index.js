@@ -115,6 +115,20 @@ function closeModal() {
   modalOverlay.classList.add("hidden");
 }
 
+//logout form
+function logOut(){
+  localStorage.removeItem("isLogin");
+  localStorage.removeItem("username");
+
+  document.getElementById('username-display').textContent = "Guest";
+
+  alert("You have been logged out.");
+
+  location.reload();
+}
+
+document.getElementById("logout-btn").addEventListener("click", logOut);
+
   
 //data for account and json database
 localStorage.clear();
@@ -158,13 +172,6 @@ function formHandling(formType) {
       const confirmPasswordElement = document.getElementById('confirm-password').value;
       const confirmPassword = confirmPasswordElement === password? true : false;
 
-      //html form element done that checking so this is not needed!
-      /*if (!newUsername || !newPassword || !confirmPassword) {
-        errorMessage.textContent = 'All fields are required for sign-up.';
-        alert("All fields are required for sign-up.");
-        return;
-      }*/
-
       if (!confirmPassword) {
         errorMessage.style.color = 'red';
         errorMessage.textContent = 'Passwords do not match.';
@@ -197,100 +204,6 @@ if (loginForm) {
 if (signUpForm) {
     signUpForm.addEventListener('submit', formHandling('signup'));
 }
-//json and api 
-//github api
-/*
-function uploadJSON(jsonData,filename) {
-  const jsonObject = jsonData; 
-  
-  // Convert the JSON object to a JSON string
-  const jsonString = JSON.stringify(jsonObject);
-
-  // Base64 encode the JSON data
-  const encodedContent = btoa(jsonString);
-  
-  const username = 'Isnotavailble';
-  const repository = 'FakeDatabase';
-  const path = `data/${filename}`; // Path where the file will be uploaded
-  const branch = 'main'; 
-  const token = 'api_key';//api token
-
-  const url = `https://api.github.com/repos/${username}/${repository}/contents/${path}`;
-
-  fetch(url, {
-      method: 'PUT',
-      headers: {
-          'Authorization': `token ${token}`,
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-          message: 'Upload JSON file',
-          content: encodedContent,
-          branch: branch
-      })
-  })
-  .then(response => {
-      if (response.ok) {
-          return response.json();
-      }
-      return response.json().then(error => {
-          
-          throw new Error(error);
-      });
-  })
-  .then(data => {
-
-      closeModal();
-      console.log('File uploaded:', data);
-  })
-  .catch(error => {
-    animation_load();
-    alert("There was a problem with network!");
-    setTimeout(function (){
-      animation_close();
-      errorMessage.style.color = 'red';
-      errorMessage.textContent = 'Somthing was wrong!'; },4000);
-      console.error('Error uploading file:', error);
-  });
-}
-
-// for reading json file from github through api
-// URL of the JSON file
-function readJson(filename,errorMessage,name,pwd){
-  
-  const url = `https://raw.githubusercontent.com/Isnotavailble/FakeDatabase/main/data/${filename}`; 
-  fetch(url)
-      .then(response => {
-          
-          if (!response.ok) {
-              throw new Error('Network response was not ok');
-          }
-          
-          return response.json();
-      })
-      .then(data => {
-           if (name === data.name && pwd === data.pwd){
-            console.log("login successful");
-            closeModal();
-            localStorage.setItem("isLogin", true);
-          
-           }
-          else{
-            throw new Error('Network response was not ok');
-          } 
-          
-      })
-      
-      .catch(error => {
-        animation_load();
-        setTimeout(function (){
-          animation_close();
-          errorMessage.style.color = 'red';
-          errorMessage.textContent = 'Invalid username or password.'; },4000);   
-        console.error('Error fetching the JSON file:', error);
-      });
-      
-  }*/
 
 // Using Google sheet as FakeDataBasabase
 //upload json object to google sheet
