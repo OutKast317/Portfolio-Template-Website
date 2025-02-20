@@ -504,7 +504,7 @@ function handleAuthentication(action, retryCount = 0, maxRetries = 3) {
     console.error(`Error during ${action}:`, error);
     if (retryCount < maxRetries) {
       console.log(`Retrying ${action}... Attempt ${retryCount + 1}`);
-      setTimeout(() => handleAuth(action, retryCount + 1, maxRetries), 1000);
+      setTimeout(() => handleAuth(action, retryCount + 1, maxRetries), 1000);//delay 1 sec
     } else {
       console.error(`Max retries reached for ${action}.`);
     }
