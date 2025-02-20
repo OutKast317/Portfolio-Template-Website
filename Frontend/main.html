@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dark Theme Website Test</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="loading.css"/>
+    <link rel="stylesheet" href="loading.css" />
     <link
       href="https://fonts.googleapis.com/css?family=Lilita One"
       rel="stylesheet"
@@ -23,43 +23,54 @@
   <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
-        <div class="logo">⭐ YOUR CHOICE</div>  <!-- Need to change logo -->
-  
-        <!--Search Bar Section-->
-        <div class="search-bar">
-          <input type="text" placeholder="Search templates...." />
-          <a href="#"><i class="fas fa-search"></i></a>
+      <div class="logo">⭐ YOUR CHOICE</div>
+      <!-- Need to change logo -->
+
+      <!--Search Bar Section-->
+      <div class="search-bar">
+        <input type="text" placeholder="Search templates...." />
+        <a href="#"><i class="fas fa-search"></i></a>
+      </div>
+      <!--Search Bar Section-->
+
+      <div class="nav-buttons">
+        <a href="" class="nav-btn">Home </a>
+
+        <!-- Dropdown for Category -->
+        <div class="dropdown">
+          <button class="nav-btn" id="category-btn">Category</button>
+          <div class="dropdown-content" id="category-dropdown">
+            <a href="#">CV Templates</a>
+            <a href="#">Resume Templates</a>
+            <a href="#">PPT Templates</a>
+            <a href="#">PPT Templates</a>
+            <a href="#">PPT Templates</a>
+          </div>
         </div>
-        <!--Search Bar Section-->
-  
-        <div class="nav-buttons">
-            <a href="" class="nav-btn">Home </a>
-            
-            <!-- Dropdown for Category -->
-            <div class="dropdown">
-                <button class="nav-btn" id="category-btn">Category</button>
-                <div class="dropdown-content" id="category-dropdown">
-                    <a href="#">CV Templates</a>
-                    <a href="#">Resume Templates</a>
-                    <a href="#">PPT Templates</a>
-                    <a href="#">PPT Templates</a>
-                    <a href="#">PPT Templates</a>
-                </div>
-            </div>
-            <a href="StartPAge/startpage.html" class="nav-btn">About</a>
-            <a href="" class="nav-btn">Contact</a>
-  
-            <!-- User Icon with Dropdown -->
-            <div class="dropdown">
-                <i id="user-btn" class="fas fa-user user-icon" onclick="toggleMenu()"></i>
-                <div class="dropdown-content" id="user-dropdown">
-                    <p id="username-display">Username</p> <!-- Placeholder for username -->
-                    <a href="#" onclick="showForm('login')"><i class="fas fa-sign-in-alt"></i> Log In</a>
-                    <a href="#" onclick="showForm('signup')"><i class="fas fa-user-plus"></i> Sign Up</a>
-                </div>
-            </div>
+        <a href="StartPAge/startpage.html" class="nav-btn">About</a>
+        <a href="" class="nav-btn">Contact</a>
+
+        <!-- User Icon with Dropdown -->
+        <div class="dropdown">
+          <i
+            id="user-btn"
+            class="fas fa-user user-icon"
+            onclick="toggleMenu()"
+          ></i>
+          <div class="dropdown-content" id="user-dropdown">
+            <p id="username-display">Username</p>
+            <!-- Placeholder for username -->
+            <a href="#" onclick="showForm('login')"
+              ><i class="fas fa-sign-in-alt"></i> Log In</a
+            >
+            <a href="#" onclick="showForm('signup')"
+              ><i class="fas fa-user-plus"></i> Sign Up</a
+            >
+            <a href="#"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+          </div>
         </div>
-    </nav>  
+      </div>
+    </nav>
 
     <main>
       <section class="template-section">
@@ -171,7 +182,12 @@
         <!-- Sign-Up Form -->
         <form id="signUpForm" class="hidden">
           <label for="signup-username">Username:</label>
-          <input type="text" id="signup-username" name="signup-username" required />
+          <input
+            type="text"
+            id="signup-username"
+            name="signup-username"
+            required
+          />
           <label for="signup-password">Password:</label>
           <input
             type="password"
@@ -200,6 +216,7 @@
           <!-- see password -->
           <button type="submit">Sign Up</button>
           <div id="signup-error-message" class="error-message"><p></p></div>
+          <button id="logout-button">Logout</button>
         </form>
 
         <!-- Toggle/Transition -->
@@ -209,11 +226,10 @@
         </p>
         <!-- Close Button -->
         <span id="close-modal" onclick="closeModal()">&#10005;</span>
-    
       </div>
     </div>
     <div class="loading-modal">
-      <div class="loading-screen"> </div>
+      <div class="loading-screen"></div>
     </div>
   </body>
   <script src="index.js"></script>
