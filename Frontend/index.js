@@ -83,7 +83,7 @@ window.addEventListener("click", function(event) {
   }
 });}
 catch(error){
-  console.log("Error but ok");
+  console.log("System error!");
 }
 
 // Show login/signup form
@@ -127,9 +127,6 @@ function logOut(){
   location.reload();
 }
 
-
-
-  
 //data for account and json database
 localStorage.clear();
 
@@ -255,7 +252,8 @@ function getData(user_name, user_pwd, errorMessage) {
       if (!response.ok){
         throw new Error("Error");
       }
-      return response.json();})
+      return response.json();
+    })
     .then(data => {
         let login = false;
         for (let x in data) {
@@ -280,6 +278,7 @@ function getData(user_name, user_pwd, errorMessage) {
       animation_close(); 
       errorMessage.style.color = 'red';
       errorMessage.textContent = info;
+      console.error('Error:', error);
     });
 }
 
@@ -347,34 +346,40 @@ const templateSection = [
 ];
 
 
-function loadTemplates(row,tile) {
+function loadTemplates(row, tile) {
   try {
-  //row = y,tile = x
-let frame = 1; 
-let index = 0;
-const templateContainer = document.getElementsByClassName("template-grid");//adjust 
-let containers = templateContainer[row].childElementCount;// map the number of containers 
-let container = document.getElementsByClassName("template-box");// map all containers
+    //row = y,tile = x
+    let frame = 1;
+    let index = 0;
+    const templateContainer = document.getElementsByClassName("template-grid");//adjust 
+    let containers = templateContainer[row].childElementCount;// map the number of containers 
+    let container = document.getElementsByClassName("template-box");// map all containers
 
-if (row > 0) {
-   index = containers +  ((containers * row) - containers);
-   //alert(index);
-}
+    if (row > 0) {
+      index = containers + ((containers * row) - containers);
+      //alert(index);
+    }
 
-for (let i = index; i < index + tile; i++) {
-  templateSection.forEach((template) => {
-    //const templateBox = document.createElement("div");
-    //templateBox.classList.add("template-box");
-    container[i].innerHTML = `
-      <img src="cv${frame}.jpg" alt="${template.title}"  width="100" height="100" >
-        `;
+    for (let i = index; i < index + tile; i++) {
+        /*
+        container[i].innerHTML = `
+          <img src="cv${frame}.jpg" alt="${template.title}"  width="100" height="100" >
+            `;*/
+        templateSection.forEach((template) => {
+          container[i].innerHTML = `
+        <img src="${template.image}" alt="${template.title}" width="100" height="100">
+        <p>${template.title}</p>
+        <p>${template.description}</p>
+      `;
     
-  });
-  frame++;}
-} catch (error){
-  console.log("There is no images");
+        });
+        frame++;
+      }
+} catch (error) {
+      console.log("There is no images");
+    }
 }
-}
+  
 //tile max is 5 cuz grid is 5.Adjust it when used
 loadTemplates(0,5);
 
@@ -422,15 +427,128 @@ const loginHandler = (event) => {
 
 };
 
-const setUsername = (username) => {
+/*const setUsername = (username) => {
   const userIcon = document.getElementById("user-icon"); // Adjust the selector if needed
   if (userIcon) {
     userIcon.textContent = username; // Display the logged-in username
   }
-};
-
-
-/*const App = (retryCount = 0, maxRetries = 5) => {
-
+};*/
+// UI mhr username display yan
+function setUsername(username) {
+  const usernameDisplay = document.getElementById("username-display");
+  if (usernameDisplay) {
+    usernameDisplay.textContent = username || "Guest";
+  }
 }
-*/
+
+//login/signup/logout handling function
+function handleAuthentication(action, retryCount = 0, maxRetries = 3) {
+  try {
+    if (action === "login") {
+      const username = document.getElementById("login-username").value;
+      const password = document.getElementById("login-password").value;
+      const errorMessage = document.getElementById("login-error-message");
+      //getData(username, password, errorMessage);
+    
+      if (!username || !password) {
+        errorMessage.textContent = "Please fill in all fields.";
+        errorMessage.style.color = "red";
+        return;
+      }
+    
+      getData(username, password, errorMessage, () => {
+        localStorage.setItem("isLogin", true);
+        localStorage.setItem("username", username);
+        setUsername(username);
+        closeModal();
+      });
+    } else if (action === "signup") {
+      const username = document.getElementById("signup-username").value;
+      const password = document.getElementById("signup-password").value;
+      const confirmPassword = document.getElementById("confirm-password").value;
+      const errorMessage = document.getElementById("signup-error-message");
+    
+      if (!username || !password || !confirmPassword) {
+        errorMessage.textContent = "Please fill in all fields.";
+        errorMessage.style.color = "red";
+        return;
+      }
+      
+      if (password !== confirmPassword) {
+        errorMessage.textContent = "Passwords do not match.";
+        errorMessage.style.color = "red";
+        return;
+      }
+      
+      if (password.length < 6) {
+        errorMessage.textContent = "Password must be at least 6 characters.";
+        errorMessage.style.color = "red";
+        return;
+      }
+
+      uploadData({ name: username, pwd: password }, errorMessage, () => {
+        localStorage.setItem("isLogin", true);
+        localStorage.setItem("username", username);
+        setUsername(username);
+        closeModal();
+      });
+    } else if (action === "logout") {
+      localStorage.removeItem("isLogin");
+      localStorage.removeItem("username");
+      setUsername("Guest");
+      alert("You have been logged out.");
+      location.reload();
+    }
+  }
+  catch(error){
+    console.error(`Error during ${action}:`, error);
+    if (retryCount < maxRetries) {
+      console.log(`Retrying ${action}... Attempt ${retryCount + 1}`);
+      setTimeout(() => handleAuth(action, retryCount + 1, maxRetries), 1000);
+    } else {
+      console.error(`Max retries reached for ${action}.`);
+    }
+  }
+}
+
+// recursive function to load templates 
+function loadTemplates(templates, retryCount = 0, maxRetries = 3) {
+  try {
+    const templateContainer = document.querySelector(".template-grid");
+    if (!templateContainer) {
+      throw new Error("Template container not found.");
+    }
+
+    // Clear existing templates
+    templateContainer.innerHTML = "";
+
+    // Load each template
+    templates.forEach((template) => {
+      const templateBox = document.createElement("div");
+      templateBox.classList.add("template-box");
+
+      templateBox.innerHTML = `
+        <img src="${template.image}" alt="${template.title}" width="100" height="100">
+        <p>${template.title}</p>
+        <p>${template.description}</p>
+      `;
+
+      templateContainer.appendChild(templateBox);
+    });
+
+    console.log("Templates loaded successfully!");
+  } catch (error) {
+    console.error("Error loading templates:", error);
+
+    if (retryCount < maxRetries) {
+      console.log(`Retrying template loading... Attempt ${retryCount + 1}`);
+      setTimeout(() => loadTemplates(templates, retryCount + 1, maxRetries), 1000);
+    } else {
+      console.error("Max retries reached. Templates may not be available.");
+    }
+  }
+}
+
+
+
+
