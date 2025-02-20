@@ -159,6 +159,7 @@
     font-family: 'Lilita One';
     top: 45px;
     left:-20px;
+    padding-top: 10px; /* Add padding to the top to create space for the username */
   }
   
   .dropdown-content a {
@@ -178,6 +179,14 @@
     display: block;
   }
   
+  /* Username Display */
+  #username-display {
+    color: black;
+    font-family: 'Lilita One';
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
   
   /* Templates Section */
   .template-section {

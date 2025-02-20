@@ -50,8 +50,9 @@
   
             <!-- User Icon with Dropdown -->
             <div class="dropdown">
-                <i id="user-btn" class="fas fa-user user-icon" onclick="toggleMenu()"></i>   <!-- Need to Drop Buttons because no icon border -->
+                <i id="user-btn" class="fas fa-user user-icon" onclick="toggleMenu()"></i>
                 <div class="dropdown-content" id="user-dropdown">
+                    <p id="username-display">Username</p> <!-- Placeholder for username -->
                     <a href="#" onclick="showForm('login')"><i class="fas fa-sign-in-alt"></i> Log In</a>
                     <a href="#" onclick="showForm('signup')"><i class="fas fa-user-plus"></i> Sign Up</a>
                 </div>

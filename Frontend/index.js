@@ -329,37 +329,49 @@ function uploadData(jsonData,errorMessage) {
   }
 
   // login with google sheet 
-function getData(user_name,user_pwd,errorMessage){
- const url = 'https://script.google.com/macros/s/AKfycbw0bNdRu8A9cffpvY9gKf4RbsAvxgSp3TZUUmgZmMWKiRo28IS8FTZ1X-YD2IyGsvp18Q/exec';
-  fetch(url, {
-    method: 'GET'
-  })
-  .then(response =>  response.json())
-  .then(data => {
-    
-      let login = false;
-      for (let x in data){
-        if (data[x].name === user_name && data[x].pwd.toString() === user_pwd){
-          login = true;
+function getData(user_name, user_pwd, errorMessage) {
+    const url = 'https://script.google.com/macros/s/AKfycbw0bNdRu8A9cffpvY9gKf4RbsAvxgSp3TZUUmgZmMWKiRo28IS8FTZ1X-YD2IyGsvp18Q/exec';
+    fetch(url, {
+        method: 'GET'
+    })
+    .then(response => response.json())
+    .then(data => {
+        let login = false;
+        for (let x in data) {
+            if (data[x].name === user_name && data[x].pwd.toString() === user_pwd) {
+                login = true;
+            }
         }
-      }
 
-      if (!login) { 
-        throw new Error ("Error");}
-      else {
-        localStorage.setItem("isLogin" , true);
-        closeModal();
-        console.log("login successful!");}
+        if (!login) {
+            throw new Error("Error");
+        } else {
+            localStorage.setItem("isLogin", true);
+            localStorage.setItem("username", user_name); // Store username in localStorage
+            setUsername(user_name); // Set the username in the UI
+            closeModal();
+            console.log("login successful!");
+        }
+    })
+    .catch(error => {
+        animation_load();
+        setTimeout(function () {
+            animation_close();
+            errorMessage.style.color = 'red';
+            errorMessage.textContent = "Invalid username or password!";
+        }, 4000);
+        console.error('Error:', error);
+    });
+}
 
-})
-  .catch(error => {
-    animation_load();
-        setTimeout(function (){
-          animation_close();
-          errorMessage.style.color = 'red';
-          errorMessage.textContent = "Invaild username or password!"; },4000); 
-    console.error('Error:', error)});
-  }
+// Check if user is logged in and set the username on page load
+document.addEventListener("DOMContentLoaded", () => {
+    if (isUserLoggedIn()) {
+        const username = localStorage.getItem("username");
+        setUsername(username);
+    }
+});
+
 //check the account
 
 
@@ -466,4 +478,8 @@ function startDownload(imageSrc) {
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
+}
+
+function setUsername(username) {
+    document.getElementById('username-display').textContent = username;
 }
