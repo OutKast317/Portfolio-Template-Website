@@ -240,13 +240,13 @@ function uploadData(jsonData,errorMessage) {
   // login with google sheet 
 function getData(user_name, user_pwd, errorMessage) {
   let info = "There was a problem in connection!";
- 
-  const url = 'https://script.google.com/macros/s/AKfycbw0bNdRu8A9cffpvY9gKf4RbsAvxgSp3TZUUmgZmMWKiRo28IS8FTZ1X-YD2IyGsvp18Q/exec';
+  let user_data = new URLSearchParams({input : user_name}).toString();
+  const url = 'https://script.google.com/macros/s/AKfycbw0bNdRu8A9cffpvY9gKf4RbsAvxgSp3TZUUmgZmMWKiRo28IS8FTZ1X-YD2IyGsvp18Q/exec?' + user_data;
     animation_load(); 
     
-   
     fetch(url, {
         method: 'GET'
+    
     })
     .then(response => {
       if (!response.ok){
@@ -264,7 +264,7 @@ function getData(user_name, user_pwd, errorMessage) {
 
         if (!login) {
             info = "Invalid username or password";
-            throw new Error("Error");
+            throw new Error(info);
         } else {
           animation_close();
             localStorage.setItem("isLogin", true);
