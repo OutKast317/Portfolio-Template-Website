@@ -116,19 +116,38 @@ function closeModal() {
 }
 
 //logout form
-function logOut(){
+//for logout button
+function logout_button_handling(){
+  const Logout = document.getElementById("logout");
+
+  if (isUserLoggedIn()) {
+    Logout.style.display = "block";
+  }
+  else{
+    Logout.style.display = "none";
+
+  }
+
+}
+const logout = document.getElementById("logout");
+logout.style.display = "none";
+if (logout) {
+  logout.addEventListener("click", (formHandling("logout")));
+}
+
+function logOut(event){
+  event.preventDefault();
   localStorage.removeItem("isLogin");
   localStorage.removeItem("username");
-
-  document.getElementById('username-display').textContent = "Guest";
-
+  setUsername("Guest");
   alert("You have been logged out.");
-
-  location.reload();
+  console.log("logout successful!");
+  logout_button_handling();
 }
 
 //data for account and json database
-localStorage.clear();
+//localStorage.clear();// if user refresh temp data will be cleared
+logout_button_handling();
 
 let username = " ";
 let password = 0;
@@ -136,9 +155,8 @@ let jsonData = {};
 let jsonFileName = " ";
 let account = {};
 function formHandling(formType) {
-  
+
   return function (event) {
-    
     event.preventDefault();
     username = " ";
     jsonFileName = " "; 
@@ -183,18 +201,24 @@ function formHandling(formType) {
       //uploadJSON(jsonData,jsonFileName);
       uploadData(jsonData,errorMessage);
     }
+    if(formType === 'logout'){
+      logOut(event);
+    }
+  
+    
   };
 }
 
 const loginForm = document.getElementById('loginForm');
 const signUpForm = document.getElementById('signUpForm');
 
+
 if (loginForm) {
-    loginForm.addEventListener('submit', formHandling('login'));
+    loginForm.addEventListener('submit',formHandling('login'));
 }
 
 if (signUpForm) {
-    signUpForm.addEventListener('submit', formHandling('signup'));
+    signUpForm.addEventListener('submit',formHandling('signup'));
 }
 
 // Using Google sheet as FakeDataBasabase
@@ -218,17 +242,19 @@ function uploadData(jsonData,errorMessage) {
   .then(result => {
     console.log(result);
     if (result === 'Data uploaded successfullynew version'){
-      animation_close();
-      closeModal();
+      
       localStorage.setItem("isLogin" , true);
-  
+      localStorage.setItem("username", jsonData.name);
+      setUsername(jsonData.name);
+      //logout.style.display = "block";
+      logout_button_handling();
+      closeModal();
+      animation_close();
     }
     else {
       info = "Already exist!";
       throw new Error ("Already exist");
     }
-    
-    
 })
   .catch(error => {
     animation_close();
@@ -271,6 +297,8 @@ function getData(user_name, user_pwd, errorMessage) {
             localStorage.setItem("username", user_name); // Store username in localStorage
             setUsername(user_name); // Set the username in the UI
             closeModal();
+            logout_button_handling();
+            //logout.style.display = "block";
             console.log("login successful!");
         }
     })
@@ -437,7 +465,7 @@ const loginHandler = (event) => {
 function setUsername(username) {
   const usernameDisplay = document.getElementById("username-display");
   if (usernameDisplay) {
-    usernameDisplay.textContent = username || "Guest";
+    usernameDisplay.textContent = username;
   }
 }
 
