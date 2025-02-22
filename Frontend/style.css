@@ -436,7 +436,7 @@
   }
   
   /*Andriod Screen*/
-  @media (max-width : 500px){
+  @media (max-width : 600px){
     /*resize  each grid size */
     .template-grid {
       grid-template-columns: repeat(5, 50%);
@@ -450,7 +450,7 @@
     font-size: 17px;
     }
     .logo i {
-      font-size : 20px;
+      font-size : 18px;
     }
     /*search bar adjust*/
     .search-bar input {
@@ -465,16 +465,22 @@
       font-size : 17px;
     }
     /* home about ... and profile */
-    .nav-box {
+    .nav-buttons {
       position : absolute;
-      right : 10px;
-      top : 50px;
-      margin-top: 10px;
+      left : 10px;
+      top : 70px;
+        margin: center;
+      /*margin-top: 20px;
+      margin-bottom: 30px;  */
+        
       gap:10px;
     }
     .dropdown{
       top : 9%;
     }
+      .nav-btn{
+          font-size: 13px;
+      }
   }
   /* Eye icon styling */
   
