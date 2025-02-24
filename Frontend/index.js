@@ -3,7 +3,7 @@ function openImageModal(imageSrc) {
   const modal = document.getElementById("image-modal");
   const modalImage = document.getElementById("modal-image");
 
-  modalImage.src = imageSrc;
+  modalImage.src = imageSrc; 
   modal.classList.add("show");
 }
 
