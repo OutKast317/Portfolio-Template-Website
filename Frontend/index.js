@@ -371,19 +371,19 @@ catch (error){
 
 const templateSection = [
   {
-    title: "Modern CV", image: "cv1.jpg", description: "A modern CV template with a sleek design."
+    title: "Modern", image: ".png", description: "A modern CV template with a sleek design."
   },
   {
-    title: "Minimal Resume", image: "cv2.jpg", description: "A resume template with a minimalistic design."
+    title: "Minimalistic", image: ".jpg", description: "A resume template with a minimalistic design."
   },
   {
-    title: "Creative Portfolio", image: "cv3.jpg", description: "A portfolio template with a creative design."
+    title: "Creative", image: ".jpg", description: "A portfolio template with a creative design."
   },
   {
-    title: "Business template", image: "cv4.jpg", description: "A business template with a creative design."
+    title: "Business", image: ".png", description: "A business template with a creative design."
   },
   {
-    title: "Freelancer Resume", image: "cv5.jpg", description: "A freelancer resume template with a sleek design."
+    title: "Freelance", image: ".jpg", description: "A freelancer resume template with a sleek design."
   },
 ];
 
