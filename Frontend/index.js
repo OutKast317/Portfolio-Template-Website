@@ -339,22 +339,6 @@ document.querySelector(".search-bar input").addEventListener("keyup", function (
   const searchQuery = this.value.toLowerCase();
   const templateBoxes = document.querySelectorAll(".template-box");
   const templateSection = document.querySelectorAll(".template-section");
-  //const sectionHeader = 
-  //const templateBoxes = document.querySelectorAll(".template-box");
-  console.log(templateBoxes);
-  templateBoxes.forEach(function (templateBox) {
-    let templateTitle = templateBox.querySelector("img").src.toString().toLowerCase();
-    console.log(templateTitle);
-    //const templateTitle = templateBox.querySelector("img").textContent.toLowerCase();
-    if (templateTitle.includes(searchQuery)) {
-      console.log("Template found");
-      
-      templateBox.style.display = "flex";
-    } else {
-      console.log("No template found");
-      templateBox.style.display = "none";
-    }
-  });
   templateSection.forEach(function (section) {
     let sectionTitle = section.querySelector("h2").textContent.toLowerCase();
     if (sectionTitle.includes(searchQuery)) {
@@ -371,22 +355,21 @@ catch (error){
 
 const templateSection = [
   {
-    title: "Modern", image: ".png", description: "A modern CV template with a sleek design."
-  },
-  {
-    title: "Minimalistic", image: ".jpg", description: "A resume template with a minimalistic design."
+    title: "Business", image: ".png", description: "A business template with a creative design."
   },
   {
     title: "Creative", image: ".jpg", description: "A portfolio template with a creative design."
   },
   {
-    title: "Business", image: ".png", description: "A business template with a creative design."
-  },
-  {
     title: "Freelance", image: ".jpg", description: "A freelancer resume template with a sleek design."
   },
+  {
+    title: "Minimalistic", image: ".jpg", description: "A resume template with a minimalistic design."
+  },
+  {
+    title: "Modern", image: ".png", description: "A modern CV template with a sleek design."
+  }
 ];
-
 
 function loadTemplates(row) {
   try {
@@ -415,7 +398,7 @@ function loadTemplates(row) {
       console.log("There is no images");
     }
 }  
-loadTemplates(1);
+loadTemplates(0);
 
 /*function loadTemplates(row, templateSection) { 
   try {
