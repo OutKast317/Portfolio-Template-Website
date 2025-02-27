@@ -38,23 +38,13 @@ function showPassword(element) {
 
   if (passwordInput.type === 'password') {
     passwordInput.type = 'text';
-    /*
-    showIcon.classList.remove('visible');
-    showIcon.classList.add('hidden');
-    hideIcon.classList.remove('hidden');
-    hideIcon.classList.add('visible');
-  */
+    
     showIcon.style.display = 'none';
     hideIcon.style.display = 'block';
 
     } else {
     passwordInput.type = 'password';
-    /*
-    hideIcon.classList.remove('hidden');
-    hideIcon.classList.add('visible');
-    showIcon.classList.remove('visible');
-    showIcon.classList.add('hidden');
-*/
+ 
     showIcon.style.display = 'block';
     hideIcon.style.display = 'none';
   }
@@ -115,35 +105,6 @@ function closeModal() {
   modalOverlay.classList.add("hidden");
 }
 
-//logout form
-//for logout button
-function logout_button_handling(){
-  const Logout = document.getElementById("logout");
-
-  if (isUserLoggedIn()) {
-    Logout.style.display = "block";
-  }
-  else{
-    Logout.style.display = "none";
-
-  }
-
-}
-const logout = document.getElementById("logout");
-logout.style.display = "none";
-if (logout) {
-  logout.addEventListener("click", (formHandling("logout")));
-}
-
-function logOut(event){
-  event.preventDefault();
-  localStorage.removeItem("isLogin");
-  localStorage.removeItem("username");
-  setUsername("Guest");
-  alert("You have been logged out.");
-  console.log("logout successful!");
-  logout_button_handling();
-}
 
 //data for account and json database
 //localStorage.clear();// if user refresh temp data will be cleared
@@ -163,7 +124,6 @@ function formHandling(formType) {
     password = 0;
     const errorMessage = document.getElementById(`${formType}-error-message`);
     
-
 
     if (formType === 'login') {
         
@@ -199,7 +159,7 @@ function formHandling(formType) {
       };
       jsonFileName = `${username}.json`;
       //uploadJSON(jsonData,jsonFileName);
-      uploadData(jsonData,errorMessage);
+      uploadData(jsonData,errorMessage);//signup
     }
     if(formType === 'logout'){
       logOut(event);
@@ -221,7 +181,38 @@ if (signUpForm) {
     signUpForm.addEventListener('submit',formHandling('signup'));
 }
 
-// Using Google sheet as FakeDataBasabase
+//logout form
+//for logout button
+function logout_button_handling(){
+  const Logout = document.getElementById("logout");
+
+  if (isUserLoggedIn()) {
+    Logout.style.display = "block";
+  }
+  else{
+    Logout.style.display = "none";
+
+  }
+
+}
+const logout = document.getElementById("logout");
+logout.style.display = "none";
+if (logout) {
+  logout.addEventListener("click", (formHandling("logout")));
+}
+
+function logOut(event){
+  event.preventDefault();
+  localStorage.removeItem("isLogin");
+  localStorage.removeItem("username");
+  setUsername("Guest");
+  alert("You have been logged out.");
+  console.log("logout successful!");
+  logout_button_handling();
+}
+
+
+// Using Google sheet as Database
 //upload json object to google sheet
 function uploadData(jsonData,errorMessage) {
   let info = "There was a problem in connection!";
@@ -263,7 +254,7 @@ function uploadData(jsonData,errorMessage) {
     console.error('Error:', error)});
   }
 
-  // login with google sheet 
+// login with google sheet 
 function getData(user_name, user_pwd, errorMessage) {
   let info = "There was a problem in connection!";
   let user_data = new URLSearchParams({input : user_name}).toString();
@@ -309,6 +300,15 @@ function getData(user_name, user_pwd, errorMessage) {
       console.error('Error:', error);
     });
 }
+
+// UI mhr username display yan
+function setUsername(username) {
+  const usernameDisplay = document.getElementById("username-display");
+  if (usernameDisplay) {
+    usernameDisplay.textContent = username;
+  }
+}
+
 
 // Check if user is logged in and set the username on page load
 document.addEventListener("DOMContentLoaded", () => {
@@ -455,19 +455,6 @@ const loginHandler = (event) => {
 
 };
 
-/*const setUsername = (username) => {
-  const userIcon = document.getElementById("user-icon"); // Adjust the selector if needed
-  if (userIcon) {
-    userIcon.textContent = username; // Display the logged-in username
-  }
-};*/
-// UI mhr username display yan
-function setUsername(username) {
-  const usernameDisplay = document.getElementById("username-display");
-  if (usernameDisplay) {
-    usernameDisplay.textContent = username;
-  }
-}
 
 //login/signup/logout handling function
 function handleAuthentication(action, retryCount = 0, maxRetries = 3) {
