@@ -374,42 +374,34 @@ const templateSection = [
 ];
 
 
-function loadTemplates(row, tile) {
+function loadTemplates(row) {
   try {
     //row = y,tile = x
     let frame = 1;
     let index = 0;
     const templateContainer = document.getElementsByClassName("template-grid");//adjust 
-    let containers = templateContainer[row].childElementCount;// map the number of containers 
+    let containers = templateContainer[row].childElementCount;// map the number of containers at row div
     let container = document.getElementsByClassName("template-box");// map all containers
+    index = row * 5; 
+    //check for number of photo in folders
 
-    if (row > 0) {
-      index = containers + ((containers * row) - containers);
-      //alert(index);
-    }
+        for (let x in templateSection){
+          let template = templateSection[x];
+          for (let i = 0; i < 5 ; i++) {
+              container[index].innerHTML = `
+              <img src="IMG/${template.title}/${template.title}_${frame}${template.image}" alt="${template.title}" width="100" height="100">`;
+              
+              frame++;index++;
+              if (frame > 5){frame = 1;}
 
-    for (let i = index; i < index + tile; i++) {
-        /*
-        container[i].innerHTML = `
-          <img src="cv${frame}.jpg" alt="${template.title}"  width="100" height="100" >
-            `;*/
-        templateSection.forEach((template) => {
-          container[i].innerHTML = `
-        <img src="${template.image}" alt="${template.title}" width="100" height="100">
-        <p>${template.title}</p>
-        <p>${template.description}</p>
-      `;
-    
-        });
-        frame++;
+        }
       }
+      
 } catch (error) {
       console.log("There is no images");
     }
-}
-  
-//tile max is 5 cuz grid is 5.Adjust it when used
-loadTemplates(0,5);
+}  
+
 
 //check if user is logged in
 function isUserLoggedIn() {
