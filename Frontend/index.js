@@ -331,29 +331,43 @@ function animation_close(){
   modal.style.display = "none";
 }
 
+
 //search bar
 try {
 document.querySelector(".search-bar input").addEventListener("keyup", function () {
 
   const searchQuery = this.value.toLowerCase();
   const templateBoxes = document.querySelectorAll(".template-box");
-
+  const templateSection = document.querySelectorAll(".template-section");
+  //const sectionHeader = 
+  //const templateBoxes = document.querySelectorAll(".template-box");
+  console.log(templateBoxes);
   templateBoxes.forEach(function (templateBox) {
-    const templateTitle = templateBox.querySelector("p").textContent.toLowerCase();
+    let templateTitle = templateBox.querySelector("img").src.toString().toLowerCase();
+    console.log(templateTitle);
+    //const templateTitle = templateBox.querySelector("img").textContent.toLowerCase();
     if (templateTitle.includes(searchQuery)) {
+      console.log("Template found");
+      
       templateBox.style.display = "flex";
     } else {
+      console.log("No template found");
       templateBox.style.display = "none";
+    }
+  });
+  templateSection.forEach(function (section) {
+    let sectionTitle = section.querySelector("h2").textContent.toLowerCase();
+    if (sectionTitle.includes(searchQuery)) {
+      section.style.display = "block";
+    } else {
+      section.style.display = "none";
     }
   });
 
 });}
 catch (error){
   console.log("There is no search bar");
-}
-
-
-//dynamic template section
+}//dynamic template section
 
 const templateSection = [
   {
