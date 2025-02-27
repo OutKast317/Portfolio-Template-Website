@@ -232,7 +232,7 @@ function uploadData(jsonData,errorMessage) {
   .then(response => response.text())
   .then(result => {
     console.log(result);
-    if (result === 'Data uploaded successfully!'){
+    if (result === 'Data uploaded successfullynew version'){
       
       localStorage.setItem("isLogin" , true);
       localStorage.setItem("username", jsonData.name);
@@ -243,8 +243,8 @@ function uploadData(jsonData,errorMessage) {
       animation_close();
     }
     else {
-      info = "User already exists!";
-      throw new Error ("User already exists!");
+      info = "Already exist!";
+      throw new Error ("Already exist");
     }
 })
   .catch(error => {
@@ -387,7 +387,7 @@ const templateSection = [
   },
 ];
 
-/*
+
 function loadTemplates(row) {
   try {
     //row = y,tile = x
@@ -415,18 +415,18 @@ function loadTemplates(row) {
       console.log("There is no images");
     }
 }  
-*/
-/*
-function loadTemplates(row, templateSection) { 
+loadTemplates(1);
+
+/*function loadTemplates(row, templateSection) { 
   try {
-    const templateContainer = document.querySelector(".template-grid")[row];
+    const templateContainer = document.querySelectorAll(".template-grid")[row];
     if (!templateContainer) {
-      throw new Error("Row ${row} does not exist.");
+      throw new Error(`Row ${row} does not exist.`);
     }
 
     const containers = templateContainer.querySelectorAll(".template-box");
     const containersPerRow = containers.length; //dynamic container
-
+    console.log(containersPerRow);
     for (let i = 0; i < containersPerRow; i++) {
       const container = containers[i];
       const template = templateSection[i % templateSection.length];
@@ -560,7 +560,7 @@ function handleAuthentication(action, retryCount = 0, maxRetries = 3) {
 }
 
 // recursive function to load templates 
-function loadTemplates(templates, retryCount = 0, maxRetries = 3) {
+/*function loadTemplates(templates, retryCount = 0, maxRetries = 3) {
   try {
     const templateContainer = document.querySelector(".template-grid");
     if (!templateContainer) {
@@ -595,7 +595,7 @@ function loadTemplates(templates, retryCount = 0, maxRetries = 3) {
       console.error("Max retries reached. Templates may not be available.");
     }
   }
-}
+}*/
 
 
 
