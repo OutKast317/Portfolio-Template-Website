@@ -373,7 +373,7 @@ const templateSection = [
   },
 ];
 
-
+/*
 function loadTemplates(row) {
   try {
     //row = y,tile = x
@@ -401,8 +401,35 @@ function loadTemplates(row) {
       console.log("There is no images");
     }
 }  
+*/
+/*
+function loadTemplates(row, templateSection) { 
+  try {
+    const templateContainer = document.querySelector(".template-grid")[row];
+    if (!templateContainer) {
+      throw new Error("Row ${row} does not exist.");
+    }
+
+    const containers = templateContainer.querySelectorAll(".template-box");
+    const containersPerRow = containers.length; //dynamic container
+
+    for (let i = 0; i < containersPerRow; i++) {
+      const container = containers[i];
+      const template = templateSection[i % templateSection.length];
+      
 
 
+      const frame = (i % template.frames) + 1;
+
+      container.innerHTML = `<img src = "IMG/${template.title}/${template.title}_${frame}.jpg" alt = "${template.title}" width = "100" height = "100">`;
+    }
+  } catch (error) {
+    console.error("Error loading templates:", error);
+  }
+}
+
+loadTemplates(0, templateSection);
+*/
 //check if user is logged in
 function isUserLoggedIn() {
   return localStorage.getItem("isLogin") !== null? true : false;
