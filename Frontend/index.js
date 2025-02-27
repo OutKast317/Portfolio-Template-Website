@@ -203,6 +203,7 @@ if (logout) {
 
 function logOut(event){
   event.preventDefault();
+  sessionStorage.clear();
   localStorage.removeItem("isLogin");
   localStorage.removeItem("username");
   setUsername("Guest");
@@ -273,11 +274,10 @@ function getData(user_name, user_pwd, errorMessage) {
     })
     .then(data => {
         let login = false;
-        for (let x in data) {
-            if (data[x].name === user_name && data[x].pwd.toString() === user_pwd) {
-                login = true;
-            }
-        }
+      let user = data.find(user => user.name === user_name && user.pwd === user_pwd);
+      if (!user || user.pwd !== user_pwd) {
+        throw new Error("Invalid username or password.");
+      }
 
         if (!login) {
             info = "Invalid username or password";
@@ -552,12 +552,14 @@ function handleAuthentication(action, retryCount = 0, maxRetries = 3) {
     console.error(`Error during ${action}:`, error);
     if (retryCount < maxRetries) {
       console.log(`Retrying ${action}... Attempt ${retryCount + 1}`);
-      setTimeout(() => handleAuth(action, retryCount + 1, maxRetries), 1000);//delay 1 sec
+      setTimeout(() => handleAuthentication(action, retryCount + 1, maxRetries), 1000);//delay 1 sec
     } else {
       console.error(`Max retries reached for ${action}.`);
     }
   }
 }
+
+
 
 // recursive function to load templates 
 /*function loadTemplates(templates, retryCount = 0, maxRetries = 3) {
