@@ -232,7 +232,7 @@ function uploadData(jsonData,errorMessage) {
   .then(response => response.text())
   .then(result => {
     console.log(result);
-    if (result === 'Data uploaded successfullynew version'){
+    if (result === 'Data uploaded successfully!'){
       
       localStorage.setItem("isLogin" , true);
       localStorage.setItem("username", jsonData.name);
@@ -243,8 +243,8 @@ function uploadData(jsonData,errorMessage) {
       animation_close();
     }
     else {
-      info = "Already exist!";
-      throw new Error ("Already exist");
+      info = "User already exists!";
+      throw new Error ("User already exists!");
     }
 })
   .catch(error => {
