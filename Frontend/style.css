@@ -142,8 +142,8 @@
         box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
         color: #fff;
       }
-      
-      /* Dropdown styles */
+
+ /* Dropdown styles */
       .dropdown {
       position: relative;
       }
@@ -158,18 +158,20 @@
       display: none;
       position: absolute;
       background:var(--white);
-      min-width: 150px;
+      min-width: 175px;
       border-radius: 8px;
       z-index: 100;
       font-family:var(--Mainfont);
       top: 45px;
-      left:-20px;
+      left:-35px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
       }
     
      .dropdown-content a {
       color: var(--black);
       padding: 10px;
       display: block;
+      font-size: 15px;
       text-decoration: none;
       }
     
@@ -183,7 +185,7 @@
      .show {
       display: block;
      }
-    
+
   /* Username Display */
   #username-display {
     color: var(--black);
@@ -192,7 +194,7 @@
     text-align: center;
     margin-bottom: 6px;
   }
-  
+
   /* Templates Section */
   .template-section {
   margin: 30px 20px;
