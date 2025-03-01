@@ -61,6 +61,7 @@ document.getElementById("category-btn").addEventListener("click", function() {
 // Dropdown for User Icon
 document.getElementById("user-btn").addEventListener("click", function() {
   document.getElementById("user-dropdown").classList.toggle("show");
+  logout_button_handling();
 });
 
 // Close dropdown if clicked outside
@@ -105,16 +106,25 @@ function closeModal() {
   modalOverlay.classList.add("hidden");
 }
 
-
 //data for account and json database
 //localStorage.clear();// if user refresh temp data will be cleared
-logout_button_handling();
 
+
+console.log(window.location.host)
+
+let main_url = `/Frontend/main.html`;
 let username = " ";
 let password = 0;
 let jsonData = {};
 let jsonFileName = " ";
 let account = {};
+function redirect(page_url){
+  if (window.location.href !== page_url && localStorage.getItem("isLogin") === 'true'){
+    console.log("!");
+    window.location.href = page_url;
+}
+
+}
 function formHandling(formType) {
 
   return function (event) {
@@ -123,7 +133,9 @@ function formHandling(formType) {
     jsonFileName = " "; 
     password = 0;
     const errorMessage = document.getElementById(`${formType}-error-message`);
-    
+  
+
+         
 
     if (formType === 'login') {
         
@@ -163,9 +175,7 @@ function formHandling(formType) {
     }
     if(formType === 'logout'){
       logOut(event);
-    }
-  
-    
+    }    
   };
 }
 
@@ -183,23 +193,29 @@ if (signUpForm) {
 
 //logout form
 //for logout button
+
 function logout_button_handling(){
+  try {  
+  
   const Logout = document.getElementById("logout");
 
-  if (isUserLoggedIn()) {
+  if (localStorage.getItem("isLogin") === 'true'){
     Logout.style.display = "block";
   }
   else{
     Logout.style.display = "none";
 
-  }
+  }}catch(error){{console.log("There is no logout button")}}
 
 }
+try {
 const logout = document.getElementById("logout");
 logout.style.display = "none";
 if (logout) {
   logout.addEventListener("click", (formHandling("logout")));
 }
+}catch(error){console.log("There is no logout button")}
+
 
 function logOut(event){
   event.preventDefault();
@@ -241,6 +257,7 @@ function uploadData(jsonData,errorMessage) {
       //logout.style.display = "block";
       logout_button_handling();
       closeModal();
+      redirect(main_url);
       animation_close();
     }
     else {
@@ -274,11 +291,18 @@ function getData(user_name, user_pwd, errorMessage) {
     })
     .then(data => {
         let login = false;
-      let user = data.find(user => user.name === user_name && user.pwd === user_pwd);
+        console.log(data);
+      /*let user = data.find(user => user.name === user_name && user.pwd === user_pwd.toString());
+      console.log(user);
       if (!user || user.pwd !== user_pwd) {
         throw new Error("Invalid username or password.");
+      }*/
+      for (let user in data){
+        if (data[user].name === user_name && data[user].pwd.toString() === user_pwd.toString()){
+          login = true;
+          break;
+        }
       }
-
         if (!login) {
             info = "Invalid username or password";
             throw new Error(info);
@@ -289,6 +313,7 @@ function getData(user_name, user_pwd, errorMessage) {
             setUsername(user_name); // Set the username in the UI
             closeModal();
             logout_button_handling();
+            redirect(main_url);
             //logout.style.display = "block";
             console.log("login successful!");
         }
