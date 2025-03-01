@@ -2,34 +2,44 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
+    }
   
-  /*GRADIENT BACKGROUNG*/
-  html, body {
+    :root{
+    --btn_main_color: #0066ff;
+    --btn_hover: #8000ff;
+    --btn_shadow_hover: 0 10px 15px rgba(0, 0, 0, 0.2);
+    --form_color1: #6a0dad;
+    --form_color2:#8000ff;
+    --form_ovarlay_color: rgba(0, 0, 0, 0.6);
+    --white:#fff;
+    --black:#000;
+    --Mainfont:'Lilita One';
+    }
+  
+    /*GRADIENT BACKGROUNG*/
+    html, body {
     margin: 0;
     padding: 0;
-    height: 100%; 
-  }
-  
-  body {
+    }
+    
+    body {
     position: relative;
-    color: #ffffff;
+    color: var(--white);
     height: 230vh;
     overflow: auto;
-  }
-  
-  body::before {
+    }
+    
+    body::before {
     content: '';
     position:fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, #000000, #260450);
+    background: linear-gradient(to bottom, var(--black), #260450);
     z-index: -1;
-  }
-  
-  /*GRADIENT BACKGROUND*/
+    }
+    /*GRADIENT BACKGROUND*/
   
   /* Search Bar */
   .search-bar {
@@ -46,7 +56,7 @@
   background: transparent;
   border: none;
   outline: none;
-  color: #fffafa;
+  color: var(--white);
   font-size: 16px;
   width: 400px; 
   padding: 5px 0;
@@ -60,139 +70,134 @@
   /* Search Bar Expands */
   
   .search-bar input::placeholder {
-  color: #ffffff;
+  color: var(--white);
   opacity: 0.7;
-  font-family: 'Lilita One';
+  font-family: var(--Mainfont);
   }
   
   .search-icon {
-  color: #ffffff;
+  color: var(--white);
   font-size: 20px;
   cursor: pointer;
   margin-left: 10px;
   }
   
-  .search-bar:hover .search-icon {
-  color: #1500ff; }
   /* Search Bar */
   
   /* Navbar Home/Category/About/Contact Section */
-  /*Changed Entirely*/
+    /*Changed Entirely*/
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;     /* Navbar transparent and other stuff*/
+      padding: 10px 10px;
+      background-color:transparent;
+      }
+      
+      .logo{
+      font-family: var(--Mainfont);
+      font-size: 25px;            /* Star And YourChoice (Still need to change) */
+      font-weight: bold;
+      cursor: pointer;
+      }
+      
+      .nav-buttons {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      z-index:1000;
+      }
+      
+      .nav-btn {
+      background:var(--btn_main_color);
+      text-decoration: none;
+      color: var(--white);
+      border: none;
+      padding: 10px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 16px;
+      font-family: var(--Mainfont);
+      transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
+      }
+      
+      .nav-btn:hover {
+      transform: scale(1.1); 
+      background-color:var( --btn_hover);
+      box-shadow:var(--btn_shadow_hover);
+      color: var(--white);
+      }
   
-  .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;     /* Navbar transparent and other stuff*/
-    padding: 10px 10px;
-    background-color:transparent;
-  }
-  
-  .logo{
-    font-family: 'Lilita One';
-    font-size: 25px;            /* Star And YourChoice (Still need to change) */
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  .nav-buttons {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-  
-  .nav-btn {
-    background: #6a0dad;
-    text-decoration: none;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 16px;
-    font-family: 'Lilita One';
-    transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
-  }
-  
-  .nav-btn:hover {
-    transform: scale(1.1); 
-    background-color: #8000ff;
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
-    color: #fff;
-  }
-  
-  
-  .user-icon {
-    background:none;
-    border: none;              /* User Icon */
-    color:#fff;
-    cursor: pointer;
-    font-size: 26px;
-    transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
+      .user-icon {
+        background:none;
+        border: none;              /* User Icon */
+        color:#fff;
+        cursor: pointer;
+        font-size: 26px;
+        transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
+        
+      }
+      .user-icon:hover{
+        transform: scale(1.1); 
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+        color: #fff;
+      }
+      
+      /* Dropdown styles */
+      .dropdown {
+      position: relative;
+      }
     
-  }
-  .user-icon:hover{
-    transform: scale(1.1); 
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
-    color: #fff;
-  }
-  
-  /* Dropdown styles */
-  .dropdown {
-    position: relative;
+     #user-dropdown{
+     min-width:120px;      /* User Icon Dropdown position*/
+     left: -95px;
+     top:40px;
+     }
     
-  }
-  
-  #user-dropdown{
-    min-width:120px;      /* User Icon Dropdown position*/
-    left: -95px;
-    top:40px;
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background:#fff7f7;
-    min-width: 150px;
-    box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
-    border-radius: 8px;
-    z-index: 100;
-    font-family: 'Lilita One';
-    top: 45px;
-    left:-20px;
-    padding-top: 10px; /* Add padding to the top to create space for the username */
-  }
-  
-  .dropdown-content a {
-    color: rgb(0, 0, 0);
-    padding: 10px;
-    display: block;
-    text-decoration: none;
-  }
-  
-  .dropdown-content a:hover {
-    background-color: #8000ff;
-    color: #fff;
-  }
-  
-  /* Show dropdown on active */
-  .show {
-    display: block;
-  }
-  
+     .dropdown-content {
+      display: none;
+      position: absolute;
+      background:var(--white);
+      min-width: 150px;
+      border-radius: 8px;
+      z-index: 100;
+      font-family:var(--Mainfont);
+      top: 45px;
+      left:-20px;
+      }
+    
+     .dropdown-content a {
+      color: var(--black);
+      padding: 10px;
+      display: block;
+      text-decoration: none;
+      }
+    
+     .dropdown-content a:hover {
+      background-color:var( --btn_hover);
+      color:#fff;
+      border-radius: 8px;
+     }
+    
+     /* Show dropdown on active */
+     .show {
+      display: block;
+     }
+    
   /* Username Display */
   #username-display {
-    color: black;
-    font-family: 'Lilita One';
+    color: var(--black);
+    font-family: var(--Mainfont);
     font-size: 16px;
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
   }
   
   /* Templates Section */
   .template-section {
   margin: 30px 20px;
   position: relative;
-  font-family: 'Lilita One';
+  font-family: var(--Mainfont);
   }
   
   .template-grid {
@@ -211,8 +216,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  font-family: 'Lilita One';
+  color: var(--white);
+  font-family: var(--Mainfont);
   font-size: 16px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease-in-out;
@@ -234,11 +239,11 @@
   position: absolute;
   right: 20px;
   margin-top: 10px;
-  background-color:#6a0dad;
-  color: white;
+  background-color:var(--btn_main_color);
+  color:var(--white);
   padding: 10px 20px;
   border-radius: 20px;
-  font-family: 'Lilita One';
+  font-family: var(--Mainfont);
   text-decoration: none;
   border: none;
   cursor: pointer;
@@ -247,193 +252,193 @@
   
   .more-link:hover {
   transform: scale(1.1); 
-    background-color: #8000ff;
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    background-color: var(--btn_hover);
+    box-shadow:var(--btn_shadow_hover);
   }
   /* Templates Section */
   
   /* Login/Sign up */
-  .modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2000; /* Higher than dropdown and nav */
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s, opacity 0.3s ease-in-out;
-  }
-  
   .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6);
+    background: var(--form_ovarlay_color);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 2000;
+    z-index: 2000; /* Higher than dropdown and nav */
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s, opacity 0.3s ease-in-out;
     }
-  
-  .hidden {
-  display: none;  /* To not show login and sign up together*/
-  }
-  
-  
-  .modal-overlay:not(.hidden) {
-    visibility: visible;
-    opacity: 1;
+    
+    .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--form_ovarlay_color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000; /* Higher than dropdown and nav */
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s ease-in-out;
+    }
+    
+    .hidden {
+    display: none;  /* To not show login and sign up together*/
     }
     
     
-  .login-container {
-  background: rgba(255, 255, 255, 0.95);
+    .modal-overlay:not(.hidden) {
+    visibility: visible;
+    opacity: 1;
+    }
+      
+      
+    .login-container {
+    background: var(--white);
     border-radius: 12px;
+    font-family: var(--Mainfont);
     padding: 30px 40px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
     width: 360px;
     position: relative;
     text-align: center;
-    font-family: 'Lilita One', cursive;
+    }
+      
+    /* Close Button Style */
+    #close-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;                /* It is Cross (X) Style */
+    font-size: 24px;
+    color: var(--black);
+    cursor: pointer;
+    transition: color 0.3s ease;
+    }
+      
+    #close-modal:hover {
+    color: #ff0000;
+    }
+      
+    /* IDK what just happen. but it is beatiful (transition between login pop-up)*/
+    /*.hidden {
+    display: none;
+    }*/
+      
+    #form-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: var(--form_color1);
+    }
+      
+    form label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: var(--black);
+    text-align: left;
+    }
+      
+    form input[type="text"],
+    form input[type="password"] {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: rgba(128, 155, 206, 0.2);
+    transition: border-color 0.3s, box-shadow 0.3s;
+    }
+      
+    form input[type="text"]:focus,
+    form input[type="password"]:focus {
+    outline: none;
+    border-color: #808bbc;
+    box-shadow: 0 0 5px rgba(128, 155, 206, 0.8);
+    }
+      
+    .modal-overlay button {
+    width: 100%;
+    background: linear-gradient(to right, var(--form_color1), var(--form_color2));
+    color: var(--white);
+    font-family:var(--Mainfont);
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+    }
+      
+    .modal-overlay button:hover {
+    background: linear-gradient(to right, var(--form_color2), var(--form_color1));
+    }
+      
+    #toggle-form {
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
+    color: var(--black);
+    }
+      
+    #toggle-form a {
+    color: var(--form_color1);
+    text-decoration: none;
+    font-weight: bold;
+    }
+      
+    #toggle-form a:hover {
+    color: var(--form_color2);
+    }
+    .password-container {
+    position: relative;
+    width: 100%;
+    }
+      
+    /* Eye icon styling */
+   .eye1 {
+    position: absolute;
+    right: 50px;
+    top: 47%;
+    transform: translateY(200%);
+    cursor: pointer;
+    font-size: 18px;
+    color:var(--black);
+    }
+    .eye2 {
+    position: absolute;
+    right: 50px;
+    top: 47.5%;
+    transform: translateY(-14%);
+    cursor: pointer;
+    font-size: 18px;
+    color:var(--black);
     }
     
-  /* Close Button Style */
-  #close-modal {
-  position: absolute;
-  top: 10px;
-  right: 15px;                /* It is Cross (X) Style */
-  font-size: 24px;
-  color: #000000;
-  cursor: pointer;
-  transition: color 0.3s ease;
-  }
+    .eye3 {
+    position: absolute;
+    right: 50px;
+    top: 43%;
+    transform: translateY(535%);
+    cursor: pointer;
+    font-size: 18px;
+    color:var(--black);
+    }
     
-  #close-modal:hover {
-    color: #ff1818;
-  }
-    
-  /* IDK what just happen. but it is beatiful (transition between login pop-up)*/
-  /*.hidden {
-  display: none;
-  }*/
-    
-  #form-title {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #6a0dad;
-  }
-    
-  form label {
-  display: block;
-  margin-bottom: 5px;
-  font-size: 16px;
-  color: #333333;
-  text-align: left;
-  }
-    
-  form input[type="text"],
-  form input[type="password"] {
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  margin-bottom: 15px;
-  width: 100%;
-  box-sizing: border-box;
-  background-color: rgba(128, 155, 206, 0.2);
-  transition: border-color 0.3s, box-shadow 0.3s;
-  }
-    
-  form input[type="text"]:focus,
-  form input[type="password"]:focus {
-  outline: none;
-  border-color: #808bbc;
-  box-shadow: 0 0 5px rgba(128, 155, 206, 0.8);
-  }
-    
-  .modal-overlay button {
-  width: 100%;
-  background: linear-gradient(to right, #6a0dad, #8000ff);
-  color: white;
-  border: none;
-  padding: 12px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background 0.3s;
-  }
-    
-  .modal-overlay button:hover {
-  background: linear-gradient(to right, #8000ff, #6a0dad);
-  }
-    
-    
-  #toggle-form {
-  font-size: 14px;
-  text-align: center;
-  margin-top: 10px;
-  color: #333333;
-  }
-    
-  #toggle-form a {
-  color: #6a0dad;
-  text-decoration: none;
-  font-weight: bold;
-  }
-    
-  #toggle-form a:hover {
-  color: #8000ff;
-  }
-  .password-container {
-  position: relative;
-  width: 100%;
-  }
-    
-    /* Eye icon styling */
-  .eye1 {
-  position: absolute;
-  right: 50px;
-  top: 47%;
-  transform: translateY(200%);
-  cursor: pointer;
-  font-size: 18px;
-  color: #000000;
-  }
-  .eye2 {
-  position: absolute;
-  right: 50px;
-  top: 47.5%;
-  transform: translateY(-14%);
-  cursor: pointer;
-  font-size: 18px;
-  color: #000000;
-  }
-  
-  .eye3 {
-  position: absolute;
-  right: 50px;
-  top: 43%;
-  transform: translateY(535%);
-  cursor: pointer;
-  font-size: 18px;
-  color: #000000;
-  }
-  
-  i.visible {
-  display: block;/*fixed initializing*/
-  }
-  i.hidden {
-  display: none;/*fixed initializing*/
-  }
+    i.visible {
+    display: block;/*fixed initializing*/
+    }
+    i.hidden {
+    display: none;/*fixed initializing*/
+    }
   
   /*Andriod Screen*/
   @media (max-width : 600px){
@@ -482,10 +487,6 @@
           font-size: 13px;
       }
   }
-  /* Eye icon styling */
-  
-  /* Login/Sign up */
-  
   
   /* Image Modal */ 
   /*download button*/
@@ -507,7 +508,7 @@
   
   .image-modal-content {
     position: relative;
-    background: white;
+    background: var(--white);
     padding: 20px;
     border-radius: 10px;
     max-width: 90%;
@@ -528,7 +529,7 @@
     top: 10px;
     right: 15px;
     font-size: 24px;
-    color: black;
+    color:var(--black);
     cursor: pointer;
   }
   
@@ -537,7 +538,7 @@
   }
   
   #download-button {
-    background: linear-gradient(to right, #6a0dad, #8000ff);
+    background: linear-gradient(to right,var(--form_color1), var(--form_color2));
     color: white;
     border: none;
     padding: 10px 20px;
@@ -545,10 +546,11 @@
     cursor: pointer;
     font-size: 16px;
     margin-top: 10px;
+    font-family:var(--Mainfont);
   }
   
   #download-button:hover {
-    background: linear-gradient(to right, #8000ff, #6a0dad);
+    background: linear-gradient(to right,var(--form_color2),var(--form_color1));
   }
   
   .image-modal.show {
