@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dark Theme Website About</title>
+    <link rel="stylesheet" href="Contact.css" />
+    <link href="https://fonts.googleapis.com/css?family=Lilita One" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+</head>
+
+   <!-- Navigation Bar -->
+   <nav class="navbar">
+    <div class="Logo">
+      <img src="img/Logo.png" class="verse" alt="Logo"/>
+      <div class="LogoText">Templa Verse</div>
+  </div>
+  <!-- Buttons -->
+    <div class="nav-buttons">
+      <a href="Home.html" class="nav-btn">Home </a>
+
+      <!-- Dropdown for Category -->
+      <div class="dropdown">
+        <button class="nav-btn" id="category-btn">Category</button>
+        <div class="dropdown-content" id="category-dropdown">
+          <a href="#">Business Templates</a>
+          <a href="#">Creative Portfolio Templates</a>
+          <a href="#">Freelancer Resumes</a>
+          <a href="#">Minimalistic Templates</a>
+          <a href="#">Modern CV Form</a>
+        </div>
+      </div>
+      <a href="About.html" class="nav-btn">About</a>
+      <a href="Contact.html" class="nav-btn">Contact</a>
+      </div>
+    </div>
+  </nav>
+  
+  <body>
+    <div class="container">
+      <div class="form">
+        <div class="contact-info">
+          <h3 class="title">Let's get in touch</h3>
+          <p class="text">
+            Need help or have questions about our free templates? We're here to assist you! Since 
+            our website was created by an enthusiastic but inexperienced computer science student,
+            we appreciate your patience and feedback as we improve.
+          </p>
+
+          <div class="info">
+          
+            <div class="information">
+              <img src="img/email2.png" class="icon" alt="" />
+              <p>phonewinttun173@gmail.com<br>tomlit88@gmail.com</p>
+             
+            </div>
+            <div class="information">
+              <img src="img/phone2.png" class="icon" alt="" />
+              <p>123-456-789<br>123-456-789</p>
+            </div>
+          </div>
+
+          <div class="social-media">
+            <p>Connect with us :</p>
+            <div class="social-icons">
+              <a href="#">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form">
+          <span class="circle one"></span>
+          <span class="circle two"></span>
+
+          <form action="index.html" autocomplete="off">
+            <h3 class="title">Contact us</h3>
+
+            <div class="input-container">
+              <input type="name" name="name" class="input" />
+              <label for="">Username</label>
+              <span>Username</span>
+            </div>
+            <div class="input-container">
+              <input type="email" name="email" class="input" />
+              <label for="">Email</label>
+              <span>Email</span>
+            </div>
+            <div class="input-container">
+              <input type="tel" name="phone" class="input" />
+              <label for="">Phone</label>
+              <span>Phone</span>
+            </div>
+            <div class="input-container textarea">
+              <textarea name="message" class="input"></textarea>
+              <label for="">Message</label>
+              <span>Message</span>
+            </div>
+            <input type="submit" value="Send" class="btn" />
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
