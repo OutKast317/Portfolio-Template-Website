@@ -394,7 +394,27 @@ document.querySelector(".search-bar input").addEventListener("keyup", function (
 });}
 catch (error){
   console.log("There is no search bar");
-}//dynamic template section
+}
+
+//drop down function for searching rows
+drop = document.querySelector(".dropdown-content");
+drop.querySelectorAll("a").forEach(element => {
+  
+    element.addEventListener("click", function () {
+    const templateSection = document.querySelectorAll(".template-section");
+      templateSection.forEach(function (section) {
+      let sectionTitle = section.querySelector("h2").textContent.toLowerCase();
+      if (sectionTitle.includes(element.textContent.toLowerCase())) {
+        section.style.display = "block";
+      } else {
+        section.style.display = "none";
+      }
+    });
+}); 
+});
+
+
+//dynamic template section
 
 const templateSection = [
   {
