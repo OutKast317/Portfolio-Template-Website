@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dark Theme Website Test</title>
-    <link rel="stylesheet" href="startpage.css" />
-    <link rel="stylesheet" href="../loading.css" />
+    <link rel="stylesheet" href="Start.css" />
+    <link rel="stylesheet" href="loading.css" />
     <link
       href="https://fonts.googleapis.com/css?family=Lilita One"
       rel="stylesheet"
@@ -26,10 +26,13 @@
     <spline-viewer  id="splineViewer" class="robot" url="https://prod.spline.design/PHXW5StY3MIs2RH0/scene.splinecode"></spline-viewer>
     <!-- Navigation Bar -->
     <nav class="navbar">
-      <div class="logo">⭐ Templa Verse</div>  <!-- Need to change logo -->
-
+      <div class="Logo">
+        <img src="img/Logo.png" class="icon" alt="Logo"/>
+        <div class="LogoText">Templa Verse</div>
+    </div>
+    <!-- Buttons -->
       <div class="nav-buttons">
-          <a href="../main.html" class="nav-btn">Home </a>
+          <a href="Home.html" class="nav-btn">Home </a>
           
           <!-- Dropdown for Category -->
           <div class="dropdown">
@@ -42,8 +45,8 @@
                 <a href="#">Modern CV Form</a>
               </div>
           </div>
-          <a href="" class="nav-btn">About</a>
-          <a href="" class="nav-btn">Contact</a>
+          <a href="About.html" class="nav-btn">About</a>
+          <a href="Contact.html" class="nav-btn">Contact</a>
           </div>
       </div>
   </nav>
@@ -58,7 +61,7 @@
         <div class="buttons">
             <button class="btn signup" onclick="showForm('signup')">Sign Up</button>
             <button class="btn login" onclick="showForm('login')">Log In</button>
-            <a href="../main.html" class="btn guest">Stay As A Guest</a>
+            <a href="Home.html" class="btn guest">Stay As A Guest</a>
         </div>
     </section>
 </main>
@@ -134,6 +137,6 @@
 </div>
 
   </body>
-  <script src="../index.js"></script>
+  <script src="index.js"></script>
   
 </html>
