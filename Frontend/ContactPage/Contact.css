@@ -412,4 +412,56 @@
     opacity: 0.3;
   }
   
+  /* Responsive */
+@media (max-width: 600px){
+  .form {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /*font size*/
+  body {
+    font-size: 10px;
+  }
+
+  /*logo and name*/
+  .logo h1{
+    font-size: 10px;
+  }
+
+  .logo i{
+    font-size: 10px;
+  }
+
+  /*search bar*/
+  .search-bar input{
+    font-size: 10px;
+    width: 160px;
+  }
+  
+  .search-bar:hover input{
+    width: 160px;
+  }
+
+  .fa-search{
+    font-size: 17px;
+  }
+
+  /*nav buttons*/
+  .nav-btn {
+    position: absolute;
+    left: 10px;
+    top: 70px;
+    gap: 10px;
+    font-size: 13px;
+  }
+
+  .nav-btn:first-child {
+    order: -1;
+  }
+
+  .dropdown {
+    top: 10%;
+  }
+
+}
   
