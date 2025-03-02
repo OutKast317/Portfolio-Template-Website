@@ -77,6 +77,8 @@ catch(error){
   console.log("System error!");
 }
 
+
+
 // Show login/signup form
 function showForm(formType) {
   const modalOverlay = document.getElementById("modal-overlay");
@@ -106,7 +108,7 @@ function closeModal() {
   modalOverlay.classList.add("hidden");
 }
 
-/*Conatact Page JS */
+//Conatact Page JS
 const inputs = document.querySelectorAll(".input");
 
 function focusFunc() {
@@ -129,7 +131,6 @@ inputs.forEach((input) => {
 //data for account and json database
 //localStorage.clear();// if user refresh temp data will be cleared
 
-
 console.log(window.location.host)
 
 let main_url = `/Frontend/main.html`;
@@ -143,8 +144,8 @@ function redirect(page_url){
     console.log("!");
     window.location.href = page_url;
 }
-
 }
+
 function formHandling(formType) {
 
   return function (event) {
@@ -153,10 +154,7 @@ function formHandling(formType) {
     jsonFileName = " "; 
     password = 0;
     const errorMessage = document.getElementById(`${formType}-error-message`);
-  
-
-         
-
+     
     if (formType === 'login') {
         
       let inputUsername = document.getElementById('login-username').value;
@@ -216,7 +214,6 @@ if (signUpForm) {
 
 function logout_button_handling(){
   try {  
-  
   const Logout = document.getElementById("logout");
 
   if (localStorage.getItem("isLogin") === 'true'){
@@ -225,8 +222,9 @@ function logout_button_handling(){
   else{
     Logout.style.display = "none";
 
-  }}catch(error){{console.log("There is no logout button")}}
-
+    }
+  }
+  catch (error) { { console.log("There is no logout button") } }
 }
 try {
 const logout = document.getElementById("logout");
@@ -445,33 +443,6 @@ function loadTemplates(row) {
 }  
 loadTemplates(0);
 
-/*function loadTemplates(row, templateSection) { 
-  try {
-    const templateContainer = document.querySelectorAll(".template-grid")[row];
-    if (!templateContainer) {
-      throw new Error(`Row ${row} does not exist.`);
-    }
-
-    const containers = templateContainer.querySelectorAll(".template-box");
-    const containersPerRow = containers.length; //dynamic container
-    console.log(containersPerRow);
-    for (let i = 0; i < containersPerRow; i++) {
-      const container = containers[i];
-      const template = templateSection[i % templateSection.length];
-      
-
-
-      const frame = (i % template.frames) + 1;
-
-      container.innerHTML = `<img src = "IMG/${template.title}/${template.title}_${frame}.jpg" alt = "${template.title}" width = "100" height = "100">`;
-    }
-  } catch (error) {
-    console.error("Error loading templates:", error);
-  }
-}
-
-loadTemplates(0, templateSection);
-*/
 //check if user is logged in
 function isUserLoggedIn() {
   return localStorage.getItem("isLogin") !== null? true : false;
