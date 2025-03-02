@@ -47,15 +47,24 @@
     display: flex;
     align-items: center;
     justify-content: space-between;     /* Navbar transparent and other stuff*/
-    padding: 10px 10px;
+    padding: 5px 10px;
     background-color:transparent;
     }
+
+    .Logo {
+        display: flex; /* Use flexbox */
+        align-items: center; /* Align items vertically */
+    }
     
-    .logo{
-    font-family: var(--Mainfont);
-    font-size: 25px;            /* Star And YourChoice (Still need to change) */
-    font-weight: bold;
-    cursor: pointer;
+    .LogoText {
+        font-family: var(--Mainfont);
+        font-size: 30px;
+        margin-left: 10px; /* Add space between the icon and text */
+    }
+    
+    .icon {
+        width: 40px;
+        margin-top: 5px;
     }
     
     .nav-buttons {
