@@ -1,0 +1,244 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+  
+    :root{
+    --btn_main_color: #0066ff;
+    --btn_hover: #8000ff;
+    --btn_shadow_hover: 0 10px 15px rgba(0, 0, 0, 0.2);
+    --form_color1: #6a0dad;
+    --form_color2:#8000ff;
+    --form_ovarlay_color: rgba(0, 0, 0, 0.6);
+    --white:#fff;
+    --black:#000;
+    --Mainfont:'Lilita One';
+    }
+  
+    /*GRADIENT BACKGROUNG*/
+    html, body {
+    margin: 0;
+    padding: 0;
+    }
+    
+    body {
+    position: relative;
+    color: var(--white);
+    height: 140vh;
+    overflow: auto;
+    }
+    
+    body::before {
+    content: '';
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--black), #260450);
+    z-index: -1;
+    }
+    /*GRADIENT BACKGROUND*/
+  
+  /* Navbar Home/Category/About/Contact Section */
+    /*Changed Entirely*/
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;     /* Navbar transparent and other stuff*/
+      padding: 5px 10px;
+      background-color:transparent;
+      }
+      
+      .Logo {
+        display: flex; /* Use flexbox */
+        align-items: center; /* Align items vertically */
+    }
+    
+    .LogoText {
+        font-family: var(--Mainfont);
+        font-size: 30px;
+        margin-left: 10px; /* Add space between the icon and text */
+    }
+    
+    .icon {
+        width: 40px;
+        margin-top: 5px;
+    }
+      
+      .nav-buttons {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      z-index:1000;
+      }
+      
+      .nav-btn {
+      background:var(--btn_main_color);
+      text-decoration: none;
+      color: var(--white);
+      border: none;
+      padding: 10px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 16px;
+      font-family: var(--Mainfont);
+      transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
+      }
+      
+      .nav-btn:hover {
+      transform: scale(1.1); 
+      background-color:var( --btn_hover);
+      box-shadow:var(--btn_shadow_hover);
+      color: var(--white);
+      }
+  
+      .user-icon {
+        background:none;
+        border: none;              /* User Icon */
+        color:#fff;
+        cursor: pointer;
+        font-size: 26px;
+        transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
+        
+      }
+      .user-icon:hover{
+        transform: scale(1.1); 
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+        color: #fff;
+      }
+      
+      /* Dropdown styles */
+      .dropdown {
+      position: relative;
+      }
+    
+     #user-dropdown{
+     min-width:120px;      /* User Icon Dropdown position*/
+     left: -95px;
+     top:40px;
+     }
+    
+     .dropdown-content {
+      display: none;
+      position: absolute;
+      background:var(--white);
+      min-width: 150px;
+      border-radius: 8px;
+      z-index: 100;
+      font-family:var(--Mainfont);
+      top: 45px;
+      left:-20px;
+      }
+    
+     .dropdown-content a {
+      color: var(--black);
+      padding: 10px;
+      display: block;
+      text-decoration: none;
+      }
+    
+     .dropdown-content a:hover {
+      background-color:var( --btn_hover);
+      color:#fff;
+      border-radius: 8px;
+     }
+    
+     /* Show dropdown on active */
+     .show {
+      display: block;
+     }
+
+/* About Section */
+.about-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 50px 20px;
+  color: #ffffff;
+  font-family: var(--Mainfont);
+}
+
+.about-container {
+  max-width: 1000px;
+  background: rgba(255, 255, 255, 0.207);
+  padding: 80px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.269);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255, 255, 255, 0.127);
+}
+
+.about-title {
+  font-size: 36px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 25px;
+  background: linear-gradient(45deg, #ff00ff, #00ffff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.about-text {
+  font-size: 20px;
+  line-height: 1.9;
+  text-align: justify;
+  margin-bottom: 25px;
+}
+
+.about-text-2{
+  margin-top: 8%;
+  font-size: 20px;
+  text-align: justify;
+}
+
+.about-subtitle {
+  font-size: 28px;
+  font-weight: 600;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  text-align: justify;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* About List (What We Offer Section) */
+.about-list {
+  display: grid;
+  grid-template-columns: repeat(3,1fr); 
+  gap: 10px; 
+  width: 110%;
+  margin-top: 0px;
+}
+
+.about-list li {
+  background: rgba(255, 255, 255, 0.182); 
+  padding: 15px;
+  margin: 10px;
+  border-radius: 15px;
+  font-size: 16px; 
+  line-height: 1.6;
+  text-align:center;
+  transition: transform 0.4s ease-in-out, background 0.4s ease-in-out;
+  box-shadow: 0 6px 15px rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.about-list li h3{
+  text-align: center;
+  font-size: 15px;
+}
+
+.about-list li:hover {
+  transform: scale(1.05); 
+  background: linear-gradient(45deg, rgba(255, 0, 255, 0.4), rgba(0, 255, 255, 0.4));
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.332);
+}
