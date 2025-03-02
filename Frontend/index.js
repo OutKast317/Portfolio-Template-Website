@@ -569,43 +569,6 @@ function handleAuthentication(action, retryCount = 0, maxRetries = 3) {
 
 
 
-// recursive function to load templates 
-/*function loadTemplates(templates, retryCount = 0, maxRetries = 3) {
-  try {
-    const templateContainer = document.querySelector(".template-grid");
-    if (!templateContainer) {
-      throw new Error("Template container not found.");
-    }
-
-    // Clear existing templates
-    templateContainer.innerHTML = "";
-
-    // Load each template
-    templates.forEach((template) => {
-      const templateBox = document.createElement("div");
-      templateBox.classList.add("template-box");
-
-      templateBox.innerHTML = `
-        <img src="${template.image}" alt="${template.title}" width="100" height="100">
-        <p>${template.title}</p>
-        <p>${template.description}</p>
-      `;
-
-      templateContainer.appendChild(templateBox);
-    });
-
-    console.log("Templates loaded successfully!");
-  } catch (error) {
-    console.error("Error loading templates:", error);
-
-    if (retryCount < maxRetries) {
-      console.log(`Retrying template loading... Attempt ${retryCount + 1}`);
-      setTimeout(() => loadTemplates(templates, retryCount + 1, maxRetries), 1000);
-    } else {
-      console.error("Max retries reached. Templates may not be available.");
-    }
-  }
-}*/
 
 
 
