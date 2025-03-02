@@ -1,561 +1,570 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    }
-  
-    :root{
-    --btn_main_color: #0066ff;
-    --btn_hover: #8000ff;
-    --btn_shadow_hover: 0 10px 15px rgba(0, 0, 0, 0.2);
-    --form_color1: #6a0dad;
-    --form_color2:#8000ff;
-    --form_ovarlay_color: rgba(0, 0, 0, 0.6);
-    --white:#fff;
-    --black:#000;
-    --Mainfont:'Lilita One';
-    }
-  
-    /*GRADIENT BACKGROUNG*/
-    html, body {
-    margin: 0;
-    padding: 0;
-    }
-    
-    body {
-    position: relative;
-    color: var(--white);
-    height: 195vh;
-    overflow: auto;
-    }
-    
-    body::before {
-    content: '';
-    position:fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, var(--black), #260450);
-    z-index: -1;
-    }
-    /*GRADIENT BACKGROUND*/
-  
-  /* Search Bar */
-  .search-bar {
-  display: flex;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 6px 30px;
-  border-radius: 25px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  transition: width 0.4s ease-in-out;
-  }
-  
-  .search-bar input {
-  background: transparent;
-  border: none;
-  outline: none;
-  color: var(--white);
-  font-size: 16px;
-  width: 400px; 
-  padding: 5px 0;
-  transition: width 0.4s ease-in-out;
-  }
-  
-  /* Search Bar Expands */
-  .search-bar:hover input {
-  width: 500px;
-  }
-  /* Search Bar Expands */
-  
-  .search-bar input::placeholder {
-  color: var(--white);
-  opacity: 0.7;
-  font-family: var(--Mainfont);
-  }
-  
-  .search-icon {
-  color: var(--white);
-  font-size: 20px;
-  cursor: pointer;
-  margin-left: 10px;
-  }
-  
-  /* Search Bar */
-  
-  /* Navbar Home/Category/About/Contact Section */
-    /*Changed Entirely*/
-    .navbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;     /* Navbar transparent and other stuff*/
-      padding: 10px 10px;
-      background-color:transparent;
-      }
-      
-      .logo{
-      font-family: var(--Mainfont);
-      font-size: 25px;            /* Star And YourChoice (Still need to change) */
-      font-weight: bold;
-      cursor: pointer;
-      }
-      
-      .nav-buttons {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      z-index:1000;
-      }
-      
-      .nav-btn {
-      background:var(--btn_main_color);
-      text-decoration: none;
-      color: var(--white);
-      border: none;
-      padding: 10px 15px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 16px;
-      font-family: var(--Mainfont);
-      transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
-      }
-      
-      .nav-btn:hover {
-      transform: scale(1.1); 
-      background-color:var( --btn_hover);
-      box-shadow:var(--btn_shadow_hover);
-      color: var(--white);
-      }
-  
-      .user-icon {
-        background:none;
-        border: none;              /* User Icon */
-        color:#fff;
-        cursor: pointer;
-        font-size: 26px;
-        transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
-        
-      }
-      .user-icon:hover{
-        transform: scale(1.1); 
-        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
-        color: #fff;
-      }
-
- /* Dropdown styles */
-      .dropdown {
-      position: relative;
-      }
-    
-     #user-dropdown{
-     min-width:120px;      /* User Icon Dropdown position*/
-     left: -95px;
-     top:40px;
-     }
-    
-     .dropdown-content {
-      display: none;
-      position: absolute;
-      background:var(--white);
-      min-width: 175px;
-      border-radius: 8px;
-      z-index: 100;
-      font-family:var(--Mainfont);
-      top: 45px;
-      left:-35px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      }
-    
-     .dropdown-content a {
-      color: var(--black);
-      padding: 10px;
-      display: block;
-      font-size: 15px;
-      text-decoration: none;
-      }
-    
-     .dropdown-content a:hover {
-      background-color:var( --btn_hover);
-      color:#fff;
-      border-radius: 8px;
-     }
-    
-     /* Show dropdown on active */
-     .show {
-      display: block;
-     }
-
-  /* Username Display */
-  #username-display {
-    color: var(--black);
-    font-family: var(--Mainfont);
-    font-size: 16px;
-    text-align: center;
-    margin-bottom: 6px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   }
 
-  /* Templates Section */
-  .template-section {
-  margin: 30px 20px;
+  :root{
+  --btn_main_color: #0066ff;
+  --btn_hover: #8000ff;
+  --btn_shadow_hover: 0 10px 15px rgba(0, 0, 0, 0.2);
+  --form_color1: #6a0dad;
+  --form_color2:#8000ff;
+  --form_ovarlay_color: rgba(0, 0, 0, 0.6);
+  --white:#fff;
+  --black:#000;
+  --Mainfont:'Lilita One';
+  }
+
+  /*GRADIENT BACKGROUNG*/
+  html, body {
+  margin: 0;
+  padding: 0;
+  }
+  
+  body {
   position: relative;
-  font-family: var(--Mainfont);
-  }
-  
-  .template-grid {
-  display: grid;
-  overflow-x: auto;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 15px;
-  padding: 10px;
-  }
-  
-  .template-box {
-  flex: 0px 0 200px;
-  height: 150px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: var(--white);
+  height: 195vh;
+  overflow: auto;
+  }
+  
+  body::before {
+  content: '';
+  position:fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--black), #260450);
+  z-index: -1;
+  }
+  /*GRADIENT BACKGROUND*/
+
+/* Search Bar */
+.search-bar {
+display: flex;
+align-items: center;
+background: rgba(255, 255, 255, 0.1);
+padding: 6px 30px;
+border-radius: 25px;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+transition: width 0.4s ease-in-out;
+}
+
+.search-bar input {
+background: transparent;
+border: none;
+outline: none;
+color: var(--white);
+font-size: 16px;
+width: 400px; 
+padding: 5px 0;
+transition: width 0.4s ease-in-out;
+}
+
+/* Search Bar Expands */
+.search-bar:hover input {
+width: 500px;
+}
+/* Search Bar Expands */
+
+.search-bar input::placeholder {
+color: var(--white);
+opacity: 0.7;
+font-family: var(--Mainfont);
+}
+
+.search-icon {
+color: var(--white);
+font-size: 20px;
+cursor: pointer;
+margin-left: 10px;
+}
+
+/* Search Bar */
+
+/* Navbar Home/Category/About/Contact Section */
+  /*Changed Entirely*/
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;     /* Navbar transparent and other stuff*/
+    padding: 5px 10px;
+    background-color:transparent;
+    }
+    
+    .Logo {
+      display: flex; /* Use flexbox */
+      align-items: center; /* Align items vertically */
+  }
+  
+  .LogoText {
+      font-family: var(--Mainfont);
+      font-size: 30px;
+      margin-left: 10px; /* Add space between the icon and text */
+  }
+  
+  .icon {
+      width: 40px;
+      margin-top: 5px;
+  }
+    
+    .nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    z-index:1000;
+    }
+    
+    .nav-btn {
+    background:var(--btn_main_color);
+    text-decoration: none;
+    color: var(--white);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: var(--Mainfont);
+    transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
+    }
+    
+    .nav-btn:hover {
+    transform: scale(1.1); 
+    background-color:var( --btn_hover);
+    box-shadow:var(--btn_shadow_hover);
+    color: var(--white);
+    }
+
+    .user-icon {
+      background:none;
+      border: none;              /* User Icon */
+      color:#fff;
+      cursor: pointer;
+      font-size: 26px;
+      transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
+      
+    }
+    .user-icon:hover{
+      transform: scale(1.1); 
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+      color: #fff;
+    }
+
+/* Dropdown styles */
+    .dropdown {
+    position: relative;
+    }
+  
+   #user-dropdown{
+   min-width:120px;      /* User Icon Dropdown position*/
+   left: -95px;
+   top:40px;
+   }
+  
+   .dropdown-content {
+    display: none;
+    position: absolute;
+    background:var(--white);
+    min-width: 175px;
+    border-radius: 8px;
+    z-index: 100;
+    font-family:var(--Mainfont);
+    top: 45px;
+    left:-35px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+  
+   .dropdown-content a {
+    color: var(--black);
+    padding: 10px;
+    display: block;
+    font-size: 15px;
+    text-decoration: none;
+    }
+  
+   .dropdown-content a:hover {
+    background-color:var( --btn_hover);
+    color:#fff;
+    border-radius: 8px;
+   }
+  
+   /* Show dropdown on active */
+   .show {
+    display: block;
+   }
+
+/* Username Display */
+#username-display {
+  color: var(--black);
   font-family: var(--Mainfont);
   font-size: 16px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease-in-out;
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+/* Templates Section */
+.template-section {
+margin: 30px 20px;
+position: relative;
+font-family: var(--Mainfont);
+}
+
+.template-grid {
+display: grid;
+overflow-x: auto;
+grid-template-columns: repeat(5, 1fr);
+gap: 15px;
+padding: 10px;
+}
+
+.template-box {
+flex: 0px 0 200px;
+height: 150px;
+background: rgba(255, 255, 255, 0.2);
+border-radius: 10px;
+display: flex;
+align-items: center;
+justify-content: center;
+color: var(--white);
+font-family: var(--Mainfont);
+font-size: 16px;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+transition: transform 0.3s ease-in-out;
+}
+
+/*inheriting the width and height of the box*/
+.template-box img {
+  width: 100% ;
+  height: inherit;
+  border-radius: inherit;
+  
+}
+
+.template-box:hover {
+transform: scale(1.05);
+}
+
+.more-link {
+position: absolute;
+right: 20px;
+margin-top: 10px;
+background-color:var(--btn_main_color);
+color:var(--white);
+padding: 10px 20px;
+border-radius: 20px;
+font-family: var(--Mainfont);
+text-decoration: none;
+border: none;
+cursor: pointer;
+transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
+}
+
+.more-link:hover {
+transform: scale(1.1); 
+  background-color: var(--btn_hover);
+  box-shadow:var(--btn_shadow_hover);
+}
+/* Templates Section */
+
+/* Login/Sign up */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--form_ovarlay_color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000; /* Higher than dropdown and nav */
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.3s ease-in-out;
   }
   
-  /*inheriting the width and height of the box*/
-  .template-box img {
-    width: 100% ;
-    height: inherit;
-    border-radius: inherit;
-    
-  }
-  
-  .template-box:hover {
-  transform: scale(1.05);
-  }
-  
-  .more-link {
-  position: absolute;
-  right: 20px;
-  margin-top: 10px;
-  background-color:var(--btn_main_color);
-  color:var(--white);
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-family: var(--Mainfont);
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
-  }
-  
-  .more-link:hover {
-  transform: scale(1.1); 
-    background-color: var(--btn_hover);
-    box-shadow:var(--btn_shadow_hover);
-  }
-  /* Templates Section */
-  
-  /* Login/Sign up */
   .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--form_ovarlay_color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2000; /* Higher than dropdown and nav */
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s, opacity 0.3s ease-in-out;
-    }
-    
-    .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--form_ovarlay_color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2000; /* Higher than dropdown and nav */
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s, opacity 0.3s ease-in-out;
-    }
-    
-    .hidden {
-    display: none;  /* To not show login and sign up together*/
-    }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--form_ovarlay_color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000; /* Higher than dropdown and nav */
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.3s ease-in-out;
+  }
+  
+  .hidden {
+  display: none;  /* To not show login and sign up together*/
+  }
+  
+  
+  .modal-overlay:not(.hidden) {
+  visibility: visible;
+  opacity: 1;
+  }
     
     
-    .modal-overlay:not(.hidden) {
-    visibility: visible;
-    opacity: 1;
-    }
-      
-      
-    .login-container {
-    background: var(--white);
-    border-radius: 12px;
-    font-family: var(--Mainfont);
-    padding: 30px 40px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-    width: 360px;
-    position: relative;
-    text-align: center;
-    }
-      
-    /* Close Button Style */
-    #close-modal {
-    position: absolute;
-    top: 10px;
-    right: 15px;                /* It is Cross (X) Style */
-    font-size: 24px;
-    color: var(--black);
-    cursor: pointer;
-    transition: color 0.3s ease;
-    }
-      
-    #close-modal:hover {
-    color: #ff0000;
-    }
-      
-    /* IDK what just happen. but it is beatiful (transition between login pop-up)*/
-    /*.hidden {
-    display: none;
-    }*/
-      
-    #form-title {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: var(--form_color1);
-    }
-      
-    form label {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 16px;
-    color: var(--black);
-    text-align: left;
-    }
-      
-    form input[type="text"],
-    form input[type="password"] {
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    width: 100%;
-    box-sizing: border-box;
-    background-color: rgba(128, 155, 206, 0.2);
-    transition: border-color 0.3s, box-shadow 0.3s;
-    }
-      
-    form input[type="text"]:focus,
-    form input[type="password"]:focus {
-    outline: none;
-    border-color: #808bbc;
-    box-shadow: 0 0 5px rgba(128, 155, 206, 0.8);
-    }
-      
-    .modal-overlay button {
-    width: 100%;
-    background: linear-gradient(to right, var(--form_color1), var(--form_color2));
-    color: var(--white);
-    font-family:var(--Mainfont);
-    border: none;
-    padding: 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background 0.3s;
-    }
-      
-    .modal-overlay button:hover {
-    background: linear-gradient(to right, var(--form_color2), var(--form_color1));
-    }
-      
-    #toggle-form {
-    font-size: 14px;
-    text-align: center;
-    margin-top: 10px;
-    color: var(--black);
-    }
-      
-    #toggle-form a {
-    color: var(--form_color1);
-    text-decoration: none;
-    font-weight: bold;
-    }
-      
-    #toggle-form a:hover {
-    color: var(--form_color2);
-    }
-    .password-container {
-    position: relative;
-    width: 100%;
-    }
-      
-    /* Eye icon styling */
-   .eye1 {
-    position: absolute;
-    right: 50px;
-    top: 47%;
-    transform: translateY(200%);
-    cursor: pointer;
-    font-size: 18px;
-    color:var(--black);
-    }
-    .eye2 {
-    position: absolute;
-    right: 50px;
-    top: 47.5%;
-    transform: translateY(-14%);
-    cursor: pointer;
-    font-size: 18px;
-    color:var(--black);
-    }
+  .login-container {
+  background: var(--white);
+  border-radius: 12px;
+  font-family: var(--Mainfont);
+  padding: 30px 40px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  width: 360px;
+  position: relative;
+  text-align: center;
+  }
     
-    .eye3 {
-    position: absolute;
-    right: 50px;
-    top: 43%;
-    transform: translateY(535%);
-    cursor: pointer;
-    font-size: 18px;
-    color:var(--black);
-    }
+  /* Close Button Style */
+  #close-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;                /* It is Cross (X) Style */
+  font-size: 24px;
+  color: var(--black);
+  cursor: pointer;
+  transition: color 0.3s ease;
+  }
     
-    i.visible {
-    display: block;/*fixed initializing*/
-    }
-    i.hidden {
-    display: none;/*fixed initializing*/
-    }
-  
-  /*Andriod Screen*/
-  @media (max-width : 600px){
-    /*resize  each grid size */
-    .template-grid {
-      grid-template-columns: repeat(5, 50%);
-    }
-    /*body font size*/
-    body {
-      font-size: 10px;
-    }
-  /*page logo and page name */
-    .logo h1 {
-    font-size: 17px;
-    }
-    .logo i {
-      font-size : 18px;
-    }
-    /*search bar adjust*/
-    .search-bar input {
-      width : 150px;
-    }
-    /*transition of it adjust */
-    .search-bar:hover input {
-      width: 160px;
-    }
-    /*search icon*/
-    .fa-search{
-      font-size : 17px;
-    }
-    /* home about ... and profile */
-    .nav-buttons {
-      position : absolute;
-      left : 10px;
-      top : 70px;
-        margin: center;
-      /*margin-top: 20px;
-      margin-bottom: 30px;  */
-        
-      gap:10px;
-    }
-    .dropdown{
-      top : 9%;
-    }
-      .nav-btn{
-          font-size: 13px;
-      }
+  #close-modal:hover {
+  color: #ff0000;
+  }
+    
+  /* IDK what just happen. but it is beatiful (transition between login pop-up)*/
+  /*.hidden {
+  display: none;
+  }*/
+    
+  #form-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: var(--form_color1);
+  }
+    
+  form label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 16px;
+  color: var(--black);
+  text-align: left;
+  }
+    
+  form input[type="text"],
+  form input[type="password"] {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: rgba(128, 155, 206, 0.2);
+  transition: border-color 0.3s, box-shadow 0.3s;
+  }
+    
+  form input[type="text"]:focus,
+  form input[type="password"]:focus {
+  outline: none;
+  border-color: #808bbc;
+  box-shadow: 0 0 5px rgba(128, 155, 206, 0.8);
+  }
+    
+  .modal-overlay button {
+  width: 100%;
+  background: linear-gradient(to right, var(--form_color1), var(--form_color2));
+  color: var(--white);
+  font-family:var(--Mainfont);
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s;
+  }
+    
+  .modal-overlay button:hover {
+  background: linear-gradient(to right, var(--form_color2), var(--form_color1));
+  }
+    
+  #toggle-form {
+  font-size: 14px;
+  text-align: center;
+  margin-top: 10px;
+  color: var(--black);
+  }
+    
+  #toggle-form a {
+  color: var(--form_color1);
+  text-decoration: none;
+  font-weight: bold;
+  }
+    
+  #toggle-form a:hover {
+  color: var(--form_color2);
+  }
+  .password-container {
+  position: relative;
+  width: 100%;
+  }
+    
+  /* Eye icon styling */
+ .eye1 {
+  position: absolute;
+  right: 50px;
+  top: 47%;
+  transform: translateY(200%);
+  cursor: pointer;
+  font-size: 18px;
+  color:var(--black);
+  }
+  .eye2 {
+  position: absolute;
+  right: 50px;
+  top: 47.5%;
+  transform: translateY(-14%);
+  cursor: pointer;
+  font-size: 18px;
+  color:var(--black);
   }
   
-  /* Image Modal */ 
-  /*download button*/
-  .image-modal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 3000;
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s, opacity 0.3s ease-in-out;
+  .eye3 {
+  position: absolute;
+  right: 50px;
+  top: 43%;
+  transform: translateY(535%);
+  cursor: pointer;
+  font-size: 18px;
+  color:var(--black);
   }
   
-  .image-modal-content {
-    position: relative;
-    background: var(--white);
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 90%;
-    max-height: 90%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  i.visible {
+  display: block;/*fixed initializing*/
   }
-  
-  .image-modal-content img {
-    max-width: 100%;
-    max-height: 80vh;
-    border-radius: 10px;
+  i.hidden {
+  display: none;/*fixed initializing*/
   }
-  
-  .image-modal .close-modal {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 24px;
-    color:var(--black);
-    cursor: pointer;
+
+/*Andriod Screen*/
+@media (max-width : 600px){
+  /*resize  each grid size */
+  .template-grid {
+    grid-template-columns: repeat(5, 50%);
   }
-  
-  .image-modal .close-modal:hover {
-    color: red;
+  /*body font size*/
+  body {
+    font-size: 10px;
   }
-  
-  #download-button {
-    background: linear-gradient(to right,var(--form_color1), var(--form_color2));
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
-    font-family:var(--Mainfont);
+/*page logo and page name */
+  .logo h1 {
+  font-size: 17px;
   }
-  
-  #download-button:hover {
-    background: linear-gradient(to right,var(--form_color2),var(--form_color1));
+  .logo i {
+    font-size : 18px;
   }
-  
-  .image-modal.show {
-    visibility: visible;
-    opacity: 1;
+  /*search bar adjust*/
+  .search-bar input {
+    width : 150px;
   }
+  /*transition of it adjust */
+  .search-bar:hover input {
+    width: 160px;
+  }
+  /*search icon*/
+  .fa-search{
+    font-size : 17px;
+  }
+  /* home about ... and profile */
+  .nav-buttons {
+    position : absolute;
+    left : 10px;
+    top : 70px;
+      margin: center;
+    /*margin-top: 20px;
+    margin-bottom: 30px;  */
+      
+    gap:10px;
+  }
+  .dropdown{
+    top : 9%;
+  }
+    .nav-btn{
+        font-size: 13px;
+    }
+}
+
+/* Image Modal */ 
+/*download button*/
+.image-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 3000;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.3s ease-in-out;
+}
+
+.image-modal-content {
+  position: relative;
+  background: var(--white);
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 90%;
+  max-height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-modal-content img {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 10px;
+}
+
+.image-modal .close-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  color:var(--black);
+  cursor: pointer;
+}
+
+.image-modal .close-modal:hover {
+  color: red;
+}
+
+#download-button {
+  background: linear-gradient(to right,var(--form_color1), var(--form_color2));
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  font-family:var(--Mainfont);
+}
+
+#download-button:hover {
+  background: linear-gradient(to right,var(--form_color2),var(--form_color1));
+}
+
+.image-modal.show {
+  visibility: visible;
+  opacity: 1;
+}
